@@ -8,12 +8,14 @@
   (common/layout
    [:p "Welcome to my-noir-lab"]))
 
+;; Hello world
 (defpage "/my-page" []
   (common/site-layout
    "Welcome"
    [:h1 "Hello"]
    [:p#wrapper "Hope you like it!"]))
 
+;; A page to display the input
 (defpage "/range" {:as user}
   (common/site-layout
    "Range input"
@@ -22,9 +24,11 @@
             (common/input-fields-range user)
             (submit-button "submit"))))
 
+;; A page to display the range
 (defpage [:post "/range"] {:keys [start end] :as user}
   (common/site-layout
    "Range"
    [:h2 (str "Display range from " start " to " end)]
    [:p#wrapper (map #(str % "<br />")
-                    (range (read-string start) (read-string end)))]))
+                    (range (read-string start) (read-string end)))])
+  (render "/range" user))
