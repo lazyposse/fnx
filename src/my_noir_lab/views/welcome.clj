@@ -12,3 +12,8 @@
   (common/site-layout
    [:h1 "Welcome to my site!"]
    [:p#wrapper "Hope you like it!"]))
+
+(defpage "/range" []
+  (common/site-layout
+   [:h1 "range 1 100"]
+   [:p#wrapper (map #(str "<i>" % "</i>&nbsp;") (range 1 100))]))
