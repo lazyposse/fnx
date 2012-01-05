@@ -1,19 +1,31 @@
 (ns my-noir-lab.views.welcome
-  (:require [my-noir-lab.views.common :as common]
-            [noir.content.getting-started])
-  (:use [noir.core :only [defpage]]
-        [hiccup.core :only [html]]))
+  (:require [my-noir-lab.views.common :as common])
+  (:use [noir.core :only [defpage render]]
+        [hiccup.core :only [html]]
+        [hiccup.form-helpers :only [form-to submit-button]]))
 
 (defpage "/welcome" []
-         (common/layout
-           [:p "Welcome to my-noir-lab"]))
+  (common/layout
+   [:p "Welcome to my-noir-lab"]))
 
 (defpage "/my-page" []
   (common/site-layout
-   [:h1 "Welcome to my site!"]
+   "Welcome"
+   [:h1 "Hello"]
    [:p#wrapper "Hope you like it!"]))
 
-(defpage "/range" []
+(defpage "/range" {:as user}
   (common/site-layout
-   [:h1 "range 1 100"]
-   [:p#wrapper (map #(str "<i>" % "</i>&nbsp;") (range 1 100))]))
+   "Range input"
+   [:h1 "range method"]
+   (form-to [:post "/range"]
+            (common/input-fields-range user)
+            (submit-button "submit"))))
+
+(defpage [:post "/range"] {:keys [start end] :as user}
+  (common/site-layout
+   "Range"
+   [:h2 (str "Display range from " start " to " end)]
+   [:p#wrapper (map #(str % "<br />")
+                    (range (read-string start) (read-string end)))]
+   (render "/range" user)))
