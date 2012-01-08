@@ -5,9 +5,11 @@ A website written in noir.
 ## Usage
 
 ```bash
-lein deps
+cd my-noir-lab
 lein run
 ```
+
+Go to http://localhost:8080/range
 
 ## License
 
