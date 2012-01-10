@@ -30,5 +30,4 @@
    "Range"
    [:h2 (str "Display range from " start " to " end)]
    [:p#wrapper (map #(str % "<br />")
-                    (range (read-string start) (read-string end)))])
-  (render "/range" user))
+                    (range (read-string start) (read-string end)))]))
