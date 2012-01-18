@@ -1,11 +1,11 @@
-# my-noir-lab
+BETA-NOT-FOR-PROD
 
-A website written in noir. 
+# fnx - Web eXposure FuNctions
 
 ## Usage
 
 ```bash
-cd my-noir-lab
+cd fnx
 lein run
 ```
 
@@ -13,7 +13,7 @@ Go to http://localhost:8080/range
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2011 commiters
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
