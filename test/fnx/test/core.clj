@@ -1,5 +1,5 @@
-(ns my-noir-lab.test.core
-  (:use [my-noir-lab.core])
+(ns fnx.test.core
+  (:use [fnx.core])
   (:use [clojure.test]))
 
 (deftest replace-me ;; FIXME: write

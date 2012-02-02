@@ -1,5 +1,5 @@
 (ns ^{:doc "Example functions to test the noir-test.meta.expose ns"}
-  my-noir-lab.meta.example)
+  fnx.meta.example)
 
 (defn hello-noir "A public fn that should be listed"
   [] (str "Hello noir"))
