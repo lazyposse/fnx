@@ -1,12 +1,12 @@
-(ns my-noir-lab.views.welcome
-  (:require [my-noir-lab.views.common :as common])
+(ns fnx.views.welcome
+  (:require [fnx.views.common :as common])
   (:use [noir.core :only [defpage render]]
         [hiccup.core :only [html]]
         [hiccup.form-helpers :only [form-to submit-button]]))
 
 (defpage "/welcome" []
   (common/layout
-   [:p "Welcome to my-noir-lab"]))
+   [:p "Welcome to fnx"]))
 
 ;; Hello world
 (defpage "/my-page" []
