@@ -1,16 +1,20 @@
-(ns ^{:doc "Example functions to test the noir-test.meta.expose ns"}
-  fnx.meta.example)
+;; This file contains some dummy functions and vars **just to test** the
+;; functionnalities of `fnx.meta.expose`.
+;;
+(ns fnx.meta.example
+  "Example functions for expose.")
 
-(defn hello-noir "A public fn that should be listed"
+(defn hello-noir "A public fn with zero arg, should be listed"
   [] (str "Hello noir"))
 
-(defn one-arg-fn
+(defn one-arg-fn "A public fn with one arg, should be listed"
   [x] (str "arg=" x))
 
-(defn two-arg-fn
+(defn two-arg-fn "A public fn with two args, should be listed"
   [x y] (str "args=" x "," y))
 
 (defn- hello-private "A private fn that shouldn't be listed"
   [] (str "Hello noir, today we are " (java.util.Date.)))
 
-(def a-public-var-that-shouldnt-be-list 0)
+(def ^{:doc "A public var that shouldn't be listed"}
+  a-public-var-that-shouldnt-be-list 0)
