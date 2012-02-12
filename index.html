@@ -3070,17 +3070,25 @@ functionnalities of <code>fnx.meta.expose</code>.</p>
   [] (str &quot;Hello noir, today we are &quot; (java.util.Date.)))</pre></td></tr><tr><td class="docs"><p>A public var that shouldn't be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(def 
   a-public-var-that-shouldnt-be-list 0)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.expose" name="fnx.meta.expose"><h1 class="project-name">fnx.meta.expose</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Get the public functions of a namespace</p>
+
+<p>This is usefull to display the functions, ask the user for the
+input parameters, and then execute them, presenting the result to
+the user.
+Intended to expose the functions in a Browser, but it could be
+anything else: command line, rich client, ...</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.meta.expose
   (:use [midje.sweet]))</pre></td></tr><tr><td class="docs"><p>Given a ns symbol, returns all the public fns of this ns.</p>
 
 <ul>
 <li>First we load the ns with <code>require</code></li>
-<li>Then we use <code>ns-publics</code> to get all public vars</li>
-<li>Then we filter functions: They have an <code>:arglists</code> in their meta</li>
+<li>Then we get the public functions (read from bottom to top):</li>
+<li>We want only functions, not the other vars: We can spot them because they have an <code>:arglists</code> in their meta.</li>
+<li>Don't really know why, but we need to <code>ns-resolve</code> the symbols(?)</li>
+<li>Get the public vars with <code>ns-publics</code></li>
 </ul>
 </td><td class="codes"><pre class="brush: clojure">(defn ns-public-fn
   [ns] (do (require ns)
-           (filter (fn [s] (:arglists (meta s)))
+           (filter #(:arglists (meta %))
                    (map #(ns-resolve ns %)
                         (keys (ns-publics (find-ns ns)))))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(fact &quot;ns-public-fn&quot;
