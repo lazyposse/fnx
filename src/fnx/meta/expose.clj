@@ -12,15 +12,13 @@
 ;; * First we load the ns with `require`
 ;; * Then we get the public functions (read from bottom to top):
 ;; * We want only functions, not the other vars: We can spot them because they have an `:arglists` in their meta.
-;; * Don't really know why, but we need to `ns-resolve` the symbols(?)
 ;; * Get the public vars with `ns-publics`
 ;;
 (defn ns-public-fn
   "Given a ns symbol, returns all the public fns of this ns."
   [ns] (do (require ns)
            (filter #(:arglists (meta %))
-                   (map #(ns-resolve ns %)
-                        (keys (ns-publics (find-ns ns)))))))
+                   (vals (ns-publics (find-ns ns))))))
  
 (fact "ns-public-fn"
       (second (ns-public-fn 'fnx.meta.example)) => (resolve 'fnx.meta.example/hello-noir))

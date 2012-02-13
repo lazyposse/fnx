@@ -31,3 +31,15 @@
    [:h2 (str "Display range from " start " to " end)]
    [:p#wrapper (map #(str % "<br />")
                     (range (read-string start) (read-string end)))]))
+
+;; A page to expose some functions from a fixed namespace fnx.meta.example
+(defpage "/expose" {:keys [ns] :as user}
+  (let [n (if (empty? ns) 'fnx.meta.example (symbol ns))
+        title (str "Exposed functions in " n)]
+    (common/site-layout
+     title
+     [:h1 title]
+     [:p#wrapper (let [f (fnx.meta.expose/ns-public-fn n)]
+                   (if f
+                     (map #(str "<i>" % "</i><br />") f)
+                     (str "No function exposed in " n)))])))
