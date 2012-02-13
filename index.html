@@ -3028,6 +3028,100 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
+</script><script type="text/javascript">
+// hackity-hack
+
+$(document).ready(function() {
+    var ft = $("#floating-toc")
+    var ul = ft.find('ul')
+    var lis = ft.find('li')
+
+    ul.css('maring', '0px')
+
+    var liHeight = $(lis.get(0)).height()
+
+    ft.css('height', (liHeight) + 'px')
+
+
+    showNs = function(ns) {
+        //this is killing performance, lookup table.
+        //var el = $("[id='floating-toc_" + ns + "']")
+        //var index = lis.index(el)
+
+        var index = 0
+
+        for(i in nsPositions.nss) {
+            if(ns == nsPositions.nss[i]) index = i
+        }
+
+        console.log(index)
+
+        if(index == lastNsIndex) return;
+
+        lastNsIndex = index
+
+
+        ul.animate({marginTop: (-1 * liHeight * index) + 'px'},
+               300)
+        //        ul.css('margin-top', (-1 * liHeight * index) + 'px')
+
+    }
+
+    var calcNsPositions = function() {
+        var nss = []
+        var anchors = []
+        var positions = []
+        $.each(lis, function(i, el) {
+            var ns = $(el).attr('id').split('_')[1]
+            nss.push(ns)
+            var a = $("a[name='"+ns+"']")
+            anchors.push(a)
+            positions.push(a.offset().top)
+            console.log(a.offset().top)
+        });
+
+        return {nss: nss, positions: positions}
+    }
+
+    var nsPositions = calcNsPositions()
+
+    console.log(nsPositions)
+
+    var lastNsIndex = -1
+
+    var $window = $(window)
+
+    var currentSection = function(nsp) {
+
+        var ps = nsp.positions
+        var nss = nsp.nss
+        var scroll = $window.scrollTop() + 300
+        var nsIndex = -1
+        for(var i in ps) {
+            var p = ps[i]
+            if(p >= scroll) {
+                nsIndex = i-1
+                break;
+            }
+                
+        }
+
+        if(nsIndex == -1 && scroll >= ps[0]) {
+            nsIndex = ps.length-1
+        }
+
+        if(nsIndex == -1) nsIndex = 0
+
+        return nss[nsIndex]
+    }
+
+    $(window).scroll(function(e) {
+        showNs(currentSection(nsPositions))
+    })
+
+    ul.css('margin-top', '0px')
+
+})
 </script><title>fnx -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">fnx</h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>Expose your Clojure functions on the web easily</p>
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">noir</td><td class="dotted"><hr /></td><td class="dep-version">1.2.1</td></tr><tr><td class="dep-name">clj-stacktrace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.4</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table><tr><td class="dep-name">midje</td><td class="dotted"><hr /></td><td class="dep-version">1.3.1</td></tr><tr><td class="dep-name">com.intelie/lazytest</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0-SNAPSHOT</td></tr><tr><td class="dep-name">lein-marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.7.0-SNAPSHOT</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#fnx.core">fnx.core</a></li><li><a href="#fnx.meta.example">fnx.meta.example</a></li><li><a href="#fnx.meta.expose">fnx.meta.expose</a></li><li><a href="#fnx.server">fnx.server</a></li><li><a href="#fnx.views.common">fnx.views.common</a></li><li><a href="#fnx.views.welcome">fnx.views.welcome</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.core" name="fnx.core"><h1 class="project-name">fnx.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h1>What's this?</h1>
 
@@ -3083,14 +3177,12 @@ anything else: command line, rich client, ...</p>
 <li>First we load the ns with <code>require</code></li>
 <li>Then we get the public functions (read from bottom to top):</li>
 <li>We want only functions, not the other vars: We can spot them because they have an <code>:arglists</code> in their meta.</li>
-<li>Don't really know why, but we need to <code>ns-resolve</code> the symbols(?)</li>
 <li>Get the public vars with <code>ns-publics</code></li>
 </ul>
 </td><td class="codes"><pre class="brush: clojure">(defn ns-public-fn
   [ns] (do (require ns)
            (filter #(:arglists (meta %))
-                   (map #(ns-resolve ns %)
-                        (keys (ns-publics (find-ns ns)))))))</pre></td></tr><tr><td class="docs">
+                   (vals (ns-publics (find-ns ns))))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(fact &quot;ns-public-fn&quot;
       (second (ns-public-fn 'fnx.meta.example)) =&gt; (resolve 'fnx.meta.example/hello-noir))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(fact &quot;ns-public-fn: listing functions and calling them (it's more an example of usage than a true test)&quot;
@@ -3155,5 +3247,15 @@ anything else: command line, rich client, ...</p>
    &quot;Range&quot;
    [:h2 (str &quot;Display range from &quot; start &quot; to &quot; end)]
    [:p#wrapper (map #(str % &quot;&lt;br /&gt;&quot;)
-                    (range (read-string start) (read-string end)))]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+                    (range (read-string start) (read-string end)))]))</pre></td></tr><tr><td class="docs"><p>A page to expose some functions from a fixed namespace fnx.meta.example</p>
+</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/expose&quot; {:keys [ns] :as user}
+  (let [n (if (empty? ns) 'fnx.meta.example (symbol ns))
+        title (str &quot;Exposed functions in &quot; n)]
+    (common/site-layout
+     title
+     [:h1 title]
+     [:p#wrapper (let [f (fnx.meta.expose/ns-public-fn n)]
+                   (if f
+                     (map #(str &quot;&lt;i&gt;&quot; % &quot;&lt;/i&gt;&lt;br /&gt;&quot;) f)
+                     (str &quot;No function exposed in &quot; n)))])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_fnx.core">fnx.core</li><li class="floating-toc-li" id="floating-toc_fnx.meta.example">fnx.meta.example</li><li class="floating-toc-li" id="floating-toc_fnx.meta.expose">fnx.meta.expose</li><li class="floating-toc-li" id="floating-toc_fnx.server">fnx.server</li><li class="floating-toc-li" id="floating-toc_fnx.views.common">fnx.views.common</li><li class="floating-toc-li" id="floating-toc_fnx.views.welcome">fnx.views.welcome</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
        SyntaxHighlighter.all()</script></body></html>
