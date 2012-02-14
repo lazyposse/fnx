@@ -13,6 +13,9 @@
 (defn two-arg-fn "A public fn with two args, should be listed"
   [x y] (str "args=" x "," y))
 
+(defn mul2 [x] "A public fn for multiplying"
+  (* 2 (read-string x)))
+
 (defn- hello-private "A private fn that shouldn't be listed"
   [] (str "Hello noir, today we are " (java.util.Date.)))
 
