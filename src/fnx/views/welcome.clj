@@ -35,16 +35,19 @@
 
 ;; A page to execute function
 (defpage "/xfn" {:keys [fun] :as user}
-  (let [g (fnx.meta.expose/resolve-str fun)]
+  (let [g (fnx.meta.expose/resolve-str fun)
+        k (dissoc user :fun)]
     (common/site-layout
      "eXecute"
      [:h1 (str "eXecute " g)]
-     [:p:#wrapper (str (g))])))
+     [:p#wrapper (str "function " g " args " k)]
+     [:p#wrapper (apply g (vals k))])))
 
 (defn input-fields-fn "Wrapper to expose an execute function button."
   [fun]
   (form-to [:get "/xfn"]
            (text-field "fun" fun)
+           (map #(text-field % "") (flatten (:arglists (meta fun))))
            (submit-button (str fun))))
 
 ;; A page to expose some functions from a namespace.
