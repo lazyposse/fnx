@@ -5,7 +5,7 @@
   "Example functions for expose.")
 
 (defn hello-noir "A public fn with zero arg, should be listed"
-  [] (str "Hello noir"))
+  [] (str "Hello world from a function exposed!"))
 
 (defn one-arg-fn "A public fn with one arg, should be listed"
   [x] (str "arg=" x))
