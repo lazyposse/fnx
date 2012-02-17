@@ -3133,12 +3133,12 @@ $(document).ready(function() {
 small problems: convert a file in one format to another, fetch and parse some
 resource from the network, etc.</p>
 
-<p>I would like to share those snippets of functionnalities to my
+<p>I would like to share those snippets of functionalities to my
 fellow co-workers, problem is: They may even not know what Clojure
 is.</p>
 
-<p>So what I would like to do: Just write my function to get the job
-done, but because I put my function in a particular namespace,
+<p>So what I would like to do: Just write my functions to get the job
+done, but because I put my functions in a particular namespace,
 it's automatically exposed in a web interface, where the user can
 file the parameters with HTML textboxes, click <code>submit</code> and get the
 result back.</p>
@@ -3155,11 +3155,13 @@ result back.</p>
 functionnalities of <code>fnx.meta.expose</code>.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.meta.example)</pre></td></tr><tr><td class="docs"><p>A public fn with zero arg, should be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(defn hello-noir 
-  [] (str &quot;Hello noir&quot;))</pre></td></tr><tr><td class="docs"><p>A public fn with one arg, should be listed</p>
+  [] (str &quot;Hello world from a function exposed!&quot;))</pre></td></tr><tr><td class="docs"><p>A public fn with one arg, should be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(defn one-arg-fn 
   [x] (str &quot;arg=&quot; x))</pre></td></tr><tr><td class="docs"><p>A public fn with two args, should be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(defn two-arg-fn 
-  [x y] (str &quot;args=&quot; x &quot;,&quot; y))</pre></td></tr><tr><td class="docs"><p>A private fn that shouldn't be listed</p>
+  [x y] (str &quot;args=&quot; x &quot;,&quot; y))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn mul2 [x] &quot;A public fn for multiplying&quot;
+  (* 2 (read-string x)))</pre></td></tr><tr><td class="docs"><p>A private fn that shouldn't be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- hello-private 
   [] (str &quot;Hello noir, today we are &quot; (java.util.Date.)))</pre></td></tr><tr><td class="docs"><p>A public var that shouldn't be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(def 
@@ -3188,7 +3190,13 @@ anything else: command line, rich client, ...</p>
 </td><td class="codes"><pre class="brush: clojure">(fact &quot;ns-public-fn: listing functions and calling them (it's more an example of usage than a true test)&quot;
       (map (fn [f] (apply f
                          (range 0 (count (first (:arglists (meta f)))))))
-           (ns-public-fn 'fnx.meta.example)) =&gt; [&quot;arg=0&quot;, &quot;Hello noir&quot; &quot;args=0,1&quot;])</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.server" name="fnx.server"><h1 class="project-name">fnx.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>(:require [noir.server :as server])</p>
+           (ns-public-fn 'fnx.meta.example)) =&gt; [&quot;arg=0&quot;, &quot;Hello world from a function exposed!&quot; &quot;args=0,1&quot;])</pre></td></tr><tr><td class="docs"><p>Wrapper around resolve to deal with string representing #'namespace/function</p>
+</td><td class="codes"><pre class="brush: clojure">(defn resolve-str 
+  [s]
+  (resolve (symbol (clojure.string/join &quot;&quot; (drop 2 s)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;resolve-str&quot;
+  (resolve-str &quot;#'fnx.meta.example/hello-noir&quot;) =&gt; (resolve 'fnx.meta.example/hello-noir)
+  ((resolve-str &quot;#'fnx.meta.example/hello-noir&quot;)) =&gt; &quot;Hello world from a function exposed!&quot;)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.server" name="fnx.server"><h1 class="project-name">fnx.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>(:require [noir.server :as server])</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.server
   (:require [noir.server :as server]))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(server/load-views &quot;src/fnx/views/&quot;)</pre></td></tr><tr><td class="docs">
@@ -3226,7 +3234,8 @@ anything else: command line, rich client, ...</p>
   (:require [fnx.views.common :as common])
   (:use [noir.core :only [defpage render]]
         [hiccup.core :only [html]]
-        [hiccup.form-helpers :only [form-to submit-button]]))</pre></td></tr><tr><td class="docs">
+        [hiccup.form-helpers :only [text-field label form-to submit-button]]
+        [fnx.meta.expose :only [ns-public-fn]]))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defpage &quot;/welcome&quot; []
   (common/layout
    [:p &quot;Welcome to fnx&quot;]))</pre></td></tr><tr><td class="docs"><p>Hello world</p>
@@ -3247,15 +3256,30 @@ anything else: command line, rich client, ...</p>
    &quot;Range&quot;
    [:h2 (str &quot;Display range from &quot; start &quot; to &quot; end)]
    [:p#wrapper (map #(str % &quot;&lt;br /&gt;&quot;)
-                    (range (read-string start) (read-string end)))]))</pre></td></tr><tr><td class="docs"><p>A page to expose some functions from a fixed namespace fnx.meta.example</p>
+                    (range (read-string start) (read-string end)))]))</pre></td></tr><tr><td class="docs"><p>A page to execute function</p>
+</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/xfn&quot; {:keys [fun] :as user}
+  (let [g (fnx.meta.expose/resolve-str fun)
+        k (dissoc user :fun)]
+    (common/site-layout
+     &quot;eXecute&quot;
+     [:h1 (str &quot;eXecute &quot; g)]
+     [:p#wrapper (str &quot;function &quot; g &quot; args &quot; k)]
+     [:p#wrapper (apply g (vals k))])))</pre></td></tr><tr><td class="docs"><p>Wrapper to expose an execute function button.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn input-fields-fn 
+  [fun]
+  (form-to [:get &quot;/xfn&quot;]
+           (text-field &quot;fun&quot; fun)
+           (map #(text-field % &quot;&quot;) (flatten (:arglists (meta fun))))
+           (submit-button (str fun))))</pre></td></tr><tr><td class="docs"><p>A page to expose some functions from a namespace.
+fnx.meta.example is the default one is no other is supplied.</p>
 </td><td class="codes"><pre class="brush: clojure">(defpage &quot;/expose&quot; {:keys [ns] :as user}
   (let [n (if (empty? ns) 'fnx.meta.example (symbol ns))
         title (str &quot;Exposed functions in &quot; n)]
     (common/site-layout
      title
      [:h1 title]
-     [:p#wrapper (let [f (fnx.meta.expose/ns-public-fn n)]
+     [:p#wrapper (let [f (ns-public-fn n)]
                    (if f
-                     (map #(str &quot;&lt;i&gt;&quot; % &quot;&lt;/i&gt;&lt;br /&gt;&quot;) f)
-                     (str &quot;No function exposed in &quot; n)))])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_fnx.core">fnx.core</li><li class="floating-toc-li" id="floating-toc_fnx.meta.example">fnx.meta.example</li><li class="floating-toc-li" id="floating-toc_fnx.meta.expose">fnx.meta.expose</li><li class="floating-toc-li" id="floating-toc_fnx.server">fnx.server</li><li class="floating-toc-li" id="floating-toc_fnx.views.common">fnx.views.common</li><li class="floating-toc-li" id="floating-toc_fnx.views.welcome">fnx.views.welcome</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+                     (map input-fields-fn f)
+                     (str &quot;Huh? No function exposed in &quot; n)))])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_fnx.core">fnx.core</li><li class="floating-toc-li" id="floating-toc_fnx.meta.example">fnx.meta.example</li><li class="floating-toc-li" id="floating-toc_fnx.meta.expose">fnx.meta.expose</li><li class="floating-toc-li" id="floating-toc_fnx.server">fnx.server</li><li class="floating-toc-li" id="floating-toc_fnx.views.common">fnx.views.common</li><li class="floating-toc-li" id="floating-toc_fnx.views.welcome">fnx.views.welcome</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
        SyntaxHighlighter.all()</script></body></html>
