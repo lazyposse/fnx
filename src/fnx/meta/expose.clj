@@ -5,7 +5,7 @@
 ;; anything else: command line, rich client, ...
 ;;
 (ns fnx.meta.expose
-  "Get the public functions of a namespace"
+  "Expose the public functions of a namespace"
   (:use [clojure.string :only [join]]))
 
 ;; 
@@ -20,6 +20,6 @@
            (filter #(:arglists (meta %))
                    (vals (ns-publics (find-ns ns))))))
  
-(defn resolve-str "Wrapper around resolve to deal with string representing #'namespace/function"
+(defn resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
   (resolve (symbol (join "" (drop 2 s)))))

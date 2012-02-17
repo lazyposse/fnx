@@ -38,8 +38,8 @@
   (let [g (fnx.meta.expose/resolve-str fun)
         k (dissoc user :fun)]
     (common/site-layout
-     "eXecute"
-     [:h1 (str "eXecute " g " vals " k)]
+     "run"
+     [:h1 (str "run " g " vals " k)]
      [:p#wrapper (apply g (vals k))])))
 
 (defn input-fields-fn "Wrapper to expose an execute function button."
@@ -48,19 +48,21 @@
     (form-to [:get "/xfn"]
              (label "fun" fun)
              (hidden-field "fun" fun)
-             (label "Doc :" (:doc m))
+             (label "Doc :" (str "<i>" (:doc m) "</i>"))
              (map #(text-field % "") (flatten (:arglists m)))
-             (submit-button "eXecute"))))
+             (submit-button "run"))))
 
 ;; A page to expose some functions from a namespace.
 ;; fnx.meta.example is the default one is no other is supplied.
 (defpage "/expose" {:keys [ns] :as user}
   (let [n (if (empty? ns) 'fnx.meta.example (symbol ns))
-        title (str "Exposed functions in " n)]
+        dn (:doc (meta (find-ns n)))
+        title n]
     (common/site-layout
      title
      [:h1 title]
      [:p#wrapper
+      (str "<i>" dn "</i>") 
       (let [f (ns-public-fn n)]
         (if f
           (map input-fields-fn f)
