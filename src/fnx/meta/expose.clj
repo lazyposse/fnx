@@ -6,7 +6,7 @@
 ;;
 (ns fnx.meta.expose
   "Get the public functions of a namespace"
-  (:use [midje.sweet]))
+  (:use [clojure.string :only [join]]))
 
 ;; 
 ;; * First we load the ns with `require`
@@ -20,19 +20,6 @@
            (filter #(:arglists (meta %))
                    (vals (ns-publics (find-ns ns))))))
  
-(fact "ns-public-fn"
-      (second (ns-public-fn 'fnx.meta.example)) => (resolve 'fnx.meta.example/hello-noir))
-
-(fact "ns-public-fn: listing functions and calling them (it's more an example of usage than a true test)"
-      (map (fn [f] (apply f
-                         (range 0 (count (first (:arglists (meta f)))))))
-           (ns-public-fn 'fnx.meta.example)) => ["arg=0", "Hello world from a function exposed!" "args=0,1"])
-
-
 (defn resolve-str "Wrapper around resolve to deal with string representing #'namespace/function"
   [s]
-  (resolve (symbol (clojure.string/join "" (drop 2 s)))))
-
-(fact "resolve-str"
-  (resolve-str "#'fnx.meta.example/hello-noir") => (resolve 'fnx.meta.example/hello-noir)
-  ((resolve-str "#'fnx.meta.example/hello-noir")) => "Hello world from a function exposed!")
+  (resolve (symbol (join "" (drop 2 s)))))
