@@ -2,7 +2,7 @@
 ;; functionnalities of `fnx.meta.expose`.
 ;;
 (ns fnx.meta.example
-  "Example functions for expose.")
+  "Example of namespace that exposes functions..")
 
 (defn hello-noir "A public fn with zero arg, should be listed"
   [] (str "Hello world from a function exposed!"))
