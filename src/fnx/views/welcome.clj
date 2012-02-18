@@ -63,3 +63,7 @@
         (map input-fields-ns namespaces)
         (str "No namespace with " ns))])))
 
+;; Routing by default on fnx
+(defpage "/" []
+  (render "/:ns" {:ns "fnx"}))
+
