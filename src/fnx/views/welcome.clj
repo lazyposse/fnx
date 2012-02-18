@@ -6,39 +6,11 @@
         [fnx.meta.expose :only [ns-public-fn list-ns]]
         [fnx.views.common]))
 
-(defpage "/welcome" []
-  (layout
-   [:p "Welcome to fnx"]))
-
-;; Hello world
-(defpage "/my-page" []
-  (site-layout
-   "Welcome"
-   [:h1 "Hello"]
-   [:p#wrapper "Hope you like it!"]))
-
-;; A page to display the input
-(defpage "/range" {:as user}
-  (site-layout
-   "Range input"
-   [:h1 "range method"]
-   (form-to [:post "/range"]
-            (input-fields-range user)
-            (submit-button "submit"))))
-
-;; A page to display the range
-(defpage [:post "/range"] {:keys [start end]}
-  (site-layout
-   "Range"
-   [:h2 (str "Display range from " start " to " end)]
-   [:p#wrapper (map #(str % "<br />")
-                    (range (read-string start) (read-string end)))]))
-
 ;; A page to execute function
 (defpage [:post "/xfn"] {:keys [fun] :as data}
   (let [g (fnx.meta.expose/resolve-str fun)
         k (dissoc data :fun)]
-    (site-layout
+    (layout
      "run"
      [:h1 (str "run " g " vals " k)]
      [:p#wrapper (apply g (vals k))])))
@@ -68,7 +40,7 @@
   (let [n (symbol ns)
         dn (:doc (meta (find-ns n)))
         title n]
-    (site-layout
+    (layout
      title
      [:h1 title]
      [:p#wrapper
@@ -83,7 +55,7 @@
 (defpage "/:ns" {ns :ns}
   (let [namespaces (list-ns ns)
         title (str "Exposed namespaces - '" ns "'")]
-    (site-layout
+    (layout
      title
      [:h1 title]
      [:p#wrapper
