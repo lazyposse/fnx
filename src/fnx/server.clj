@@ -1,4 +1,5 @@
 (ns fnx.server
+  "Main entry point to launch fnx."
   (:require [noir.server :as server]))
 
 (server/load-views "src/fnx/views/")

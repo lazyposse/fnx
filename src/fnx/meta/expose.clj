@@ -8,7 +8,6 @@
   "Expose the public functions of a namespace"
   (:use [clojure.string :only [join]]))
 
-;; 
 ;; * First we load the ns with `require`
 ;; * Then we get the public functions (read from bottom to top):
 ;; * We want only functions, not the other vars: We can spot them because they have an `:arglists` in their meta.
@@ -23,3 +22,7 @@
 (defn resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
   (resolve (symbol (join "" (drop 2 s)))))
+
+(defn list-ns "List the fnx namespaces to expose."
+  [prefix-ns]
+  (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))
