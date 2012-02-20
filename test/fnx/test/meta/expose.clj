@@ -27,7 +27,7 @@
     (list-ns "fnx.views") => (just [ns2 ns3] :in-any-order)))
 
 (fact "dot2uri"
-  (dot2uri "fnx.meta.function") => "fnx/meta/function")
+  (dot2uri "fnx.meta.function") => "/fnx/meta/function")
 
 (fact "fn-name"
   (fn-name "fnx" "meta" "expose" "function") => "#'fnx.meta.expose/function")

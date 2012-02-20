@@ -6,7 +6,7 @@
 ;;
 (ns fnx.meta.expose
   "Expose the public functions of a namespace"
-  (:use [clojure.string :only [join]]))
+  (:use [clojure.string :only [join escape]]))
 
 ;; * First we load the ns with `require`
 ;; * Then we get the public functions (read from bottom to top):
@@ -33,7 +33,7 @@
 
 (defn dot2uri "Transform a namespace or function into an uri."
   [s]
-  (join "/" (clojure.string/split s #"\.")))
+  (str "/" (escape s {\. \/})))
 
 (defn fn-name "Transform a list of parameters into a function name"
   [& s]
