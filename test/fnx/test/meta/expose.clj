@@ -1,6 +1,7 @@
-(ns fnx.meta.expose
+(ns fnx.test.meta.expose
   "Get the public functions of a namespace"
-  (:use [midje.sweet]))
+  (:use [midje.sweet])
+  (:use [fnx.meta.expose]))
 
 (fact "ns-public-fn"
       (second (ns-public-fn 'fnx.meta.example)) => (resolve 'fnx.meta.example/hello-noir))
