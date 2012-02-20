@@ -3028,100 +3028,6 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><script type="text/javascript">
-// hackity-hack
-
-$(document).ready(function() {
-    var ft = $("#floating-toc")
-    var ul = ft.find('ul')
-    var lis = ft.find('li')
-
-    ul.css('maring', '0px')
-
-    var liHeight = $(lis.get(0)).height()
-
-    ft.css('height', (liHeight) + 'px')
-
-
-    showNs = function(ns) {
-        //this is killing performance, lookup table.
-        //var el = $("[id='floating-toc_" + ns + "']")
-        //var index = lis.index(el)
-
-        var index = 0
-
-        for(i in nsPositions.nss) {
-            if(ns == nsPositions.nss[i]) index = i
-        }
-
-        console.log(index)
-
-        if(index == lastNsIndex) return;
-
-        lastNsIndex = index
-
-
-        ul.animate({marginTop: (-1 * liHeight * index) + 'px'},
-               300)
-        //        ul.css('margin-top', (-1 * liHeight * index) + 'px')
-
-    }
-
-    var calcNsPositions = function() {
-        var nss = []
-        var anchors = []
-        var positions = []
-        $.each(lis, function(i, el) {
-            var ns = $(el).attr('id').split('_')[1]
-            nss.push(ns)
-            var a = $("a[name='"+ns+"']")
-            anchors.push(a)
-            positions.push(a.offset().top)
-            console.log(a.offset().top)
-        });
-
-        return {nss: nss, positions: positions}
-    }
-
-    var nsPositions = calcNsPositions()
-
-    console.log(nsPositions)
-
-    var lastNsIndex = -1
-
-    var $window = $(window)
-
-    var currentSection = function(nsp) {
-
-        var ps = nsp.positions
-        var nss = nsp.nss
-        var scroll = $window.scrollTop() + 300
-        var nsIndex = -1
-        for(var i in ps) {
-            var p = ps[i]
-            if(p >= scroll) {
-                nsIndex = i-1
-                break;
-            }
-                
-        }
-
-        if(nsIndex == -1 && scroll >= ps[0]) {
-            nsIndex = ps.length-1
-        }
-
-        if(nsIndex == -1) nsIndex = 0
-
-        return nss[nsIndex]
-    }
-
-    $(window).scroll(function(e) {
-        showNs(currentSection(nsPositions))
-    })
-
-    ul.css('margin-top', '0px')
-
-})
 </script><title>fnx -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">fnx</h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>Expose your Clojure functions on the web easily</p>
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">noir</td><td class="dotted"><hr /></td><td class="dep-version">1.2.1</td></tr><tr><td class="dep-name">clj-stacktrace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.4</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table><tr><td class="dep-name">midje</td><td class="dotted"><hr /></td><td class="dep-version">1.3.1</td></tr><tr><td class="dep-name">com.intelie/lazytest</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0-SNAPSHOT</td></tr><tr><td class="dep-name">lein-marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.7.0-SNAPSHOT</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#fnx.core">fnx.core</a></li><li><a href="#fnx.meta.example">fnx.meta.example</a></li><li><a href="#fnx.meta.expose">fnx.meta.expose</a></li><li><a href="#fnx.server">fnx.server</a></li><li><a href="#fnx.views.common">fnx.views.common</a></li><li><a href="#fnx.views.welcome">fnx.views.welcome</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.core" name="fnx.core"><h1 class="project-name">fnx.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h1>What's this?</h1>
 
@@ -3149,7 +3055,7 @@ result back.</p>
 
 <p>fnx : FuNctions eXpose</p>
 </td><td class="codes"></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(ns fnx.core)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.example" name="fnx.meta.example"><h1 class="project-name">fnx.meta.example</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Example functions for expose.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns fnx.core)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.example" name="fnx.meta.example"><h1 class="project-name">fnx.meta.example</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Example of namespace that exposes functions..</p>
 
 <p>This file contains some dummy functions and vars <strong>just to test</strong> the
 functionnalities of <code>fnx.meta.expose</code>.</p>
@@ -3159,13 +3065,11 @@ functionnalities of <code>fnx.meta.expose</code>.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn one-arg-fn 
   [x] (str &quot;arg=&quot; x))</pre></td></tr><tr><td class="docs"><p>A public fn with two args, should be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(defn two-arg-fn 
-  [x y] (str &quot;args=&quot; x &quot;,&quot; y))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn mul2 [x] &quot;A public fn for multiplying&quot;
-  (* 2 (read-string x)))</pre></td></tr><tr><td class="docs"><p>A private fn that shouldn't be listed</p>
+  [x y] (str &quot;args=&quot; x &quot;,&quot; y))</pre></td></tr><tr><td class="docs"><p>A private fn that shouldn't be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- hello-private 
   [] (str &quot;Hello noir, today we are &quot; (java.util.Date.)))</pre></td></tr><tr><td class="docs"><p>A public var that shouldn't be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(def 
-  a-public-var-that-shouldnt-be-list 0)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.expose" name="fnx.meta.expose"><h1 class="project-name">fnx.meta.expose</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Get the public functions of a namespace</p>
+  a-public-var-that-shouldnt-be-list 0)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.expose" name="fnx.meta.expose"><h1 class="project-name">fnx.meta.expose</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Expose the public functions of a namespace</p>
 
 <p>This is usefull to display the functions, ask the user for the
 input parameters, and then execute them, presenting the result to
@@ -3173,7 +3077,7 @@ the user.
 Intended to expose the functions in a Browser, but it could be
 anything else: command line, rich client, ...</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.meta.expose
-  (:use [midje.sweet]))</pre></td></tr><tr><td class="docs"><p>Given a ns symbol, returns all the public fns of this ns.</p>
+  (:use [clojure.string :only [join]]))</pre></td></tr><tr><td class="docs"><p>Given a ns symbol, returns all the public fns of this ns.</p>
 
 <ul>
 <li>First we load the ns with <code>require</code></li>
@@ -3184,19 +3088,13 @@ anything else: command line, rich client, ...</p>
 </td><td class="codes"><pre class="brush: clojure">(defn ns-public-fn
   [ns] (do (require ns)
            (filter #(:arglists (meta %))
-                   (vals (ns-publics (find-ns ns))))))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(fact &quot;ns-public-fn&quot;
-      (second (ns-public-fn 'fnx.meta.example)) =&gt; (resolve 'fnx.meta.example/hello-noir))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(fact &quot;ns-public-fn: listing functions and calling them (it's more an example of usage than a true test)&quot;
-      (map (fn [f] (apply f
-                         (range 0 (count (first (:arglists (meta f)))))))
-           (ns-public-fn 'fnx.meta.example)) =&gt; [&quot;arg=0&quot;, &quot;Hello world from a function exposed!&quot; &quot;args=0,1&quot;])</pre></td></tr><tr><td class="docs"><p>Wrapper around resolve to deal with string representing #'namespace/function</p>
+                   (vals (ns-publics (find-ns ns))))))</pre></td></tr><tr><td class="docs"><p>Wrapper around 'resolve' to deal with string representing #'namespace/function</p>
 </td><td class="codes"><pre class="brush: clojure">(defn resolve-str 
   [s]
-  (resolve (symbol (clojure.string/join &quot;&quot; (drop 2 s)))))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(fact &quot;resolve-str&quot;
-  (resolve-str &quot;#'fnx.meta.example/hello-noir&quot;) =&gt; (resolve 'fnx.meta.example/hello-noir)
-  ((resolve-str &quot;#'fnx.meta.example/hello-noir&quot;)) =&gt; &quot;Hello world from a function exposed!&quot;)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.server" name="fnx.server"><h1 class="project-name">fnx.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>(:require [noir.server :as server])</p>
+  (resolve (symbol (join &quot;&quot; (drop 2 s)))))</pre></td></tr><tr><td class="docs"><p>List the fnx namespaces to expose.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn list-ns 
+  [prefix-ns]
+  (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.server" name="fnx.server"><h1 class="project-name">fnx.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Main entry point to launch fnx.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.server
   (:require [noir.server :as server]))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(server/load-views &quot;src/fnx/views/&quot;)</pre></td></tr><tr><td class="docs">
@@ -3204,82 +3102,72 @@ anything else: command line, rich client, ...</p>
   (let [mode (keyword (or (first m) :dev))
         port (Integer. (get (System/getenv) &quot;PORT&quot; &quot;8080&quot;))]
     (server/start port {:mode mode
-                        :ns 'fnx})))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.views.common" name="fnx.views.common"><h1 class="project-name">fnx.views.common</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>(:use [noir.core :only [defpartial]] [hiccup.page-helpers :only [include-css html5]] [hiccup.form-helpers :only [label text-field]])</p>
+                        :ns 'fnx})))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.views.common" name="fnx.views.common"><h1 class="project-name">fnx.views.common</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Common functions to help in displaying ui.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.views.common
   (:use [noir.core :only [defpartial]]
         [hiccup.page-helpers :only [include-css html5]]
-        [hiccup.form-helpers :only [label text-field]]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defpartial layout [&amp; content]
-  (html5
-   [:head
-    [:title &quot;fnx&quot;]
-    (include-css &quot;/css/reset.css&quot;)]
-  [:body
-   [:div#wrapper
-    content]]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defpartial site-layout [t &amp; content]
+        [hiccup.form-helpers :only [label text-field]]))</pre></td></tr><tr><td class="docs"><p>The default site layout</p>
+</td><td class="codes"><pre class="brush: clojure">(defpartial layout [t &amp; content]
   (html5
     [:head
      [:title t]
     (include-css &quot;/css/reset.css&quot;)]
     [:body
       [:div#wrapper
-       content]]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defpartial input-fields-range [{:keys [start end]}]
-  (label &quot;start&quot; &quot;start: &quot;)
-  (text-field &quot;start&quot; start)
-  (label &quot;end&quot; &quot;end: &quot;)
-  (text-field &quot;end&quot; end))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.views.welcome" name="fnx.views.welcome"><h1 class="project-name">fnx.views.welcome</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>(:require [fnx.views.common :as common])</p>
+       content]]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.views.welcome" name="fnx.views.welcome"><h1 class="project-name">fnx.views.welcome</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Main routes from the fnx.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.views.welcome
-  (:require [fnx.views.common :as common])
   (:use [noir.core :only [defpage render]]
         [hiccup.core :only [html]]
-        [hiccup.form-helpers :only [text-field label form-to submit-button]]
-        [fnx.meta.expose :only [ns-public-fn]]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/welcome&quot; []
-  (common/layout
-   [:p &quot;Welcome to fnx&quot;]))</pre></td></tr><tr><td class="docs"><p>Hello world</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/my-page&quot; []
-  (common/site-layout
-   &quot;Welcome&quot;
-   [:h1 &quot;Hello&quot;]
-   [:p#wrapper &quot;Hope you like it!&quot;]))</pre></td></tr><tr><td class="docs"><p>A page to display the input</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/range&quot; {:as user}
-  (common/site-layout
-   &quot;Range input&quot;
-   [:h1 &quot;range method&quot;]
-   (form-to [:post &quot;/range&quot;]
-            (common/input-fields-range user)
-            (submit-button &quot;submit&quot;))))</pre></td></tr><tr><td class="docs"><p>A page to display the range</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage [:post &quot;/range&quot;] {:keys [start end] :as user}
-  (common/site-layout
-   &quot;Range&quot;
-   [:h2 (str &quot;Display range from &quot; start &quot; to &quot; end)]
-   [:p#wrapper (map #(str % &quot;&lt;br /&gt;&quot;)
-                    (range (read-string start) (read-string end)))]))</pre></td></tr><tr><td class="docs"><p>A page to execute function</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/xfn&quot; {:keys [fun] :as user}
+        [hiccup.form-helpers :only [text-field label form-to submit-button hidden-field]]
+        [fnx.meta.expose :only [ns-public-fn list-ns]]
+        [fnx.views.common]))</pre></td></tr><tr><td class="docs"><p>A page to execute function</p>
+</td><td class="codes"><pre class="brush: clojure">(defpage [:post &quot;/xfn&quot;] {:keys [fun] :as data}
   (let [g (fnx.meta.expose/resolve-str fun)
-        k (dissoc user :fun)]
-    (common/site-layout
-     &quot;eXecute&quot;
-     [:h1 (str &quot;eXecute &quot; g)]
-     [:p#wrapper (str &quot;function &quot; g &quot; args &quot; k)]
-     [:p#wrapper (apply g (vals k))])))</pre></td></tr><tr><td class="docs"><p>Wrapper to expose an execute function button.</p>
+        k (dissoc data :fun)]
+    (layout
+     &quot;run&quot;
+     [:h1 (str &quot;run &quot; g &quot; vals &quot; k)]
+     [:p#wrapper (apply g (vals k))])))</pre></td></tr><tr><td class="docs"><p>Wrapper to expose a function.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn input-fields-fn 
   [fun]
-  (form-to [:get &quot;/xfn&quot;]
-           (text-field &quot;fun&quot; fun)
-           (map #(text-field % &quot;&quot;) (flatten (:arglists (meta fun))))
-           (submit-button (str fun))))</pre></td></tr><tr><td class="docs"><p>A page to expose some functions from a namespace.
+  (let [m (meta fun)]
+    (form-to [:post &quot;/xfn&quot;]
+             (label &quot;fun&quot; fun)
+             (hidden-field &quot;fun&quot; fun)
+             (label &quot;Doc :&quot; (str &quot;&lt;i&gt;&quot; (:doc m) &quot;&lt;/i&gt;&quot;))
+             (map #(text-field % &quot;&quot;) (flatten (:arglists m)))
+             (submit-button &quot;run&quot;))))</pre></td></tr><tr><td class="docs"><p>Wrapper to expose a namespace.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn input-fields-ns 
+  [ns]
+  (let [m (meta ns)]
+    (form-to [:post &quot;/expose&quot;]
+             (submit-button &quot;+&quot;)
+             (hidden-field &quot;ns&quot; ns)
+             (label &quot;ns&quot; ns)
+             (label &quot;Doc :&quot; (str &quot;&lt;i&gt;&quot; (:doc m) &quot;&lt;/i&gt;&quot;)))))</pre></td></tr><tr><td class="docs"><p>A page to expose some functions from a namespace.
 fnx.meta.example is the default one is no other is supplied.</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/expose&quot; {:keys [ns] :as user}
-  (let [n (if (empty? ns) 'fnx.meta.example (symbol ns))
-        title (str &quot;Exposed functions in &quot; n)]
-    (common/site-layout
+</td><td class="codes"><pre class="brush: clojure">(defpage [:post &quot;/expose&quot;] {:keys [ns]}
+  (let [n (symbol ns)
+        dn (:doc (meta (find-ns n)))
+        title n]
+    (layout
      title
      [:h1 title]
-     [:p#wrapper (let [f (ns-public-fn n)]
-                   (if f
-                     (map input-fields-fn f)
-                     (str &quot;Huh? No function exposed in &quot; n)))])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_fnx.core">fnx.core</li><li class="floating-toc-li" id="floating-toc_fnx.meta.example">fnx.meta.example</li><li class="floating-toc-li" id="floating-toc_fnx.meta.expose">fnx.meta.expose</li><li class="floating-toc-li" id="floating-toc_fnx.server">fnx.server</li><li class="floating-toc-li" id="floating-toc_fnx.views.common">fnx.views.common</li><li class="floating-toc-li" id="floating-toc_fnx.views.welcome">fnx.views.welcome</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+     [:p#wrapper
+      (str &quot;&lt;i&gt;&quot; dn &quot;&lt;/i&gt;&quot;) 
+      (let [f (ns-public-fn n)]
+        (if f
+          (map input-fields-fn f)
+          (str &quot;Huh? No function exposed in &quot; n)))])))</pre></td></tr><tr><td class="docs"><p>A page to expose the namespace of the applications
+http://localhost/fnx will display all the namespaces of fnx</p>
+</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/:ns&quot; {ns :ns}
+  (let [namespaces (list-ns ns)
+        title (str &quot;Exposed namespaces - '&quot; ns &quot;'&quot;)]
+    (layout
+     title
+     [:h1 title]
+     [:p#wrapper
+      (if namespaces
+        (map input-fields-ns namespaces)
+        (str &quot;No namespace with &quot; ns))])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
        SyntaxHighlighter.all()</script></body></html>
