@@ -24,6 +24,7 @@ Distributed under the Eclipse Public License, the same as Clojure.
 ## Heroku
 
 To deploy on heroku, we followed this article: http://devcenter.heroku.com/articles/clojure
+
 ```bash
 [remote "heroku"]
         url = git@heroku.com:floating-fire-6591.git
