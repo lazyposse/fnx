@@ -21,3 +21,12 @@ Copyright (C) 2011 commiters
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
+## Heroku
+
+```bash
+[remote "heroku"]
+        url = git@heroku.com:floating-fire-6591.git
+        fetch = +refs/heads/*:refs/remotes/heroku/*
+```
+
+
