@@ -10,6 +10,8 @@
                          (range 0 (count (first (:arglists (meta f)))))))
            (ns-public-fn 'fnx.meta.example)) => ["arg=0", "Hello world from a function exposed!" "args=0,1"])
 
+(fact "fun-str"
+  (fun-str "#'foo.bar.meta/function") => "foo.bar.meta/function")
 
 (fact "resolve-str"
   (resolve-str "#'fnx.meta.example/hello-noir") => (resolve 'fnx.meta.example/hello-noir)
@@ -22,3 +24,9 @@
         ns3 (find-ns 'fnx.views.common)]
     (list-ns "fnx") => (just [ns0 ns1 ns2 ns3] :in-any-order)
     (list-ns "fnx.views") => (just [ns2 ns3] :in-any-order)))
+
+(fact "dot2uri"
+  (dot2uri "fnx.meta.function") => "fnx/meta/function")
+
+(fact "fn-name"
+  (fn-name "fnx" "meta" "expose" "function") => "#'fnx.meta.expose/function")

@@ -18,11 +18,24 @@
   [ns] (do (require ns)
            (filter #(:arglists (meta %))
                    (vals (ns-publics (find-ns ns))))))
+
+(defn fun-str "Transform a function name without the #' in front of its name."
+  [s]
+  (join "" (drop 2 s)))
  
 (defn resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
-  (resolve (symbol (join "" (drop 2 s)))))
+  (resolve (symbol (fun-str s))))
 
 (defn list-ns "List the fnx namespaces to expose."
   [prefix-ns]
   (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))
+
+(defn dot2uri "Transform a namespace or function into an uri."
+  [s]
+  (join "/" (clojure.string/split s #"\.")))
+
+(defn fn-name "Transform a list of parameters into a function name"
+  [& s]
+  (str "#'" (join "/" [(join "." (butlast s)) (last s)])))
+
