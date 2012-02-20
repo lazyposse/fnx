@@ -1,6 +1,7 @@
-(ns fnx.meta.expose
+(ns fnx.test.meta.expose
   "Get the public functions of a namespace"
-  (:use [midje.sweet]))
+  (:use [midje.sweet])
+  (:use [fnx.meta.expose]))
 
 (fact "ns-public-fn"
       (second (ns-public-fn 'fnx.meta.example)) => (resolve 'fnx.meta.example/hello-noir))
@@ -17,7 +18,7 @@
   (resolve-str "#'fnx.meta.example/hello-noir") => (resolve 'fnx.meta.example/hello-noir)
   ((resolve-str "#'fnx.meta.example/hello-noir")) => "Hello world from a function exposed!")
 
-(fact "list-ns"
+(future-fact "list-ns"
   (let [ns0 (find-ns 'fnx.meta.example)
         ns1 (find-ns 'fnx.meta.expose)
         ns2 (find-ns 'fnx.views.welcome)
