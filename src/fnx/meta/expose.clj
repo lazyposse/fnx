@@ -31,11 +31,10 @@
   [prefix-ns]
   (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))
 
-(defn dot2uri "Transform a namespace or function into an uri."
-  [s]
-  (str "/" (escape s {\. \/})))
-
 (defn fn-name "Transform a list of parameters into a function name"
   [& s]
   (str "#'" (join "/" [(join "." (butlast s)) (last s)])))
 
+(defn apply-fn "Apply the function fun to the map args"
+  [f args]
+  (apply f (vals args)))
