@@ -1,1 +1,1 @@
-web: lein run -m fnx.server $PORT
+web: lein ring server $PORT
