@@ -1,4 +1,5 @@
 (ns fnx.test.server
+  (:require [clj-http.client :as client])
   (:use [fnx.server]
         [fnx.meta.expose]
         [midje.sweet]))
@@ -19,9 +20,16 @@
     (ns-public-fn :some-ns) => :list-of-fns))
 
 (fact "apply-fun"
-  (apply-fun :fun :args) => {:fn :fn
+  (apply-fun :fun :args) => {:fn :fun
                              :args :args
                              :out :res}
   (provided
-    (resolve-str :fun) => :fn
-    (apply-fn :fn :args) => :res))
+    (apply-fn :fun :args) => :res))
+
+;; IT - need a running server to validate (cli: 'foreman start' or 'lein ring server 5000')
+
+(future-fact "Passing cases"
+  (:status (client/get "http://localhost:5000/fnx/")) => 200
+  (:status (client/get "http://localhost:5000/fnx/meta/")) => 200
+  (:status (client/get "http://localhost:5000/fnx/meta/expose/")) => 200
+  (:status (client/get "http://localhost:5000/fnx/meta/expose/fun-str?s=somefunctionname")) => 200)

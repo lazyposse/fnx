@@ -23,33 +23,43 @@
 
 (defn apply-fun "Apply the function to the args and returns a map of result."
   [f args]
-  (let [g (resolve-str f)]
-    {:fn   g
-     :args args
-     :out  (apply-fn g args)}))
+  {:fn   f
+   :args args
+   :out  (apply-fn f args)})
+
+(defn ls-namespaces "Given a namespace, returns the list of namespaces matching ns"
+  [ns]
+       (let [res (ls-ns ns)]
+         (if res
+           (map str res)
+           {:status 404})))
 
 (defroutes main-routes
   ;; If no special route is given, will reroute to /fnx
-  (GET "/" [] (map str (ls-ns "fnx")))
+  (GET "/" [] (ls-namespaces "fnx"))
 
   ;; A page to expose the namespaces of the application
   ;; GET /fnx will return the namespaces which matches the /:ns pattern.
-  (GET "/:ns/" [ns] (map str (ls-ns ns)))
+  (GET "/:ns/" [ns] (ls-namespaces ns))
 
   ;; A page to expose the namespaces of the application
   ;; GET /fnx/meta will return the map of namespaces mapping the :ns0.:ns1 pattern
-  (GET "/:ns0/:ns1/" [ns0 ns1] (map str (ls-ns (str ns0 "." ns1))))
+  (GET "/:ns0/:ns1/" [ns0 ns1] (ls-namespaces (str ns0 "." ns1)))
 
   ;; Return the map of  A page to expose some functions from a namespace.
   (GET "/:ns0/:ns1/:ns2/" [ns0 ns1 ns2]
        (let [ns (symbol (join "." [ns0 ns1 ns2]))]
-         (map str (ls-fn-from-ns ns))))
+         (if ns
+           (map str (ls-fn-from-ns ns))
+           {:status 404})))
 
   ;; A page to execute a function
   ;; GET /fnx/meta/expose/test - Will return the map of results for the function
   (GET "/:ns0/:ns1/:ns2/:fun" [ns0 ns1 ns2 fun & arg]
-      (let [f (fn-name ns0 ns1 ns2 fun)]
-        (map str (apply-fun f arg)))))
+       (let [f (resolve-str (fn-name ns0 ns1 ns2 fun))]
+         (if f
+           (map str (apply-fun f arg))
+           {:status 404}))))
 
 (def app
   (handler/site main-routes))
