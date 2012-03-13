@@ -671,7 +671,7 @@
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="30.0" width="95.47280465671233" x="502.52719534328764" y="536.2308952514987"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="34.3984375" x="30.53718357835612" y="6.015625">state<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>

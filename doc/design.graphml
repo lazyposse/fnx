@@ -611,7 +611,7 @@
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="28.0" width="319.0" x="-285.33333333333337" y="1264.0"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="232.720703125" x="43.1396484375" y="5.015625">An example of function with zero args<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -628,7 +628,7 @@
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="28.0" width="319.0" x="-285.33333333333337" y="1475.0"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="225.56640625" x="46.716796875" y="5.015625">An example of a function with 2 args<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -1205,7 +1205,7 @@
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="117.0" width="571.0000000000001" x="-521.5000000000001" y="2140.0"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="87.8125" modelName="custom" textColor="#000000" visible="true" width="535.33984375" x="17.830078125000057" y="14.59375">Note1: the "(list-all-amis)" parentheses, indicating the execution of the function
 
@@ -1417,7 +1417,7 @@ I would like something that approches clj code<y:LabelModel>
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="54.0" width="266.0" x="2015.0" y="1987.0"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="45.90625" modelName="custom" textColor="#000000" visible="true" width="257.546875" x="4.2265625" y="4.046875">Note: spaces in the url won't work,
 we may exploit alternative clj whitespace 
@@ -1453,7 +1453,7 @@ like commas<y:LabelModel>
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="57.48052518928898" width="664.0628494894547" x="-525.0154781276033" y="2287.0"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="565.439453125" x="49.31169818222736" y="19.755887594644264">warn: find a project that uses url and/or a clj project that can serialize ns and fns and params<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -1470,7 +1470,7 @@ like commas<y:LabelModel>
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="30.0" width="95.47280465671233" x="25.728365981395896" y="73.1308952514987"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="54.302734375" x="20.585035140856178" y="6.015625">#ns-nav<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -1557,7 +1557,7 @@ like commas<y:LabelModel>
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="30.0" width="170.39193436339806" x="-49.190763725289834" y="-192.50000000000003"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="107.318359375" x="31.536787494199032" y="6.015625">#loading-spinner<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -1592,7 +1592,7 @@ like commas<y:LabelModel>
       <data key="d6">
         <y:UMLNoteNode>
           <y:Geometry height="30.0" width="170.39193436339806" x="-36.391934363398065" y="-281.0"/>
-          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="44.037109375" x="63.17741249419903" y="6.015625">#main<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
