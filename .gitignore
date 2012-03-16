@@ -1,6 +1,10 @@
 pom.xml
 *jar
 /lib/
+/public/javascripts/
+/.repl/
 /classes/
 .lein-deps-sum
-docs
+*~
+/.lein-failures
+/.lein-git-deps/
