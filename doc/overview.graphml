@@ -443,8 +443,8 @@
           <y:Geometry height="52.666666666666515" width="263.5" x="12.666666666666657" y="165.16666666666674"/>
           <y:Fill color="#D5DAFC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="FreeMono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.98681640625" modelName="custom" textColor="#000000" visible="true" width="248.66552734375" x="7.417236328125" y="12.339925130208258">- hide #ns-nav, #fn-display, #prev
-- show #loading-spinner<y:LabelModel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="FreeMono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.98681640625" modelName="custom" textColor="#000000" visible="true" width="198.293212890625" x="32.6033935546875" y="12.339925130208258">- hide #ns-nav, #fn-, #prev
+- show #spinner<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -490,7 +490,6 @@
       </data>
     </node>
     <node id="n27">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="52.666666666666515" width="87.60000000000002" x="532.0" y="12.600000000000023"/>
@@ -547,7 +546,7 @@
           <y:Geometry height="30.0" width="87.60000000000002" x="679.4000000000003" y="383.00000000000006"/>
           <y:Fill color="#CCFFCC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="40.029296875" x="23.78535156250001" y="6.015625">Model<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="40.029296875" x="23.785351562499955" y="6.015625">Model<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -576,7 +575,6 @@
       </data>
     </node>
     <node id="n32">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="52.666666666666515" width="106.0" x="628.0" y="482.93333333333334"/>
@@ -613,7 +611,6 @@
       </data>
     </node>
     <node id="n34">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="52.666666666666515" width="87.60000000000002" x="952.0" y="12.600000000000023"/>
@@ -670,7 +667,7 @@
           <y:Geometry height="52.666666666666515" width="286.0" x="158.00000000000014" y="75.00000000000011"/>
           <y:Fill color="#D5DAFC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="FreeMono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.98681640625" modelName="custom" textColor="#000000" visible="true" width="183.901123046875" x="51.04943847656247" y="12.339925130208258">- hide #loading-spinner
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="FreeMono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="27.98681640625" modelName="custom" textColor="#000000" visible="true" width="183.901123046875" x="51.04943847656247" y="12.339925130208258">- hide #spinner
 - show and render #ns-nav<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -993,7 +990,6 @@
     </edge>
     <edge id="e13" source="n32" target="n33">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
