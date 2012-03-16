@@ -576,3 +576,17 @@ input.button.green:active, a.button.green:active {
     font-style: normal;
 
 }
+
+/* --------------- <fnx>  --------------- */
+
+.ns {
+  text-decoration: underline;
+  color: blue;
+}
+
+.fn {
+  text-decoration: underline;
+  color: green;
+}
+
+/* --------------- </fnx>  --------------- */
