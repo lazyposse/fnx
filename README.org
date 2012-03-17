@@ -1,0 +1,85 @@
+
+* Development
+
+This section discuss the internals of fnx, intended for developers.
+
+** History management
+
+*** What we want
+
+**** Browser back button should works as expected
+
+For example navigating in a ns, and then going back should bring the previous ns.
+
+**** Bookmarking a namespace
+
+For example: 
+- Navigate to the ns =foo/bar/= 
+- Bookmark it
+- Then when opening a new page with the bookmark should display the
+  content of =foo/bar/=.
+
+**** Bookmarking functions
+
+Same as below but with functions.
+
+**** Bookmarking functions with arguments
+
+For example: 
+- Navigate to a fn
+- Fill the parameter
+- Bookmark the page
+- Open a new page with the bookmark
+- Then the page should display the function form with the fields
+  populated with the same values than when bookmarking
+
+**** Bookmarking functions with partially filled arguments
+
+Same as below, but should also works with partially filled arguments.
+
+*Implementation details:* Could be implemented by listening to the
+=blur= event of text fields and updating the URL accordingly.
+
+**** Bookmarking functions calls
+
+For example: 
+- Navigate to the fn =foo/bar/hello-world=, which is a function that
+  takes a single parameter =name=.
+- Fill the =name= field with =john=.
+- Hit the =run= button: The result of the function is displayed:
+  =Hello, john=.
+- Bookmark the page
+- Then when opening a new page with the bookmark should display
+  "Hello, john=, as well at the form of the function with the field
+  =name= populated with the value =john=.
+
+*** Solution
+
+All the functionalities described below could be implemented by using
+the history management capability of ClojureScript One.
+
+That is using the web browser address bar to save the state that we
+want to restore later.
+
+**** Informations to serialize
+
+
+The app could be in the following "states" (activities): 
+- navigating ns: =ns-navigating=
+- display fn form: =fn-form-displaying=
+- run fn: =fn-running=
+
+| state              | necessary additionnal informations |
+|--------------------+------------------------------------|
+| ns-navigating      | current-ns                         |
+| fn-form-displaying | current-fn, fn-args                |
+| fn-running         | current-fn, fn-args                |
+
+**** Summary of the state of the app
+
+| state                      | key        | possible values                               | present in URL? |
+|----------------------------+------------+-----------------------------------------------+-----------------|
+|                            | state      | ns-navigating, fn-form-displaying, fn-running | yes             |
+|                            | current-ns | a ns representation                           | yes             |
+|                            | current-fn | a fn representation                           | yes             |
+| hierarchy of all ns and fn | all-ns     | a map of ns/fn                                | no              |
