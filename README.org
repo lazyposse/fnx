@@ -74,12 +74,28 @@ The app could be in the following "states" (activities):
 | ns-navigating      | current-ns                         |
 | fn-form-displaying | current-fn, fn-args                |
 | fn-running         | current-fn, fn-args                |
+| fn-result-showing  | fn-result                          |
 
 **** Summary of the state of the app
 
-| state                      | key        | possible values                               | present in URL? |
-|----------------------------+------------+-----------------------------------------------+-----------------|
-|                            | state      | ns-navigating, fn-form-displaying, fn-running | yes             |
-|                            | current-ns | a ns representation                           | yes             |
-|                            | current-fn | a fn representation                           | yes             |
-| hierarchy of all ns and fn | all-ns     | a map of ns/fn                                | no              |
+| state                      | key        | values              | in URL? |
+|----------------------------+------------+---------------------+---------|
+|                            | state      | ns-navigating,      | yes     |
+|                            |            | fn-form-displaying, |         |
+|                            |            | fn-running,         |         |
+|                            |            | fn-result-showing   |         |
+|----------------------------+------------+---------------------+---------|
+|                            | current-ns | ns                  | yes     |
+|----------------------------+------------+---------------------+---------|
+|                            | current-fn | fn                  | yes     |
+|----------------------------+------------+---------------------+---------|
+|                            | fn-args    | fn args             |         |
+|                            |            | (could be           |         |
+|                            |            | incomplete)         | yes     |
+|----------------------------+------------+---------------------+---------|
+|                            | fn-result  | any data clj        |no       |
+|                            |            | datastructure       |         |
+|----------------------------+------------+---------------------+---------|
+| hierarchy of all ns and fn | all-ns     | a map of ns/fn      | no      |
+|----------------------------+------------+---------------------+---------|
+
