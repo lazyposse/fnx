@@ -12,4 +12,7 @@
   design templates."
   []
   {:form (snippet "form.html" [:div#form])
-   :greeting (snippet "greeting.html" [:div#greeting])})
+   :greeting (snippet "greeting.html" [:div#greeting])
+   :fn-display (snippet "fn-form.html" [:div#fn-display])
+   :ns-nav (snippet "ns-nav.html" [:div#ns-nav])
+   :spinner (snippet "spinner.html" [:div#spinner])})

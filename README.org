@@ -99,3 +99,8 @@ The app could be in the following "states" (activities):
 | hierarchy of all ns and fn | all-ns     | a map of ns/fn      | no      |
 |----------------------------+------------+---------------------+---------|
 
+
+
+* notes [%]
+
+** TODO common prefix may be possible if 2 jar start with the same prefix ns
