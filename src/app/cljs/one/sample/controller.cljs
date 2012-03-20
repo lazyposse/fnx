@@ -26,7 +26,7 @@
   :type)
 
 (defmethod action :init [_]
-  (reset! state {:state :init}))
+  #_(reset! state {:state :init}))
 
 (defmethod action :form [_]
   (when-not (#{:form :init} (:state @state))
@@ -68,3 +68,34 @@
 
 (dispatch/react-to #{:init :form :greeting}
                    (fn [t d] (action (assoc d :type t))))
+
+;; --------------- <fnx> ---------------
+
+(defmulti action-fnx
+  "Accepts a map containing information about an action to perform.
+
+  Actions may cause state changes on the client or the server. This
+  function dispatches on the value of the `:type` key and currently
+  supports `:init`, `:ns-nav`
+
+  The `:init` action will fetch the ns hierarchy from the server and store it in the atom state.
+
+  The `:ns-nav` action will navigate to a particular namespace."
+  :type)
+
+(def all-ns 
+  {nil            [nil       ["foo" "bar"]                []]
+   "foo"          [nil       ["foo.aws"]                  []]
+   "bar"          [nil       ["bar.file"]                 []]
+   "foo.aws"      ["foo"     ["foo.aws.ec2" "foo.aws.s3"] ["describe-region"]]
+   "foo.aws.ec2"  ["foo.aws" []                           ["list-ami"]]
+   "foo.aws.s3"   ["foo.aws" []                           ["delete-buckets"]]
+   "bar.file"     ["bar"     []                           ["ls"]]})
+
+(defmethod action-fnx :init [_]
+  (reset! state {:state :init, :all-ns all-ns}))
+
+(dispatch/react-to #{:init}
+                   (fn [t d] (action-fnx (assoc d :type t))))
+
+;; --------------- </fnx> ---------------
