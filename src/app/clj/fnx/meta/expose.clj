@@ -6,7 +6,7 @@
 ;;
 (ns fnx.meta.expose
   "Expose the public functions of a namespace"
-  (:use [clojure.string :only [join escape]]
+  (:use [clojure.string :only [split join escape]]
         [midje.sweet]))
 
 ;; * First we load the ns with `require`
@@ -47,17 +47,113 @@
 (fact
   (load-ns!) => ["fnx.meta.expose" "fnx.meta.example"])
 
-(def mmeta meta)
+(defn- parent "Given a namespace, return the namespace's 'parent'"
+  [n]
+  (when n
+      (let [r (split n #"\.")]
+        (if (<= 2 (count r)) (join "." (butlast r)) nil))))
 
-(defn namespaces-public-fn "Load all the functions of the namespaces"
-  [v]
-  (mapcat #(map mmeta (ns-public-fn (symbol %))) v))
+(fact "parent"
+  (parent nil) => nil
+  (parent "foo.aws.extra") => "foo.aws"
+  (parent "foo.aws") => "foo"
+  (parent "foo") => nil)
 
-(fact "namespaces-public-fn"
-  (namespaces-public-fn [:ns0 :ns1]) => [:map-meta0 :map-meta1 :map-meta2]
+(defn- nsp "Given a fully qualified function name, return a namespace"
+  [f]
+  (first (split f #"/")))
+
+(fact "nsp"
+  (nsp "fnx.meta/expose") => "fnx.meta")
+
+(defn- child "Given a namespace, return the next namespace's depth"
+  [n vc]
+  (if-not n
+    (distinct (map #(first (clojure.string/split % #"\.")) vc))
+    (remove #{n} ((group-by #(.contains % n) vc) true))))
+
+(unfinished )
+
+(defn- level "Given a namespace, returns its level."
+  [ns]
+  (count (split ns #"\.")))
+
+(fact "level"
+  (level "foo")  => 1
+  (level "foo.aws")  => 2
+  (level "foo.aws.ec2") => 3)
+
+(defn- nth-level "Given a namespace, returns the nth level"
+  [n ns]
+    (join #"." (take n (split ns #"\."))))
+
+(fact "nth-level"
+  (nth-level 0 "foo.aws") => ""
+  (nth-level 1 "foo.aws") => "foo"
+  (nth-level 2 "foo.aws.ec2") => "foo.aws")
+
+(defn- child "Given a namespace, return the next namespace's depth"
+  [n vc]
+  (if n
+    (let [l (level n)]
+      (remove #{n} ((group-by #(.contains % n) (distinct (map #(nth-level (inc l) %) vc))) true)))
+    (distinct (map #(nth-level 1 %) vc))))
+
+(fact "IT - child"
+  (child nil ["foo" "foo.aws" "bar.other" "foo.ec2"]) => ["foo" "bar"]
+  (child "foo" ["foo" "foo.aws" "bar.other" "foo.ec2"]) => ["foo.aws" "foo.ec2"]
+  (child "bar.aws" ["bar" "bar.aws.ec2.s3" "bar.aws.ec" "bar.aws.ec2.s4"]) => ["bar.aws.ec2" "bar.aws.ec"])
+
+(defn- map-namespaces "Given a list of functions, returns the map of keypair ns-fn"
+  [vfn]
+  (group-by nsp vfn))
+
+(fact "map-namespaces"
+  (map-namespaces [:fq-fn1 :fq-fn3 :fq-fn2 :fq-fn4]) => {:foo [:fq-fn1 :fq-fn2]
+                                                         :bar [:fq-fn3]
+                                                         :foobar [:fq-fn4]}
   (provided
-    (ns-public-fn (symbol :ns0)) => [:ns0-fn0 :ns0-fn1]
-    (ns-public-fn (symbol :ns1)) => [:ns1-fn0]
-    (mmeta :ns0-fn0) => :map-meta0
-    (mmeta :ns0-fn1) => :map-meta1
-    (mmeta :ns1-fn0) => :map-meta2))
+    (nsp :fq-fn1) => :foo
+    (nsp :fq-fn2) => :foo
+    (nsp :fq-fn3) => :bar
+    (nsp :fq-fn4) => :foobar))
+
+(defn public-ns-fn
+  "Expose the namespaces and functions as the following example map
+  {nil              [nil       [\"foo\" \"bar\"]              []]
+   \"foo\"          [nil       [\"foo.aws\"]                  []]
+   \"bar\"          [nil       [\"bar.file\"]                 []]
+   \"foo.aws\"      [\"foo\"     [\"foo.aws.ec2\" \"foo.aws.s3\"] [\"describe-region\"]]
+   \"foo.aws.ec2\"  [\"foo.aws\" []                           [\"list-ami\"]]
+   \"foo.aws.s3\"   [\"foo.aws\" []                           [\"delete-buckets\"]]
+   \"bar.file\"     [\"bar\"     []                           [\"ls\"]]}"
+  [vfn]
+  (let [m (map-namespaces vfn)
+        k (keys m)
+        i (assoc m nil k)]
+    (reduce (fn [o n]
+              (assoc o n [(parent n) (child n k) (m n)]))
+            {}
+            (keys i))))
+
+(fact "public-ns-fn"
+  (public-ns-fn [:fq-fn1 :fq-fn2 :fq-fn3]) => (contains {nil [nil [:foo :bar] nil]
+                                                         :foo [nil [] [:fq-fn1 :fq-fn2]]
+                                                         :bar [nil [] [:fq-fn3]]} :in-any-order)
+  (provided
+    (map-namespaces [:fq-fn1 :fq-fn2 :fq-fn3]) => {:foo [:fq-fn1 :fq-fn2] :bar [:fq-fn3]}
+    (parent nil) => nil
+    (parent :foo) => nil
+    (parent :bar) => nil
+    (child nil [:foo :bar]) => [:foo :bar]
+    (child :foo [:foo :bar]) => []
+    (child :bar [:foo :bar]) => []))
+
+(fact "IT - public-ns-fn"
+  (public-ns-fn ["foo/expose" "bar/ls" "foo.aws/list-ami" "foo.aws/list-regions" "foo.meta/run" "foo.aws.ec2/test"]) =>
+  '{"foo.aws.ec2" ["foo.aws" []                     ["foo.aws.ec2/test"]]
+    "foo.meta" ["foo"        []                     ["foo.meta/run"]]
+   "foo.aws"   ["foo"        ["foo.aws.ec2"]        ["foo.aws/list-ami" "foo.aws/list-regions"]]
+   "bar"       [nil          []                     ["bar/ls"]]
+   "foo"       [nil          ["foo.aws" "foo.meta"] ["foo/expose"]]
+   nil         [nil          ["foo" "bar"]          nil]})
