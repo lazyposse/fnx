@@ -10,3 +10,4 @@ pom.xml
 /.lein-git-deps/
 /#README.org#
 /.#README.org
+out
