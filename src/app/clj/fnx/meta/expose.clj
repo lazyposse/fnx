@@ -14,33 +14,33 @@
 ;; * We want only functions, not the other vars: We can spot them because they have an `:arglists` in their meta.
 ;; * Get the public vars with `ns-publics`
 ;;
-(defn ns-public-fn
+(defn- ns-public-fn
   "Given a ns symbol, returns all the public fns of this ns."
   [ns] (do (require ns)
            (filter #(:arglists (meta %))
                    (vals (ns-publics (find-ns ns))))))
 
-(defn fun-str "Transform a function name without the #' in front of its name."
+(defn- fun-str "Transform a function name without the #' in front of its name."
   [s]
   (join "" (drop 2 s)))
 
-(defn resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
+(defn- resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
   (resolve (symbol (fun-str s))))
 
-(defn list-ns "List the fnx namespaces to expose."
+(defn- list-ns "List the fnx namespaces to expose."
   [prefix-ns]
   (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))
 
-(defn fn-name "Transform a list of parameters into a function name"
+(defn- fn-name "Transform a list of parameters into a function name"
   [& s]
   (str "#'" (join "/" [(join "." (butlast s)) (last s)])))
 
-(defn apply-fn "Apply the function fun to the map args"
+(defn- apply-fn "Apply the function fun to the map args"
   [f args]
   (apply f (vals args)))
 
-(defn load-ns! "Get the namespaces from the file namespaces-to-load"
+(defn- load-ns! "Get the namespaces from the file namespaces-to-load"
   []
   (clojure.string/split (slurp "namespaces-to-load") #"\n"))
 
