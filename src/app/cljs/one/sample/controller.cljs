@@ -2,7 +2,7 @@
   application state."}
   one.sample.controller
   (:use [one.browser.remote :only (request)]
-        [one.sample.model :only (state)])
+        [one.sample.model :only (state state-fnx)])
   (:require [cljs.reader :as reader]
             [clojure.browser.event :as event]
             [one.dispatch :as dispatch]
@@ -26,7 +26,7 @@
   :type)
 
 (defmethod action :init [_]
-  #_(reset! state {:state :init}))
+  (reset! state {:state :init}))
 
 (defmethod action :form [_]
   (when-not (#{:form :init} (:state @state))
@@ -93,7 +93,7 @@
    "bar.file"     ["bar"     []                           ["ls"]]})
 
 (defmethod action-fnx :init [_]
-  (reset! state {:state :init, :all-ns all-ns}))
+  (reset! state-fnx {:state :init, :all-ns all-ns}))
 
 (dispatch/react-to #{:init}
                    (fn [t d] (action-fnx (assoc d :type t))))
