@@ -139,12 +139,12 @@
   :state)
 
 (defmethod render-fnx :init [_]
-  (js/alert "this is a fucking test!"))
+  (js/alert (str (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
+  (comment (initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets))))
 
 (dispatch/react-to #{:state-change} (fn [_ m] (render-fnx m)))
 
-;; ------------- fnx ------------- 
-
+;; ------------- fnx -------------
 
 (defn- form-fields-status
   "Given a map of old and new form states, generate a map with `:id`,
