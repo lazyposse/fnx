@@ -37,8 +37,7 @@
 
 ;; ------------- fnx ------------- 
 
-(comment
-  (defn initialize-views-fnx
+(defn initialize-views-fnx
   "Accepts the form and greeting view HTML and adds them to the
   page. Animates the form sliding in from above. This function must be
   run before any other view functions. It may be called from any state
@@ -49,13 +48,9 @@
     (set-html! content-fnx ns-nav)
     (append! content-fnx fn-display)
     (append! content-fnx spinner)
-    (set-styles! (by-id "ns-nav") {:display "none"})
-    (set-styles! (by-id "fn-display") {:display "none"})
-    (set-styles! (by-id "spinner") {:display "block"}))))
-
-(defn initialize-views-fnx
-  [ns-nav fn-display spinner]
-    (js/alert (str ns-nav fn-display spinner)))
+    (set-styles! (by-id "ns-nav") {:display "block"})
+    (set-styles! (by-id "fn-display") {:display "block"})
+    (set-styles! (by-id "spinner") {:display "block"})))
 
 ;; ------------- fnx ------------- 
 
