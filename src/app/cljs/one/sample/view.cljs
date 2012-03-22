@@ -139,8 +139,7 @@
   :state)
 
 (defmethod render-fnx :init [_]
-  (js/alert (str (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
-  (comment (initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets))))
+  (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
 
 (dispatch/react-to #{:state-change} (fn [_ m] (render-fnx m)))
 
