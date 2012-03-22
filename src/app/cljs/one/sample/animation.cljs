@@ -48,8 +48,8 @@
     (set-html! content-fnx ns-nav)
     (append! content-fnx fn-display)
     (append! content-fnx spinner)
-    (set-styles! (by-id "ns-nav") {:display "block"})
-    (set-styles! (by-id "fn-display") {:display "block"})
+    (set-styles! (by-id "ns-nav") {:display "none"})
+    (set-styles! (by-id "fn-display") {:display "none"})
     (set-styles! (by-id "spinner") {:display "block"})))
 
 ;; ------------- fnx ------------- 
