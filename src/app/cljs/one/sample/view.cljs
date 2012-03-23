@@ -112,12 +112,13 @@
   :state)
 
 (defmethod render :init [_]
-  (fx/initialize-views (:form snippets) (:greeting snippets))
-  (add-input-event-listeners "name-input")
-  (event/listen (by-id "greet-button")
-                "click"
-                #(dispatch/fire :greeting
-                                {:name (value (by-id "name-input"))})))
+  (comment
+    (fx/initialize-views (:form snippets) (:greeting snippets))
+    (add-input-event-listeners "name-input")
+    (event/listen (by-id "greet-button")
+                  "click"
+                  #(dispatch/fire :greeting
+                                  {:name (value (by-id "name-input"))}))))
 
 (defmethod render :form [{:keys [state error name]}]
   (fx/show-form)
