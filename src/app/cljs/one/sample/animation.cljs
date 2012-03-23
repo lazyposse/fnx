@@ -42,12 +42,14 @@
   page. Animates the form sliding in from above. This function must be
   run before any other view functions. It may be called from any state
   to reset the UI."
-  [ns-nav fn-display spinner]
+  [ns-nav fn-display spinner prev]
   (let [content-fnx (xpath "//div[@id='content-fnx']")]
     (destroy-children! content-fnx)
-    (set-html! content-fnx ns-nav)
+    (append! content-fnx prev)
+    (append! content-fnx ns-nav)
     (append! content-fnx fn-display)
     (append! content-fnx spinner)
+    (set-styles! (by-id "prev") {:display "none"})
     (set-styles! (by-id "ns-nav") {:display "none"})
     (set-styles! (by-id "fn-display") {:display "none"})
     (set-styles! (by-id "spinner") {:display "block"})))

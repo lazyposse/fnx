@@ -139,13 +139,26 @@
   :state)
 
 (defmethod render-fnx :init [_]
-  (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
+  (fx/initialize-views-fnx
+   (:ns-nav snippets)
+   (:fn-display snippets)
+   (:spinner snippets)
+   (:prev snippets)))
 
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
   (let [lns (second  (all-ns ns-nav))
-        nsn (by-id "ns-nav")]
+        nsn (by-id "ns-nav")
+        prev (by-id "prev")]
+
     ;; hide the spinner
     (set-styles! (by-id "spinner") {:display "none"})
+
+    ;; Deal with ..
+    (when ns-nav
+      (set-styles! prev {:display "block"})
+      (event/listen prev "click"
+                    #(dispatch/fire :ns-clicked {:ns (first (all-ns ns-nav))})))
+    
     ;; show the namespace block
     (set-styles! nsn {:display "block"})
     ;; destroy the content on this block
@@ -154,9 +167,9 @@
     (dorun (map #(append! nsn (str "<div id='ns-" % "'>"  % "</div>")) lns))
     ;; event when click on one of the ns
     (dorun (map (fn [n] (event/listen
-                          (by-id (str "ns-" n))
-                          "click"
-                          #(dispatch/fire :ns-clicked {:ns n}))) lns))))
+                         (by-id (str "ns-" n))
+                         "click"
+                         #(dispatch/fire :ns-clicked {:ns n}))) lns))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
