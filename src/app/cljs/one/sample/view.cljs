@@ -152,23 +152,27 @@
   ;; hide the spinner
   (set-styles! (by-id "spinner") {:display "none"}))
 
-(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
-  (let [lns-fns (ls-curr-ns all-ns ns-nav)
-        lns (first lns-fns)
-        fns (second lns-fns)
-        nsn (by-id "ns-nav")
-        fnd (by-id "fn-display")
-        prev (by-id "prev")]
-
-    (hide-spinner)
-
-    ;; Deal with ..
+(defn- previous-ns-block "Display or not the prev block depending on the current namespace."
+  [all-ns ns-nav]
+  ;; Deal with ..
+  (let [prev (by-id "prev")]
     (if ns-nav
       (do
         (set-styles! prev {:display "block"})
         (event/listen prev "click"
                       #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
-      (set-styles! prev {:display "none"}))
+      (set-styles! prev {:display "none"}))))
+
+(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)
+        lns (first lns-fns)
+        fns (second lns-fns)
+        nsn (by-id "ns-nav")
+        fnd (by-id "fn-display")]
+
+    (hide-spinner)
+
+    (previous-ns-block all-ns ns-nav)
 
     (when lns
       ;; show the namespace block
