@@ -131,6 +131,20 @@
 
 (dispatch/react-to #{:state-change} (fn [_ m] (render m)))
 
+;; ------------- fnx ------------- 
+
+(defmulti render-fnx
+  "Accepts a map which represents the current state of the application
+  and renders a view based on the value of the `:state` key."
+  :state)
+
+(defmethod render-fnx :init [_]
+  (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
+
+(dispatch/react-to #{:state-change} (fn [_ m] (render-fnx m)))
+
+;; ------------- fnx -------------
+
 (defn- form-fields-status
   "Given a map of old and new form states, generate a map with `:id`,
   `:transition` and `:error` keys which can be passed to

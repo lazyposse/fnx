@@ -10,6 +10,17 @@
            (fn [k r o n]
              (dispatch/fire :state-change n)))
 
+;; ------------- fnx ------------- 
+
+(def ^{:doc "An atom containing a map which is the application's current state."}
+  state-fnx (atom {}))
+
+(add-watch state-fnx :state-change-key
+           (fn [k r o n]
+             (dispatch/fire :state-change n)))
+
+;; ------------- fnx ------------- 
+
 (def ^{:private true
        :doc "An atom containing the state of the greeting form and
   each of its fields."}

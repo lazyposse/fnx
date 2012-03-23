@@ -32,11 +32,27 @@
     (play form form-in {:after #(.focus (by-id "name-input") ())})))
 
 (comment ;; Try it
-
   (initialize-views (:form one.sample.view/snippets)
-                    (:greeting one.sample.view/snippets))
-  
-  )
+                    (:greeting one.sample.view/snippets)))
+
+;; ------------- fnx ------------- 
+
+(defn initialize-views-fnx
+  "Accepts the form and greeting view HTML and adds them to the
+  page. Animates the form sliding in from above. This function must be
+  run before any other view functions. It may be called from any state
+  to reset the UI."
+  [ns-nav fn-display spinner]
+  (let [content-fnx (xpath "//div[@id='content-fnx']")]
+    (destroy-children! content-fnx)
+    (set-html! content-fnx ns-nav)
+    (append! content-fnx fn-display)
+    (append! content-fnx spinner)
+    (set-styles! (by-id "ns-nav") {:display "block"})
+    (set-styles! (by-id "fn-display") {:display "block"})
+    (set-styles! (by-id "spinner") {:display "block"})))
+
+;; ------------- fnx ------------- 
 
 (defn label-move-up
   "Move the passed input field label above the input field. Run when
