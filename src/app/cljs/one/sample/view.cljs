@@ -144,14 +144,19 @@
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
   (let [lns (second  (all-ns ns-nav))
         nsn (by-id "ns-nav")]
-    (comment  (js/alert (str  "list of namespaces for " (pr-str ns-nav) ":" (pr-str lns))))
-
+    ;; hide the spinner
     (set-styles! (by-id "spinner") {:display "none"})
-
+    ;; show the namespace block
     (set-styles! nsn {:display "block"})
-
+    ;; destroy the content on this block
     (destroy-children! nsn)
-    (dorun (map #(append! nsn (str "<div>" % "</div>")) lns))))
+    ;; display the list of namespaces
+    (dorun (map #(append! nsn (str "<div id='ns-" % "'>"  % "</div>")) lns))
+    ;; event when click on one of the ns
+    (dorun (map (fn [n] (event/listen
+                          (by-id (str "ns-" n))
+                          "click"
+                          #(dispatch/fire :ns-clicked {:ns n}))) lns))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
