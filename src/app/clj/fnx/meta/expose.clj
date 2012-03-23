@@ -40,12 +40,22 @@
   [f args]
   (apply f (vals args)))
 
-(defn load-ns! "Get the namespaces from the file namespaces-to-load"
-  []
-  (clojure.string/split (slurp "namespaces-to-load") #"\n"))
+(defn- load-file-ns "Load the file into a list"
+  [f]
+  (split (slurp f) #"\n"))
 
 (fact
-  (load-ns!) => ["fnx.meta.expose" "fnx.meta.example"])
+  (load-file-ns "namespaces-test-to-load") => ["fnx.meta.example" "fnx.meta.example2"])
+
+(defn load-ns! "Get the namespaces from the file namespaces-to-load"
+  ([] (load-ns! "namespaces-to-load"))
+  ([f]
+     (map str (mapcat #(ns-public-fn (symbol %)) (load-file-ns f)))))
+
+(fact
+  (load-ns! :file) => ["#'fnx.meta.example/hello" "#'fnx.meta.example/one-arg-fn" "#'fnx.meta.example/hello-noir" "#'fnx.meta.example/three-arg-fn" "#'fnx.meta.example/two-arg-fn" "#'fnx.meta.example2/hello" "#'fnx.meta.example2/three-arg-fn"]
+  (provided
+    (load-file-ns :file) => ["fnx.meta.example" "fnx.meta.example2"]))
 
 (defn- parent "Given a namespace, return the namespace's 'parent'"
   [n]
@@ -69,10 +79,8 @@
 (defn- child "Given a namespace, return the next namespace's depth"
   [n vc]
   (if-not n
-    (distinct (map #(first (clojure.string/split % #"\.")) vc))
+    (distinct (map #(first (split % #"\.")) vc))
     (remove #{n} ((group-by #(.contains % n) vc) true))))
-
-(unfinished )
 
 (defn- level "Given a namespace, returns its level."
   [ns]
