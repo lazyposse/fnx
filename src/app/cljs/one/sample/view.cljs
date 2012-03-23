@@ -163,17 +163,9 @@
                       #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
       (set-styles! prev {:display "none"}))))
 
-(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
-  (let [lns-fns (ls-curr-ns all-ns ns-nav)
-        lns (first lns-fns)
-        fns (second lns-fns)
-        nsn (by-id "ns-nav")
-        fnd (by-id "fn-display")]
-
-    (hide-spinner)
-
-    (previous-ns-block all-ns ns-nav)
-
+(defn- display-ns "Display namespaces"
+  [lns]
+  (let [nsn (by-id "ns-nav")]
     (when lns
       ;; show the namespace block
       (set-styles! nsn {:display "block" :color "red"})
@@ -185,7 +177,18 @@
       (dorun (map (fn [n] (event/listen
                            (by-id (str "ns-" n))
                            "click"
-                           #(dispatch/fire :ns-clicked {:ns n}))) lns)))
+                           #(dispatch/fire :ns-clicked {:ns n}))) lns)))))
+
+(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)
+        fns (second lns-fns)
+        fnd (by-id "fn-display")]
+
+    (hide-spinner)
+
+    (previous-ns-block all-ns ns-nav)
+
+    (display-ns (first lns-fns))
 
     (when fns
       ;; show the function block
