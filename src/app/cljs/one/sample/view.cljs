@@ -1,9 +1,10 @@
 (ns ^{:doc "Render the views for the application."}
   one.sample.view
   (:use [domina :only (set-html! append! set-styles! styles by-id set-style!
-                       by-class value set-value! set-text! nodes single-node destroy-children!)]
+                                 by-class value set-value! set-text! nodes single-node destroy-children!)]
         [domina.xpath :only (xpath)]
-        [one.browser.animation :only (play)])
+        [one.browser.animation :only (play)]
+        [one.sample.view-helper :only [ls-curr-ns parent-ns]])
   (:require-macros [one.sample.snippets :as snippets])
   (:require [goog.events.KeyCodes :as key-codes]
             [goog.events.KeyHandler :as key-handler]
@@ -147,7 +148,7 @@
    (:prev snippets)))
 
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
-  (let [lns (second  (all-ns ns-nav))
+  (let [lns (first (ls-curr-ns all-ns ns-nav))
         nsn (by-id "ns-nav")
         prev (by-id "prev")]
 
@@ -158,7 +159,7 @@
     (when ns-nav
       (set-styles! prev {:display "block"})
       (event/listen prev "click"
-                    #(dispatch/fire :ns-clicked {:ns (first (all-ns ns-nav))})))
+                    #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
     
     ;; show the namespace block
     (set-styles! nsn {:display "block"})
