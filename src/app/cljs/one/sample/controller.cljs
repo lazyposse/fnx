@@ -105,6 +105,9 @@
                      (assoc old
                        :ns-nav ns))))
 
+(defmethod action-fnx :fn-clicked [{f :fn}]
+  (js/alert (pr-str f)))
+
 (defn add-ns-callback
   "This is the success callback function which will be called when a
   request is successful. Accepts a map of response data.
@@ -118,7 +121,7 @@
                        :all-ns all-ns
                        :ns-nav nil))))
 
-(dispatch/react-to #{:init :ns-clicked}
+(dispatch/react-to #{:init :ns-clicked :fn-clicked}
                    (fn [t d] (action-fnx (assoc d :type t))))
 
 ;; --------------- </fnx> ---------------

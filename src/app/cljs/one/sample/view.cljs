@@ -148,30 +148,49 @@
    (:prev snippets)))
 
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
-  (let [lns (first (ls-curr-ns all-ns ns-nav))
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)
+        lns (first lns-fns)
+        fns (second lns-fns)
         nsn (by-id "ns-nav")
+        fnd (by-id "fn-display")
         prev (by-id "prev")]
 
     ;; hide the spinner
     (set-styles! (by-id "spinner") {:display "none"})
 
     ;; Deal with ..
-    (when ns-nav
-      (set-styles! prev {:display "block"})
-      (event/listen prev "click"
-                    #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
-    
-    ;; show the namespace block
-    (set-styles! nsn {:display "block"})
-    ;; destroy the content on this block
-    (destroy-children! nsn)
-    ;; display the list of namespaces
-    (dorun (map #(append! nsn (str "<div id='ns-" % "'>"  % "</div>")) lns))
-    ;; event when click on one of the ns
-    (dorun (map (fn [n] (event/listen
-                         (by-id (str "ns-" n))
-                         "click"
-                         #(dispatch/fire :ns-clicked {:ns n}))) lns))))
+    (if ns-nav
+      (do
+        (set-styles! prev {:display "block"})
+        (event/listen prev "click"
+                      #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
+      (set-styles! prev {:display "none"}))
+
+    (when lns
+      ;; show the namespace block
+      (set-styles! nsn {:display "block" :color "red"})
+      ;; destroy the content on this block
+      (destroy-children! nsn)
+      ;; display the list of namespaces
+      (dorun (map #(append! nsn (str "<div id='ns-" % "'>"  % "</div>")) lns))
+      ;; event when click on one of the ns
+      (dorun (map (fn [n] (event/listen
+                           (by-id (str "ns-" n))
+                           "click"
+                           #(dispatch/fire :ns-clicked {:ns n}))) lns)))
+
+    (when fns
+      ;; show the function block
+      (set-styles! fnd {:display "block" :color "blue"})
+      ;; destroy the content on this block
+      (destroy-children! fnd)
+      ;; display the list of functions
+      (dorun (map #(append! fnd (str "<div id='fn-" % "'>"  % "</div>")) fns))
+      ;; event when click on one of the fn
+      (dorun (map (fn [f] (event/listen
+                           (by-id (str "fn-" f))
+                           "click"
+                           #(dispatch/fire :fn-clicked {:fn f}))) fns)))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
