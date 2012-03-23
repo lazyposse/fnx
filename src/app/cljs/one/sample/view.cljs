@@ -147,6 +147,11 @@
    (:spinner snippets)
    (:prev snippets)))
 
+(defn- hide-spinner "Hide the spinner block"
+  []
+  ;; hide the spinner
+  (set-styles! (by-id "spinner") {:display "none"}))
+
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)
         lns (first lns-fns)
@@ -155,8 +160,7 @@
         fnd (by-id "fn-display")
         prev (by-id "prev")]
 
-    ;; hide the spinner
-    (set-styles! (by-id "spinner") {:display "none"})
+    (hide-spinner)
 
     ;; Deal with ..
     (if ns-nav
