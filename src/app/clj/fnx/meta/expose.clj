@@ -40,7 +40,7 @@
   [f args]
   (apply f (vals args)))
 
-(defn- load-ns! "Get the namespaces from the file namespaces-to-load"
+(defn load-ns! "Get the namespaces from the file namespaces-to-load"
   []
   (clojure.string/split (slurp "namespaces-to-load") #"\n"))
 

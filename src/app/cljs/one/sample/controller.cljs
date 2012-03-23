@@ -97,12 +97,17 @@
   ;; event init to reset the state of the application and incidentally refresh the ui
   (reset! state-fnx {:state :init})
 
-  ;; simulate the call of the server by modifying the state of the application with the needed information
-  ;; this code will be moved inside a callback later
+  (remote :public-ns-fn {} #(add-ns-callback %)))
+
+(defn add-ns-callback
+  "This is the success callback function which will be called when a
+  request is successful. Accepts a map of response data.
+  Sets the current state to `:ns-navigating` and adds the `:all-ns` and `:ns-nav` to the application's state."
+  [response]
   (swap! state-fnx (fn [old]
                      (assoc old
                        :state :ns-navigating
-                       :all-ns all-ns
+                       :all-ns (response :res)
                        :ns-nav nil))))
 
 (dispatch/react-to #{:init}
