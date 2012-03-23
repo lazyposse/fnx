@@ -100,7 +100,10 @@
   (remote :public-ns-fn {} #(add-ns-callback %)))
 
 (defmethod action-fnx :ns-clicked [{ns :ns}]
-  (js/alert (pr-str ns)))
+  ;; update the model with the new namespace
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :ns-nav ns))))
 
 (defn add-ns-callback
   "This is the success callback function which will be called when a
