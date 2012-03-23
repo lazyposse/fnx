@@ -151,8 +151,7 @@
     (set-styles! nsn {:display "block"})
 
     (destroy-children! nsn)
-    (append! nsn (str "<div>" (first lns) "</div>"))
-    (append! nsn (str "<div>" (second lns) "</div>"))))
+    (dorun (map #(append! nsn (str "<div>" % "</div>")) lns))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
