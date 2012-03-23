@@ -1,7 +1,7 @@
 (ns ^{:doc "Render the views for the application."}
   one.sample.view
   (:use [domina :only (set-html! append! set-styles! styles by-id set-style!
-                       by-class value set-value! set-text! nodes single-node)]
+                       by-class value set-value! set-text! nodes single-node destroy-children!)]
         [domina.xpath :only (xpath)]
         [one.browser.animation :only (play)])
   (:require-macros [one.sample.snippets :as snippets])
@@ -150,7 +150,8 @@
 
     (set-styles! nsn {:display "block"})
 
-    (set-html! nsn (str "<div>" (first lns) "</div>"))
+    (destroy-children! nsn)
+    (append! nsn (str "<div>" (first lns) "</div>"))
     (append! nsn (str "<div>" (second lns) "</div>"))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
