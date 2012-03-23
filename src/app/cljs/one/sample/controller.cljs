@@ -111,7 +111,8 @@
   (swap! state-fnx (fn [old]
                      (assoc old
                        :state :ns-navigating
-                       :all-ns (response :res)
+;;                       :all-ns (response :res)
+                       :all-ns all-ns
                        :ns-nav nil))))
 
 (dispatch/react-to #{:init :ns-clicked}
