@@ -141,17 +141,17 @@
 (defmethod render-fnx :init [_]
   (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
 
-(defmethod render-fnx :ns-navigating [{:keys [state all-ns ns-nav]}]
+(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
   (let [lns (second  (all-ns ns-nav))
         nsn (by-id "ns-nav")]
-    (js/alert (str  "list of namespaces for " (pr-str ns-nav) ":" (pr-str lns)))
+    (comment  (js/alert (str  "list of namespaces for " (pr-str ns-nav) ":" (pr-str lns))))
 
     (set-styles! (by-id "spinner") {:display "none"})
 
     (set-styles! nsn {:display "block"})
 
-    (set-html! nsn (str "<div>"  (first lns) "</div>"))
-    (append! nsn (str "<div>"  (second lns) "</div>"))))
+    (set-html! nsn (str "<div>" (first lns) "</div>"))
+    (append! nsn (str "<div>" (second lns) "</div>"))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
