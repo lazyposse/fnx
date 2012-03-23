@@ -163,7 +163,7 @@
                       #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
       (set-styles! prev {:display "none"}))))
 
-(defn- display-ns "Display namespaces"
+(defn- display-lns "Display namespaces"
   [lns]
   (let [nsn (by-id "ns-nav")]
     (when lns
@@ -179,17 +179,9 @@
                            "click"
                            #(dispatch/fire :ns-clicked {:ns n}))) lns)))))
 
-(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
-  (let [lns-fns (ls-curr-ns all-ns ns-nav)
-        fns (second lns-fns)
-        fnd (by-id "fn-display")]
-
-    (hide-spinner)
-
-    (previous-ns-block all-ns ns-nav)
-
-    (display-ns (first lns-fns))
-
+(defn- display-fns "Display functions list"
+  [fns]
+  (let [fnd (by-id "fn-display")]
     (when fns
       ;; show the function block
       (set-styles! fnd {:display "block" :color "blue"})
@@ -202,6 +194,13 @@
                            (by-id (str "fn-" f))
                            "click"
                            #(dispatch/fire :fn-clicked {:fn f}))) fns)))))
+
+(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)]
+    (hide-spinner)
+    (previous-ns-block all-ns ns-nav)
+    (display-lns (first lns-fns))
+    (display-fns (second lns-fns))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
