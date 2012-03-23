@@ -141,7 +141,12 @@
 (defmethod render-fnx :init [_]
   (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
 
-(dispatch/react-to #{:state-change} (fn [_ m] (render-fnx m)))
+(defmethod render-fnx :ns-navigating [{:keys [state all-ns ns-nav]}]
+  (js/alert (pr-str (all-ns ns-nav)))
+  (set-styles! (by-id "spinner") {:display "none"})
+  (set-styles! (by-id "ns-nav") {:display "block"}))
+
+(dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
 ;; ------------- fnx -------------
 
