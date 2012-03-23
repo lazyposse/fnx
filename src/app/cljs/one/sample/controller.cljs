@@ -102,7 +102,8 @@
 (defn add-ns-callback
   "This is the success callback function which will be called when a
   request is successful. Accepts a map of response data.
-  Sets the current state to `:ns-navigating` and adds the `:all-ns` and `:ns-nav` to the application's state."
+  Sets the current state to `:ns-navigating` and adds the `:all-ns` and
+  `:ns-nav` to the application's state."
   [response]
   (swap! state-fnx (fn [old]
                      (assoc old
