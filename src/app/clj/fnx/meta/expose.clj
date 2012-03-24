@@ -24,17 +24,15 @@
   [s]
   (join "" (drop 2 s)))
 
+(fact "fun-str"
+  (fun-str "#'test") => "test")
+
 (defn- resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
   (resolve (symbol (fun-str s))))
 
-(defn- list-ns "List the fnx namespaces to expose."
-  [prefix-ns]
-  (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))
-
-(defn- fn-name "Transform a list of parameters into a function name"
-  [& s]
-  (str "#'" (join "/" [(join "." (butlast s)) (last s)])))
+(fact "resolve-str"
+  (resolve-str "#'fnx.meta.expose/resolve-str") => #'fnx.meta.expose/resolve-str)
 
 (defn- apply-fn "Apply the function fun to the map args"
   [f args]
@@ -47,27 +45,38 @@
 (fact
   (load-file-ns "namespaces-test-to-load") => ["fnx.meta.example" "fnx.meta.example2"])
 
-(defn load-ns! "Get the namespaces from the file namespaces-to-load"
-  ([] (load-ns! "namespaces-to-load"))
+(defn load-fq-fn! "Get the namespaces from the file namespaces-to-load"
+  ([] (load-fq-fn! "namespaces-to-load"))
   ([f]
-     (map str (mapcat #(ns-public-fn (symbol %)) (load-file-ns f)))))
+     (map (comp fun-str str) (mapcat #(ns-public-fn (symbol %)) (load-file-ns f)))))
 
+;.;. [31mFAIL[0m at (NO_SOURCE_FILE:1)
+;.;. Actual result did not agree with the checking function.
+;.;.         Actual result: ("fnx.meta.example/hello" "fnx.meta.example/one-arg-fn" "fnx.meta.example/hello-noir" "fnx.meta.example/three-arg-fn" "fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn")
+;.;.     Checking function: (contains ["fnx.meta.example/one-arg-fn" "fnx.meta.example/hello-noir" "fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn"] :in-any-order)
+;.;.     The checker said this about the reason:
+;.;.         Best match found: ["fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn"]
 (fact
-  (load-ns! :file) => ["#'fnx.meta.example/hello" "#'fnx.meta.example/one-arg-fn" "#'fnx.meta.example/hello-noir" "#'fnx.meta.example/three-arg-fn" "#'fnx.meta.example/two-arg-fn" "#'fnx.meta.example2/hello" "#'fnx.meta.example2/three-arg-fn"]
+  (load-fq-fn! :file) => (contains
+                           ["fnx.meta.example/one-arg-fn"
+                          "fnx.meta.example/hello-noir"
+                          "fnx.meta.example/two-arg-fn"
+                          "fnx.meta.example2/hello"
+                          "fnx.meta.example2/three-arg-fn"] :in-any-order)
   (provided
     (load-file-ns :file) => ["fnx.meta.example" "fnx.meta.example2"]))
 
-(defn- parent "Given a namespace, return the namespace's 'parent'"
+(defn- parent-ns "Given a namespace, return the namespace's 'parent-ns'"
   [n]
   (when n
       (let [r (split n #"\.")]
         (if (<= 2 (count r)) (join "." (butlast r)) nil))))
 
-(fact "parent"
-  (parent nil) => nil
-  (parent "foo.aws.extra") => "foo.aws"
-  (parent "foo.aws") => "foo"
-  (parent "foo") => nil)
+(fact "parent-ns"
+  (parent-ns nil) => nil
+  (parent-ns "foo.aws.extra") => "foo.aws"
+  (parent-ns "foo.aws") => "foo"
+  (parent-ns "foo") => nil)
 
 (defn- nsp "Given a fully qualified function name, return a namespace"
   [f]
@@ -76,7 +85,7 @@
 (fact "nsp"
   (nsp "fnx.meta/expose") => "fnx.meta")
 
-(defn- child "Given a namespace, return the next namespace's depth"
+(defn- children-ns "Given a namespace, return the next namespace's depth"
   [n vc]
   (if-not n
     (distinct (map #(first (split % #"\.")) vc))
@@ -93,24 +102,27 @@
 
 (defn- nth-level "Given a namespace, returns the nth level"
   [n ns]
-    (join #"." (take n (split ns #"\."))))
+  (if (zero? n)
+    nil
+    (join #"." (take n (split ns #"\.")))))
 
 (fact "nth-level"
-  (nth-level 0 "foo.aws") => ""
+  (nth-level 0 "foo.aws") => nil
   (nth-level 1 "foo.aws") => "foo"
   (nth-level 2 "foo.aws.ec2") => "foo.aws")
 
-(defn- child "Given a namespace, return the next namespace's depth"
-  [n vc]
+(defn- children-ns "Given a namespace, return the next namespace's depth"
+  [n sc]
   (if n
     (let [l (level n)]
-      (remove #{n} ((group-by #(.contains % n) (distinct (map #(nth-level (inc l) %) vc))) true)))
-    (distinct (map #(nth-level 1 %) vc))))
+      (remove #{n} ((group-by #(.contains % n) (distinct (map #(nth-level (inc l) %) sc))) true)))
+    (distinct (map #(nth-level 1 %) sc))))
 
-(fact "IT - child"
-  (child nil ["foo" "foo.aws" "bar.other" "foo.ec2"]) => ["foo" "bar"]
-  (child "foo" ["foo" "foo.aws" "bar.other" "foo.ec2"]) => ["foo.aws" "foo.ec2"]
-  (child "bar.aws" ["bar" "bar.aws.ec2.s3" "bar.aws.ec" "bar.aws.ec2.s4"]) => ["bar.aws.ec2" "bar.aws.ec"])
+(fact "IT - children-ns"
+  (children-ns nil #{"foo" "foo.aws" "bar.other" "foo.ec2"}) => (contains  ["foo" "bar"] :in-any-order)
+  (children-ns "foo" #{"foo" "foo.aws" "bar.other" "foo.ec2"}) => (contains ["foo.aws" "foo.ec2"] :in-any-order)
+  (children-ns "bar.aws" #{"bar" "bar.aws.ec2.s3" "bar.aws.ec" "bar.aws.ec2.s4"}) => (contains ["bar.aws.ec2" "bar.aws.ec"] :in-any-order)
+  (children-ns "foo" #{}) => [])
 
 (defn- map-namespaces "Given a list of functions, returns the map of keypair ns-fn"
   [vfn]
@@ -126,42 +138,63 @@
     (nsp :fq-fn3) => :bar
     (nsp :fq-fn4) => :foobar))
 
-(defn public-ns-fn
-  "Expose the namespaces and functions as the following example map
-  {nil              [nil       [\"foo\" \"bar\"]              []]
-   \"foo\"          [nil       [\"foo.aws\"]                  []]
-   \"bar\"          [nil       [\"bar.file\"]                 []]
-   \"foo.aws\"      [\"foo\"     [\"foo.aws.ec2\" \"foo.aws.s3\"] [\"describe-region\"]]
-   \"foo.aws.ec2\"  [\"foo.aws\" []                           [\"list-ami\"]]
-   \"foo.aws.s3\"   [\"foo.aws\" []                           [\"delete-buckets\"]]
-   \"bar.file\"     [\"bar\"     []                           [\"ls\"]]}"
+(defn all-ns-levels "Given a list of namespaces, returns the list of all namespace levels"
+  [lns]
+  (let [max-level (apply max (map level lns))]
+    (set (filter (comp not nil?)
+                 (mapcat #(for [x (range (inc max-level))]
+                            (nth-level x %))
+                         lns)))))
+
+(fact "all-ns-levels"
+  (all-ns-levels #{"foo.meta.expose" "foo.bar.ec2"}) => (exactly #{"foo.meta.expose"
+                                                                   "foo"
+                                                                   "foo.bar"
+                                                                   "foo.meta"
+                                                                   "foo.bar.ec2"}) :in-any-order)
+
+(defn load-map-ns
+  "Load some namespaces from a list of fully qualified functions into the following example map:
+  {nil              [nil       [\"foo\" \"bar\"]                  []]
+   \"foo\"          [nil       [\"foo.aws\"]                      []]
+   \"bar\"          [nil       [\"bar.file\"]                     []]
+   \"foo.aws\"      [\"foo\"     [\"foo.aws.ec2\" \"foo.aws.s3\"] [\"foo.aws/describe-region\"]]
+   \"foo.aws.ec2\"  [\"foo.aws\" []                               [\"foo.aws.ec2/list-ami\"]]
+   \"foo.aws.s3\"   [\"foo.aws\" []                               [\"foo.aws.s3/delete-buckets\"]]
+   \"bar.file\"     [\"bar\"     []                               [\"bar.file/ls\"]]}"
   [vfn]
   (let [m (map-namespaces vfn)
-        k (keys m)
-        i (assoc m nil k)]
-    (reduce (fn [o n]
-              (assoc o n [(parent n) (child n k) (m n)]))
-            {}
-            (keys i))))
+        k (all-ns-levels (keys m))]
+    (reduce (fn [o n] (assoc o n [(parent-ns n) (children-ns n k) (m n)])) {} (concat [nil] k))))
 
-(fact "public-ns-fn"
-  (public-ns-fn [:fq-fn1 :fq-fn2 :fq-fn3]) => (contains {nil [nil [:foo :bar] nil]
-                                                         :foo [nil [] [:fq-fn1 :fq-fn2]]
-                                                         :bar [nil [] [:fq-fn3]]} :in-any-order)
+(fact "load-map-ns"
+  (load-map-ns [:fq-fn1 :fq-fn2 :fq-fn3]) => {nil [nil [:foo :bar] []]
+                                               :foo [nil [] [:fq-fn1 :fq-fn2]]
+                                               :bar [nil [] [:fq-fn3]]}
   (provided
-    (map-namespaces [:fq-fn1 :fq-fn2 :fq-fn3]) => {:foo [:fq-fn1 :fq-fn2] :bar [:fq-fn3]}
-    (parent nil) => nil
-    (parent :foo) => nil
-    (parent :bar) => nil
-    (child nil [:foo :bar]) => [:foo :bar]
-    (child :foo [:foo :bar]) => []
-    (child :bar [:foo :bar]) => []))
+    (map-namespaces [:fq-fn1 :fq-fn2 :fq-fn3]) => {nil []
+                                                   :foo [:fq-fn1 :fq-fn2]
+                                                   :bar [:fq-fn3]}
+    (all-ns-levels [nil :foo :bar]) => [:foo :bar]
+    (parent-ns nil) => nil
+    (parent-ns :foo) => nil
+    (parent-ns :bar) => nil
+    (children-ns nil [:foo :bar]) => [:foo :bar]
+    (children-ns :foo [:foo :bar]) => []
+    (children-ns :bar [:foo :bar]) => []))
 
-(fact "IT - public-ns-fn"
-  (public-ns-fn ["foo/expose" "bar/ls" "foo.aws/list-ami" "foo.aws/list-regions" "foo.meta/run" "foo.aws.ec2/test"]) =>
-  '{"foo.aws.ec2" ["foo.aws" []                     ["foo.aws.ec2/test"]]
-    "foo.meta" ["foo"        []                     ["foo.meta/run"]]
-   "foo.aws"   ["foo"        ["foo.aws.ec2"]        ["foo.aws/list-ami" "foo.aws/list-regions"]]
-   "bar"       [nil          []                     ["bar/ls"]]
-   "foo"       [nil          ["foo.aws" "foo.meta"] ["foo/expose"]]
-   nil         [nil          ["foo" "bar"]          nil]})
+(fact "IT - load-map-ns"
+  (load-map-ns ["foo/expose"
+                "bar/ls"
+                "bar.test.level3/cucoo"
+                "foo.aws/list-ami"
+                "foo.aws/list-regions"
+                "foo.meta/run" "foo.aws.ec2/test"]) =>
+  {"foo.aws.ec2"     ["foo.aws"    '()                     ["foo.aws.ec2/test"]]
+   "foo.aws"         ["foo"        '("foo.aws.ec2")        ["foo.aws/list-ami" "foo.aws/list-regions"]]
+   "bar"             [nil          '("bar.test")           ["bar/ls"]]
+   "bar.test.level3" ["bar.test"   '()                     ["bar.test.level3/cucoo"]]
+   "foo.meta"        ["foo"        '()                     ["foo.meta/run"]]
+   "bar.test"        ["bar"        '("bar.test.level3")    nil]
+   "foo"             [nil          '("foo.meta" "foo.aws") ["foo/expose"]]
+   nil               [nil          '("foo" "bar")          nil]})

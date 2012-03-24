@@ -97,7 +97,7 @@
   ;; event init to reset the state of the application and incidentally refresh the ui
   (reset! state-fnx {:state :init})
   ;; call the server to populate the namespaces
-  (remote :public-ns-fn {} #(add-ns-callback %)))
+  (remote :load-map-ns {} #(add-ns-callback %)))
 
 (defmethod action-fnx :ns-clicked [{ns :ns}]
   ;; update the model with the new namespace
@@ -117,8 +117,8 @@
   (swap! state-fnx (fn [old]
                      (assoc old
                        :state :ns-navigating
-;;                       :all-ns (response :res)
-                       :all-ns all-ns
+                       :all-ns (response :res)
+;;                       :all-ns all-ns
                        :ns-nav nil))))
 
 (dispatch/react-to #{:init :ns-clicked :fn-clicked}

@@ -2,7 +2,7 @@
   "The server side of the sample application. Provides a simple API for
   updating an in-memory database."
   (:use [compojure.core :only (defroutes POST)]
-        [fnx.meta.expose :only [public-ns-fn load-ns!]]))
+        [fnx.meta.expose :only [load-map-ns load-fq-fn!]]))
 
 (defonce ^:private next-id (atom 0))
 
@@ -26,8 +26,8 @@
     (swap! *database* conj n)
     response))
 
-(defmethod remote :public-ns-fn [data]
-  (let [response {:res (public-ns-fn (load-ns!))}]
+(defmethod remote :load-map-ns [data]
+  (let [response {:res (load-map-ns (load-fq-fn!))}]
     response))
 
 (defroutes remote-routes

@@ -147,10 +147,10 @@
    (:spinner snippets)
    (:prev snippets)))
 
-(defn- hide-spinner "Hide the spinner block"
-  []
+(defn- hide "Hide the element with id id"
+  [id]
   ;; hide the spinner
-  (set-styles! (by-id "spinner") {:display "none"}))
+  (set-styles! (by-id id) {:display "none"}))
 
 (defn- previous-ns-block "Display or not the prev block depending on the current namespace."
   [all-ns ns-nav]
@@ -197,7 +197,7 @@
 
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)]
-    (hide-spinner)
+    (hide "spinner")
     (previous-ns-block all-ns ns-nav)
     (display-lns (first lns-fns))
     (display-fns (second lns-fns))))
