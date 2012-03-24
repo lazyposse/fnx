@@ -195,9 +195,17 @@
                            "click"
                            #(dispatch/fire :fn-clicked {:fn f}))) fns)))))
 
+(defn- reset-ids "Reset the content of a div with id id"
+  [& ids]
+  (dorun (map #(destroy-children! (by-id %)) ids)))
+
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)]
+    ;; reset or hide things part
     (hide "spinner")
+    (reset-ids "ns-nav" "fn-display")
+
+    ;; display part
     (previous-ns-block all-ns ns-nav)
     (display-lns (first lns-fns))
     (display-fns (second lns-fns))))
