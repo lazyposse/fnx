@@ -1,7 +1,7 @@
 (ns ^{:doc "Render the views for the application."}
   one.sample.view
-  (:use [domina :only (set-html! set-styles! styles by-id set-style!
-                       by-class value set-value! set-text! nodes single-node)]
+  (:use [domina :only (set-html! append! set-styles! styles by-id set-style!
+                       by-class value set-value! set-text! nodes single-node destroy-children!)]
         [domina.xpath :only (xpath)]
         [one.browser.animation :only (play)])
   (:require-macros [one.sample.snippets :as snippets])
@@ -141,7 +141,19 @@
 (defmethod render-fnx :init [_]
   (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
 
-(dispatch/react-to #{:state-change} (fn [_ m] (render-fnx m)))
+(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
+  (let [lns (second  (all-ns ns-nav))
+        nsn (by-id "ns-nav")]
+    (comment  (js/alert (str  "list of namespaces for " (pr-str ns-nav) ":" (pr-str lns))))
+
+    (set-styles! (by-id "spinner") {:display "none"})
+
+    (set-styles! nsn {:display "block"})
+
+    (destroy-children! nsn)
+    (dorun (map #(append! nsn (str "<div>" % "</div>")) lns))))
+
+(dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
 ;; ------------- fnx -------------
 

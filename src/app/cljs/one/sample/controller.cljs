@@ -83,6 +83,7 @@
   The `:ns-nav` action will navigate to a particular namespace."
   :type)
 
+;; This is a mock map of namespaces-fns, this will come from the server.
 (def all-ns 
   {nil            [nil       ["foo" "bar"]                []]
    "foo"          [nil       ["foo.aws"]                  []]
@@ -93,7 +94,22 @@
    "bar.file"     ["bar"     []                           ["ls"]]})
 
 (defmethod action-fnx :init [_]
-  (reset! state-fnx {:state :init, :all-ns all-ns}))
+  ;; event init to reset the state of the application and incidentally refresh the ui
+  (reset! state-fnx {:state :init})
+
+  (remote :public-ns-fn {} #(add-ns-callback %)))
+
+(defn add-ns-callback
+  "This is the success callback function which will be called when a
+  request is successful. Accepts a map of response data.
+  Sets the current state to `:ns-navigating` and adds the `:all-ns` and
+  `:ns-nav` to the application's state."
+  [response]
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :ns-navigating
+                       :all-ns (response :res)
+                       :ns-nav nil))))
 
 (dispatch/react-to #{:init}
                    (fn [t d] (action-fnx (assoc d :type t))))

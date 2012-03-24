@@ -1,2 +1,5 @@
+clojure.core
+clojure.string
 fnx.meta.expose
 fnx.meta.example
+midje.sweet

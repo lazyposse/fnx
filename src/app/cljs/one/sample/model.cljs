@@ -17,7 +17,7 @@
 
 (add-watch state-fnx :state-change-key
            (fn [k r o n]
-             (dispatch/fire :state-change n)))
+             (dispatch/fire :state-change-fnx n)))
 
 ;; ------------- fnx ------------- 
 
