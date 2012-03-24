@@ -1,6 +1,4 @@
-(ns one.sample.view-helper
-  (:use
-     [clojure.string :only [split]]))
+(ns one.sample.view-helper)
 
 (defn ls-curr-ns
   [all-ns curr-ns] (let [[_ nses fns] (all-ns curr-ns)]

@@ -96,8 +96,17 @@
 (defmethod action-fnx :init [_]
   ;; event init to reset the state of the application and incidentally refresh the ui
   (reset! state-fnx {:state :init})
+  ;; call the server to populate the namespaces
+  (remote :load-map-ns {} #(add-ns-callback %)))
 
-  (remote :public-ns-fn {} #(add-ns-callback %)))
+(defmethod action-fnx :ns-clicked [{ns :ns}]
+  ;; update the model with the new namespace
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :ns-nav ns))))
+
+(defmethod action-fnx :fn-clicked [{f :fn}]
+  (js/alert (pr-str f)))
 
 (defn add-ns-callback
   "This is the success callback function which will be called when a
@@ -111,7 +120,7 @@
                        :all-ns (response :res)
                        :ns-nav nil))))
 
-(dispatch/react-to #{:init}
+(dispatch/react-to #{:init :ns-clicked :fn-clicked}
                    (fn [t d] (action-fnx (assoc d :type t))))
 
 ;; --------------- </fnx> ---------------

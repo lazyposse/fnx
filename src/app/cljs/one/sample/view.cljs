@@ -1,9 +1,10 @@
 (ns ^{:doc "Render the views for the application."}
   one.sample.view
   (:use [domina :only (set-html! append! set-styles! styles by-id set-style!
-                       by-class value set-value! set-text! nodes single-node destroy-children!)]
+                                 by-class value set-value! set-text! nodes single-node destroy-children!)]
         [domina.xpath :only (xpath)]
-        [one.browser.animation :only (play)])
+        [one.browser.animation :only (play)]
+        [one.sample.view-helper :only [ls-curr-ns parent-ns]])
   (:require-macros [one.sample.snippets :as snippets])
   (:require [goog.events.KeyCodes :as key-codes]
             [goog.events.KeyHandler :as key-handler]
@@ -112,12 +113,13 @@
   :state)
 
 (defmethod render :init [_]
-  (fx/initialize-views (:form snippets) (:greeting snippets))
-  (add-input-event-listeners "name-input")
-  (event/listen (by-id "greet-button")
-                "click"
-                #(dispatch/fire :greeting
-                                {:name (value (by-id "name-input"))})))
+  (comment
+    (fx/initialize-views (:form snippets) (:greeting snippets))
+    (add-input-event-listeners "name-input")
+    (event/listen (by-id "greet-button")
+                  "click"
+                  #(dispatch/fire :greeting
+                                  {:name (value (by-id "name-input"))}))))
 
 (defmethod render :form [{:keys [state error name]}]
   (fx/show-form)
@@ -139,19 +141,74 @@
   :state)
 
 (defmethod render-fnx :init [_]
-  (fx/initialize-views-fnx (:ns-nav snippets) (:fn-display snippets) (:spinner snippets)))
+  (fx/initialize-views-fnx
+   (:ns-nav snippets)
+   (:fn-display snippets)
+   (:spinner snippets)
+   (:prev snippets)))
+
+(defn- hide "Hide the element with id id"
+  [id]
+  ;; hide the spinner
+  (set-styles! (by-id id) {:display "none"}))
+
+(defn- previous-ns-block "Display or not the prev block depending on the current namespace."
+  [all-ns ns-nav]
+  ;; Deal with ..
+  (let [prev (by-id "prev")]
+    (if ns-nav
+      (do
+        (set-styles! prev {:display "block"})
+        (event/listen prev "click"
+                      #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
+      (set-styles! prev {:display "none"}))))
+
+(defn- display-lns "Display namespaces"
+  [lns]
+  (let [nsn (by-id "ns-nav")]
+    (when lns
+      ;; show the namespace block
+      (set-styles! nsn {:display "block" :color "red"})
+      ;; destroy the content on this block
+      (destroy-children! nsn)
+      ;; display the list of namespaces
+      (dorun (map #(append! nsn (str "<div id='ns-" % "'>"  % "</div>")) lns))
+      ;; event when click on one of the ns
+      (dorun (map (fn [n] (event/listen
+                           (by-id (str "ns-" n))
+                           "click"
+                           #(dispatch/fire :ns-clicked {:ns n}))) lns)))))
+
+(defn- display-fns "Display functions list"
+  [fns]
+  (let [fnd (by-id "fn-display")]
+    (when fns
+      ;; show the function block
+      (set-styles! fnd {:display "block" :color "blue"})
+      ;; destroy the content on this block
+      (destroy-children! fnd)
+      ;; display the list of functions
+      (dorun (map #(append! fnd (str "<div id='fn-" % "'>"  % "</div>")) fns))
+      ;; event when click on one of the fn
+      (dorun (map (fn [f] (event/listen
+                           (by-id (str "fn-" f))
+                           "click"
+                           #(dispatch/fire :fn-clicked {:fn f}))) fns)))))
+
+(defn- reset-ids "Reset the content of a div with id id"
+  [& ids]
+  (dorun (map #(destroy-children! (by-id %)) ids)))
 
 (defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
-  (let [lns (second  (all-ns ns-nav))
-        nsn (by-id "ns-nav")]
-    (comment  (js/alert (str  "list of namespaces for " (pr-str ns-nav) ":" (pr-str lns))))
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)]
+    ;; reset or hide things part
+    (hide "spinner")
+    (reset-ids "ns-nav" "fn-display")
 
-    (set-styles! (by-id "spinner") {:display "none"})
-
-    (set-styles! nsn {:display "block"})
-
-    (destroy-children! nsn)
-    (dorun (map #(append! nsn (str "<div>" % "</div>")) lns))))
+    ;; display part
+    (previous-ns-block all-ns ns-nav)
+    (display-lns (first lns-fns))
+    (display-fns (second lns-fns))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
