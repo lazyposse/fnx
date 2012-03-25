@@ -50,19 +50,13 @@
   ([f]
      (map (comp fun-str str) (mapcat #(ns-public-fn (symbol %)) (load-file-ns f)))))
 
-;.;. [31mFAIL[0m at (NO_SOURCE_FILE:1)
-;.;. Actual result did not agree with the checking function.
-;.;.         Actual result: ("fnx.meta.example/hello" "fnx.meta.example/one-arg-fn" "fnx.meta.example/hello-noir" "fnx.meta.example/three-arg-fn" "fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn")
-;.;.     Checking function: (contains ["fnx.meta.example/one-arg-fn" "fnx.meta.example/hello-noir" "fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn"] :in-any-order)
-;.;.     The checker said this about the reason:
-;.;.         Best match found: ["fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn"]
 (fact
   (load-fq-fn! :file) => (contains
                            ["fnx.meta.example/one-arg-fn"
-                          "fnx.meta.example/hello-noir"
-                          "fnx.meta.example/two-arg-fn"
-                          "fnx.meta.example2/hello"
-                          "fnx.meta.example2/three-arg-fn"] :in-any-order)
+                            "fnx.meta.example/hello-noir"
+                            "fnx.meta.example/two-arg-fn"
+                            "fnx.meta.example2/hello"
+                            "fnx.meta.example2/three-arg-fn"] :in-any-order)
   (provided
     (load-file-ns :file) => ["fnx.meta.example" "fnx.meta.example2"]))
 
