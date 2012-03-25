@@ -227,7 +227,7 @@
                              "</div>")) args)))
 
 (defn- display-fn "Display the function"
-  [{:keys [fname args doc] :as f}]
+  [{:keys [fname arglists doc] :as f}]
   (let [fnd (by-id "fn-display")]
     (when f
       ;; show the function block
@@ -239,7 +239,7 @@
       (append! fnd (str "<div>" (when doc doc) "</div>"))
 
       ;; beware at the multiple arities
-      (dorun (map #(display-args fnd %) args)))))
+      (dorun (map #(display-args fnd %) arglists)))))
 
 (defmethod render-fnx :fn-form-displaying [{:keys [all-ns ns-nav current-fn]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)]
