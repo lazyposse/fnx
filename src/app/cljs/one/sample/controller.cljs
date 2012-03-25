@@ -119,9 +119,9 @@
                        :ns-nav ns))))
 
 ;; This is mock map, example of what comes from the server.
-(def fn-to-display
+(def fn-meta-to-display
   {:fname "fully.qualified.ns/some-function-to-display"
-   :args ["x" "y" "z"]
+   :args [["x"] ["x" "y"] ["x" "y" "z"]]
    :doc "This a sample example of a function to transform into a list of inputs."})
 
 (defn- fn-display-callback
@@ -133,7 +133,9 @@
     (swap! state-fnx (fn [old]
                      (assoc old
                        :state :fn-form-displaying
-                       :current-fn (:meta-fn response)))))
+                       :current-fn fn-meta-to-display
+;;                       :current-fn (:meta-fn response)
+                       ))))
 
 (defmethod action-fnx :fn-clicked [{f :fn}]
   (remote :load-map-meta-fn {:fq-fn f} #(fn-display-callback f %)))
