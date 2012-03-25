@@ -29,10 +29,10 @@
 
 (defn- resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
-  (resolve (symbol (fun-str s))))
+  (resolve (symbol s)))
 
 (fact "resolve-str"
-  (resolve-str "#'fnx.meta.expose/resolve-str") => #'fnx.meta.expose/resolve-str)
+  (resolve-str "fnx.meta.expose/resolve-str") => #'fnx.meta.expose/resolve-str)
 
 (defn- apply-fn "Apply the function fun to the map args"
   [f args]
@@ -192,3 +192,15 @@
    "bar.test"        ["bar"        '("bar.test.level3")    nil]
    "foo"             [nil          '("foo.meta" "foo.aws") ["foo/expose"]]
    nil               [nil          '("foo" "bar")          nil]})
+
+(defn fn-meta "A function to extract the metadata from a string that represents a fully qualified function."
+  [f]
+  (let [m (meta (resolve-str f))]
+    {:doc (:doc m)
+     :fname f
+     :arglists (:arglists m)}))
+
+(fact "fn-meta"
+  (fn-meta "fnx.meta.example/one-arg-fn") => '{:doc "A public fn with one arg, should be listed"
+                                               :fname "fnx.meta.example/one-arg-fn"
+                                               :arglists [[x]]})

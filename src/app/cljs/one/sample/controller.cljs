@@ -83,6 +83,18 @@
   The `:ns-nav` action will navigate to a particular namespace."
   :type)
 
+(defn add-ns-callback
+  "This is the success callback function which will be called when a
+  request is successful. Accepts a map of response data.
+  Sets the current state to `:ns-navigating` and adds the `:all-ns` and
+  `:ns-nav` to the application's state."
+  [response]
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :ns-navigating
+                       :all-ns (response :res)
+                       :ns-nav nil))))
+
 ;; Mock map of namespaces-fns, this is an example of what comes from the server.
 (def all-ns 
   {nil            [nil       ["foo" "bar"]                []]
@@ -112,23 +124,19 @@
    :args ["x" "y" "z"]
    :doc "This a sample example of a function to transform into a list of inputs."})
 
-(defmethod action-fnx :fn-clicked [{f :fn}]
+(defn- fn-display-callback
+  "This is the success callback function which will be called when a
+  request is successful. Accepts the name of the function and a map of response data.
+  Sets the current state to `:fn-form-displaying` and adds the current map of metadata from the function
+  fname"
+  [fname response]
     (swap! state-fnx (fn [old]
                      (assoc old
                        :state :fn-form-displaying
-                       :current-fn fn-to-display))))
+                       :current-fn (:meta-fn response)))))
 
-(defn add-ns-callback
-  "This is the success callback function which will be called when a
-  request is successful. Accepts a map of response data.
-  Sets the current state to `:ns-navigating` and adds the `:all-ns` and
-  `:ns-nav` to the application's state."
-  [response]
-  (swap! state-fnx (fn [old]
-                     (assoc old
-                       :state :ns-navigating
-                       :all-ns (response :res)
-                       :ns-nav nil))))
+(defmethod action-fnx :fn-clicked [{f :fn}]
+  (remote :load-map-meta-fn {:fq-fn f} #(fn-display-callback f %)))
 
 (dispatch/react-to #{:init :ns-clicked :fn-clicked}
                    (fn [t d] (action-fnx (assoc d :type t))))
