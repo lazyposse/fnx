@@ -121,7 +121,7 @@
 ;; This is mock map, example of what comes from the server.
 (def fn-meta-to-display
   {:fname "fully.qualified.ns/some-function-to-display"
-   :args [["x"] ["x" "y"] ["x" "y" "z"]]
+   :args [["a"] ["b" "c"] ["e" "f" "g"]]
    :doc "This a sample example of a function to transform into a list of inputs."})
 
 (defn- fn-display-callback

@@ -212,7 +212,7 @@
 
 (defn- display-args "Display the args of a function into a list of inputs"
   [fnd args]
-
+  
   ;; display the inputs
   (append! fnd "<h3>Input the arguments</h3>")
 
@@ -224,7 +224,7 @@
                              "<input id='id-fn-" % "' size='30' type= 'text'/>"
                              "</label>"
                              " <div id='id-input-error-"% "' class='small error'>&nbsp;</div>"
-                             "</div>")) args))  )
+                             "</div>")) args)))
 
 (defn- display-fn "Display the function"
   [{:keys [fname args doc] :as f}]
@@ -239,8 +239,7 @@
       (append! fnd (str "<div>" (when doc doc) "</div>"))
 
       ;; beware at the multiple arities
-      (display-args fnd (first args))
-      (comment (dorun (map #(display-args fnd %)) args)))))
+      (dorun (map #(display-args fnd %) args)))))
 
 (defmethod render-fnx :fn-form-displaying [{:keys [all-ns ns-nav current-fn]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)]
