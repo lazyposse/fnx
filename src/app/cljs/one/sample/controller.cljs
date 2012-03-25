@@ -83,7 +83,7 @@
   The `:ns-nav` action will navigate to a particular namespace."
   :type)
 
-;; This is a mock map of namespaces-fns, this will come from the server.
+;; Mock map of namespaces-fns, this is an example of what comes from the server.
 (def all-ns 
   {nil            [nil       ["foo" "bar"]                []]
    "foo"          [nil       ["foo.aws"]                  []]
@@ -106,6 +106,7 @@
                        :state :ns-navigating
                        :ns-nav ns))))
 
+;; This is mock map, example of what comes from the server.
 (def fn-to-display
   {:fname "fully.qualified.ns/some-function-to-display"
    :args ["x" "y" "z"]
