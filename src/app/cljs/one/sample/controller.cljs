@@ -105,8 +105,16 @@
                      (assoc old
                        :ns-nav ns))))
 
+(def fn-to-display
+  {:fname "fully.qualified.ns/some-function-to-display"
+   :args ["x" "y" "z"]
+   :doc "This a sample example of a function to transform into a list of inputs."})
+
 (defmethod action-fnx :fn-clicked [{f :fn}]
-  (js/alert (pr-str f)))
+    (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :fn-form-displaying
+                       :current-fn fn-to-display))))
 
 (defn add-ns-callback
   "This is the success callback function which will be called when a
