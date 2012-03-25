@@ -103,6 +103,7 @@
   ;; update the model with the new namespace
   (swap! state-fnx (fn [old]
                      (assoc old
+                       :state :ns-navigating
                        :ns-nav ns))))
 
 (def fn-to-display
