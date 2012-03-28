@@ -2,7 +2,7 @@
   "The server side of the sample application. Provides a simple API for
   updating an in-memory database."
   (:use [compojure.core :only (defroutes POST)]
-        [fnx.meta.expose :only [load-map-ns load-fq-fn!]]))
+        [fnx.meta.expose :only [load-map-ns load-fq-fn! fn-meta]]))
 
 (defonce ^:private next-id (atom 0))
 
@@ -28,6 +28,12 @@
 
 (defmethod remote :load-map-ns [data]
   (let [response {:res (load-map-ns (load-fq-fn!))}]
+    response))
+
+;; Remove access to retrieve the map of metadata for the function fnxs.
+(defmethod remote :load-map-meta-fn [data]
+  (let [fname (-> data :args :fq-fn)
+        response {:meta-fn (fn-meta fname)}]
     response))
 
 (defroutes remote-routes

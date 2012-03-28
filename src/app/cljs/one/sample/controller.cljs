@@ -83,7 +83,19 @@
   The `:ns-nav` action will navigate to a particular namespace."
   :type)
 
-;; This is a mock map of namespaces-fns, this will come from the server.
+(defn add-ns-callback
+  "This is the success callback function which will be called when a
+  request is successful. Accepts a map of response data.
+  Sets the current state to `:ns-navigating` and adds the `:all-ns` and
+  `:ns-nav` to the application's state."
+  [response]
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :ns-navigating
+                       :all-ns (response :res)
+                       :ns-nav nil))))
+
+;; Mock map of namespaces-fns, this is an example of what comes from the server.
 (def all-ns 
   {nil            [nil       ["foo" "bar"]                []]
    "foo"          [nil       ["foo.aws"]                  []]
@@ -103,22 +115,29 @@
   ;; update the model with the new namespace
   (swap! state-fnx (fn [old]
                      (assoc old
+                       :state :ns-navigating
                        :ns-nav ns))))
 
-(defmethod action-fnx :fn-clicked [{f :fn}]
-  (js/alert (pr-str f)))
+;; This is mock map, example of what comes from the server.
+(def fn-meta-to-display
+  {:fname "fully.qualified.ns/some-function-to-display"
+   :arglists [["a"] ["b" "c"] ["e" "f" "g"]]
+   :doc "This a sample example of a function to transform into a list of inputs."})
 
-(defn add-ns-callback
+(defn- fn-display-callback
   "This is the success callback function which will be called when a
-  request is successful. Accepts a map of response data.
-  Sets the current state to `:ns-navigating` and adds the `:all-ns` and
-  `:ns-nav` to the application's state."
-  [response]
-  (swap! state-fnx (fn [old]
+  request is successful. Accepts the name of the function and a map of response data.
+  Sets the current state to `:fn-form-displaying` and adds the current map of metadata from the function
+  fname"
+  [fname response]
+    (js/alert (pr-str response))
+    (swap! state-fnx (fn [old]
                      (assoc old
-                       :state :ns-navigating
-                       :all-ns (response :res)
-                       :ns-nav nil))))
+                       :state :fn-form-displaying
+                       :current-fn (:meta-fn response)))))
+
+(defmethod action-fnx :fn-clicked [{f :fn}]
+  (remote :load-map-meta-fn {:fq-fn f} #(fn-display-callback f %)))
 
 (dispatch/react-to #{:init :ns-clicked :fn-clicked}
                    (fn [t d] (action-fnx (assoc d :type t))))

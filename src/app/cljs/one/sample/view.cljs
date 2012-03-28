@@ -210,6 +210,45 @@
     (display-lns (first lns-fns))
     (display-fns (second lns-fns))))
 
+(defn- display-args "Display the args of a function into a list of inputs"
+  [fnd args]
+  
+  ;; display the inputs
+  (append! fnd "<h3>Input the arguments</h3>")
+
+  ;; find a way to use the templating... enlive?!
+  (dorun (map #(append! fnd (str
+                             "<div class='input'>"
+                             "<label id='label-" % "'>"
+                             "<span>" % "</span>"
+                             "<input id='id-fn-" % "' size='30' type= 'text'/>"
+                             "</label>"
+                             " <div id='id-input-error-"% "' class='small error'>&nbsp;</div>"
+                             "</div>")) args)))
+
+(defn- display-fn "Display the function"
+  [{:keys [fname arglists doc] :as f}]
+  (let [fnd (by-id "fn-display")]
+    (when f
+      ;; show the function block
+      (set-styles! fnd {:display "block" :color "blue"})
+      ;; destroy the content on this block
+      (destroy-children! fnd)
+      ;; display the list of functions
+      (append! fnd (str "<h2 id='fn-" fname "'>" fname "</h2>"))
+      (append! fnd (str "<div>" (when doc doc) "</div>"))
+
+      ;; beware at the multiple arities
+      (dorun (map #(display-args fnd %) arglists)))))
+
+(defmethod render-fnx :fn-form-displaying [{:keys [all-ns ns-nav current-fn]}]
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)]
+    (reset-ids "ns-nav" "fn-display")
+
+    ;; display part
+    (previous-ns-block all-ns ns-nav)
+    (display-fn current-fn)))
+
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 
 ;; ------------- fnx -------------

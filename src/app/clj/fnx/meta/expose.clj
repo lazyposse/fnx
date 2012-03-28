@@ -29,10 +29,10 @@
 
 (defn- resolve-str "Wrapper around 'resolve' to deal with string representing #'namespace/function"
   [s]
-  (resolve (symbol (fun-str s))))
+  (resolve (symbol s)))
 
 (fact "resolve-str"
-  (resolve-str "#'fnx.meta.expose/resolve-str") => #'fnx.meta.expose/resolve-str)
+  (resolve-str "fnx.meta.expose/resolve-str") => #'fnx.meta.expose/resolve-str)
 
 (defn- apply-fn "Apply the function fun to the map args"
   [f args]
@@ -50,19 +50,13 @@
   ([f]
      (map (comp fun-str str) (mapcat #(ns-public-fn (symbol %)) (load-file-ns f)))))
 
-;.;. [31mFAIL[0m at (NO_SOURCE_FILE:1)
-;.;. Actual result did not agree with the checking function.
-;.;.         Actual result: ("fnx.meta.example/hello" "fnx.meta.example/one-arg-fn" "fnx.meta.example/hello-noir" "fnx.meta.example/three-arg-fn" "fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn")
-;.;.     Checking function: (contains ["fnx.meta.example/one-arg-fn" "fnx.meta.example/hello-noir" "fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn"] :in-any-order)
-;.;.     The checker said this about the reason:
-;.;.         Best match found: ["fnx.meta.example/two-arg-fn" "fnx.meta.example2/hello" "fnx.meta.example2/three-arg-fn"]
 (fact
   (load-fq-fn! :file) => (contains
                            ["fnx.meta.example/one-arg-fn"
-                          "fnx.meta.example/hello-noir"
-                          "fnx.meta.example/two-arg-fn"
-                          "fnx.meta.example2/hello"
-                          "fnx.meta.example2/three-arg-fn"] :in-any-order)
+                            "fnx.meta.example/hello-noir"
+                            "fnx.meta.example/two-arg-fn"
+                            "fnx.meta.example2/hello"
+                            "fnx.meta.example2/three-arg-fn"] :in-any-order)
   (provided
     (load-file-ns :file) => ["fnx.meta.example" "fnx.meta.example2"]))
 
@@ -198,3 +192,15 @@
    "bar.test"        ["bar"        '("bar.test.level3")    nil]
    "foo"             [nil          '("foo.meta" "foo.aws") ["foo/expose"]]
    nil               [nil          '("foo" "bar")          nil]})
+
+(defn fn-meta "A function to extract the metadata from a string that represents a fully qualified function."
+  [f]
+  (let [m (meta (resolve-str f))]
+    {:doc (:doc m)
+     :fname f
+     :arglists (:arglists m)}))
+
+(fact "fn-meta"
+  (fn-meta "fnx.meta.example/one-arg-fn") => '{:doc "A public fn with one arg, should be listed"
+                                               :fname "fnx.meta.example/one-arg-fn"
+                                               :arglists [[x]]})
