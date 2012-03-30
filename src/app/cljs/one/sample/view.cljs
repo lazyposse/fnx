@@ -210,21 +210,42 @@
     (display-lns (first lns-fns))
     (display-fns (second lns-fns))))
 
-(defn- display-args "Display the args of a function into a list of inputs"
-  [fnd args]
-  
-  ;; display the inputs
-  (append! fnd "<h3>Input the arguments</h3>")
+(defn- fn-ar "Compute the name of a function coupled with its arity"
+  [fname arity]
+  (str fname "-" arity))
 
-  ;; find a way to use the templating... enlive?!
-  (dorun (map #(append! fnd (str
-                             "<div class='input'>"
-                             "<label id='label-" % "'>"
-                             "<span>" % "</span>"
-                             "<input id='id-fn-" % "' size='30' type= 'text'/>"
-                             "</label>"
-                             " <div id='id-input-error-"% "' class='small error'>&nbsp;</div>"
-                             "</div>")) args)))
+(defn- display-args "Display the args of a function into a list of inputs"
+  [fnd fname args]
+
+  (let [arity (count args)
+        fnar (fn-ar fname arity)]
+
+    ;; display the inputs
+    (append! fnd (str "<h3>Input the arguments - Arity - " arity "</h3>"))
+
+    ;; find a way to use the templating... enlive?!
+    (dorun (map #(append! fnd (let [n (str fnar "-" (str %))]
+                                (str
+                                 "<div class='input'>"
+                                 "<label id='label-" n "'>"
+                                 "<span>" (str %) "</span>"
+                                 "<input id='id-fn-" n "' size='30' type= 'text'/>"
+                                 "</label>"
+                                 " <div id='id-input-error-" n "' class='small error'>&nbsp;</div>"
+                                 "</div>"))) args))
+    ;; display the button run
+    (append! fnd (str "<div class='input'><input type='button' id='run-button-" fnar
+                      "' value='run!' /></div>"))
+
+    ;; add a listener to it
+    (event/listen (by-id (str "run-button-" fnar))
+                  "click"
+                  #(dispatch/fire :run-clicked
+                                  {:fname fname
+                                   :args (reduce (fn [m i]
+                                                   (assoc m i (value (by-id
+                                                                      (str "id-fn-" fnar "-" (str i))))))
+                                                 {} args)}))))
 
 (defn- display-fn "Display the function"
   [{:keys [fname arglists doc] :as f}]
@@ -239,7 +260,7 @@
       (append! fnd (str "<div>" (when doc doc) "</div>"))
 
       ;; beware at the multiple arities
-      (dorun (map #(display-args fnd %) arglists)))))
+      (dorun (map #(display-args fnd fname %) arglists)))))
 
 (defmethod render-fnx :fn-form-displaying [{:keys [all-ns ns-nav current-fn]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)]

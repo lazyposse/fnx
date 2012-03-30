@@ -130,7 +130,6 @@
   Sets the current state to `:fn-form-displaying` and adds the current map of metadata from the function
   fname"
   [fname response]
-    (js/alert (pr-str response))
     (swap! state-fnx (fn [old]
                      (assoc old
                        :state :fn-form-displaying
@@ -139,7 +138,11 @@
 (defmethod action-fnx :fn-clicked [{f :fn}]
   (remote :load-map-meta-fn {:fq-fn f} #(fn-display-callback f %)))
 
-(dispatch/react-to #{:init :ns-clicked :fn-clicked}
+
+(defmethod action-fnx :run-clicked [{fname :fname args :args}]
+  (js/alert (str  "fname" (pr-str fname) "args" (pr-str args))))
+
+(dispatch/react-to #{:init :ns-clicked :fn-clicked :run-clicked}
                    (fn [t d] (action-fnx (assoc d :type t))))
 
 ;; --------------- </fnx> ---------------
