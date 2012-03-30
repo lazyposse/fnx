@@ -218,7 +218,8 @@
   [fnd fname args]
 
   (let [arity (count args)
-        fnar (fn-ar fname arity)]
+        fnar (fn-ar fname arity)
+        button-id (str "run-button-" fnar)]
 
     ;; display the inputs
     (append! fnd (str "<h3>Input the arguments - Arity - " arity "</h3>"))
@@ -235,11 +236,11 @@
                                  "</div>")))
                 args))
     ;; display the button run
-    (append! fnd (str "<div class='input'><input type='button' id='run-button-" fnar
+    (append! fnd (str "<div class='input'><input type='button' id='" button-id
                       "' value='run!' /></div>"))
 
     ;; add a listener to it
-    (event/listen (by-id (str "run-button-" fnar))
+    (event/listen (by-id button-id)
                   "click"
                   #(dispatch/fire :run-clicked
                                   {:fname fname
