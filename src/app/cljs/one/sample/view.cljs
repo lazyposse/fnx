@@ -223,7 +223,7 @@
     ;; display the inputs
     (append! fnd (str "<h3>Input the arguments - Arity - " arity "</h3>"))
 
-    ;; find a way to use the templating... enlive?!
+    ;; find a way to use the templating...
     (dorun (map #(append! fnd (let [n (str fnar "-" (str %))]
                                 (str
                                  "<div class='input'>"
@@ -232,7 +232,8 @@
                                  "<input id='id-fn-" n "' size='30' type= 'text'/>"
                                  "</label>"
                                  " <div id='id-input-error-" n "' class='small error'>&nbsp;</div>"
-                                 "</div>"))) args))
+                                 "</div>")))
+                args))
     ;; display the button run
     (append! fnd (str "<div class='input'><input type='button' id='run-button-" fnar
                       "' value='run!' /></div>"))
