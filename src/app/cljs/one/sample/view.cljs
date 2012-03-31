@@ -149,8 +149,11 @@
 
 (defn- hide "Hide the element with id id"
   [id]
-  ;; hide the spinner
   (set-styles! (by-id id) {:display "none"}))
+
+(defn- show "Show the element with id id"
+  [id]
+  (set-styles! (by-id id) {:display "block"}))
 
 (defn- previous-ns-block "Display or not the prev block depending on the current namespace."
   [all-ns ns-nav]
@@ -215,7 +218,7 @@
   (str fname "-" arity))
 
 (defn- display-args "Display the args of a function into a list of inputs"
-  [fnd fname args]
+  [fnd {:keys [fname] :as f} args]
 
   (let [arity (count args)
         fnar (fn-ar fname arity)
@@ -243,7 +246,7 @@
     (event/listen (by-id button-id)
                   "click"
                   #(dispatch/fire :run-clicked
-                                  {:fname fname
+                                  {:fname f
                                    :args (reduce (fn [m i]
                                                    (assoc m i (value (by-id
                                                                       (str "id-fn-" fnar "-" (str i))))))
@@ -257,12 +260,15 @@
       (set-styles! fnd {:display "block" :color "blue"})
       ;; destroy the content on this block
       (destroy-children! fnd)
-      ;; display the list of functions
+
+      (append! fnd (by-id "spinner"))
+      (hide "spinner")
+
       (append! fnd (str "<h2 id='fn-" fname "'>" fname "</h2>"))
       (append! fnd (str "<div>" (when doc doc) "</div>"))
 
       ;; beware at the multiple arities
-      (dorun (map #(display-args fnd fname %) arglists)))))
+      (dorun (map #(display-args fnd f %) arglists)))))
 
 (defmethod render-fnx :fn-form-displaying [{:keys [all-ns ns-nav current-fn]}]
   (let [lns-fns (ls-curr-ns all-ns ns-nav)]
@@ -271,6 +277,22 @@
     ;; display part
     (previous-ns-block all-ns ns-nav)
     (display-fn current-fn)))
+
+(defmethod render-fnx :fn-running [{:keys [current-fn args]}]
+  (show "spinner")
+  (set-styles! (by-id "fn-display") {:opacity "0.5"}))
+
+(defmethod render-fnx :fn-result-showing [{:keys [current-fn args fn-result]}]
+  (let [fnd (by-id "fn-display")
+        fname (current-fn :fname)]
+
+    (hide "spinner")
+    (set-styles! (by-id "fn-display") {:opacity "1"})
+
+    (when fname
+
+      ;; display the list of functions
+      (append! fnd (str "<div id='fn-result'>" fname " - " (pr-str args) " - " (pr-str fn-result) "</div>")))))
 
 (dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))
 

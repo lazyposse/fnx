@@ -52,7 +52,8 @@
     (set-styles! (by-id "prev") {:display "none"})
     (set-styles! (by-id "ns-nav") {:display "none"})
     (set-styles! (by-id "fn-display") {:display "none"})
-    (set-styles! (by-id "spinner") {:display "block"})))
+    (set-styles! (by-id "spinner") {:display "block"
+                                    :border "1px solid black"})))
 
 ;; ------------- fnx ------------- 
 
