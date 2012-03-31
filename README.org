@@ -1,10 +1,9 @@
+;; -*- org -*-
 
 * Development
-
 This section discuss the internals of fnx, intended for developers.
 
 ** History management
-
 *** What we want
 
 **** Browser back button should works as expected
@@ -100,6 +99,43 @@ The app could be in the following "states" (activities):
 |----------------------------+------------+---------------------+---------|
 
 
+* Running development [33%]
+** TODO Client side [83%]
+*** DONE Learn the inner working of one
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Checkout one
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Init view
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Init model
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Display the list of first level namespaces
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Navigate through namespaces
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Navigate to the upper level of the current namespace
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Display the namespaces and the functions
+CLOSED: [2012-03-31 sam. 20:50]
+*** DONE Retrieve the metadata of the function and display them via forms (arity)
+CLOSED: [2012-03-31 sam. 20:50]
+*** DONE Run the function basically
+CLOSED: [2012-03-31 sam. 20:52]
+*** TODO Beware the order of the argument of the function
+*** TODO Edge cases
+** TODO Design [0%]
+*** TODO Improve css
+*** TODO Improve ui
+*** TODO Add animations
+*** TODO Improve spinner
+** DONE Server side [100%]
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Expose functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Execute functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Extract metadata functions
+CLOSED: [2012-03-31 sam. 20:48]
 
 * notes [%]
 
