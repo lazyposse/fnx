@@ -68,12 +68,19 @@
               :some-arglists
               :some-real-map-with-args) => :output-result))
 
-(fact "IT"
+(fact "IT - no order needed"
   (remote {:fn :apply-fn
            :args {:meta-fn {:fname "clojure.core/+"
                             :arglists [['x 'y]]}
-                  :args {:x 1
-                         :y 2} }}) => {:res 3})
+                  :args {'x 1
+                         'y 2} }}) => {:res 3})
+
+(fact "IT - order needed"
+  (remote {:fn :apply-fn
+           :args {:meta-fn {:fname "clojure.core/-"
+                            :arglists [['x 'y]]}
+                  :args {'y 1
+                         'x 2} }}) => {:res 1})
 
 (defroutes remote-routes
   (POST "/remote" {{data "data"} :params}

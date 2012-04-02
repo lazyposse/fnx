@@ -47,7 +47,10 @@
   (parameters [['a] ['a 'b] ['a 'b 'c]]
               {'c :30 'b :20 'a :10}) => [:10 :20 :30])
 
-(defn apply-fn "Apply the function f to the map args (with the help of arglists order)"
+(defn apply-fn
+  "Apply the function f :
+  - to the map of unsorted parameters args with the order of the arglists.
+  - to the vector of sorted parameters."
   ([f v-arglists m-args]
      (apply-fn f (parameters v-arglists m-args)))
   ([f v-args]
@@ -60,10 +63,12 @@
     (apply-fn :fq-fn :parameter-in-order) => :some-res))
 
 (fact "apply-fn"
-  (apply-fn "clojure.core/print" [['x]] {:x "test"}) => nil)
+  (apply-fn "clojure.core/-"
+            [['x] ['x 'y]]
+            {'y 10 'x 5}) => -5)
 
 (fact "apply-fn"
-  (apply-fn "clojure.core/print" ["test"]) => nil)
+  (apply-fn "clojure.core/-" [5 10]) => -5)
 
 (defn- load-file-ns "Load the file into a list"
   [f]
