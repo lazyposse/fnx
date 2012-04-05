@@ -31,3 +31,14 @@ heroku ps:scale web=1
 #+BEGIN_SRC sh
 heroku ps:scale web=0
 #+END_SRC
+* Logs
+#+BEGIN_SRC sh
+heroku logs
+#+END_SRC
+
+* Launch remote repl
+#+BEGIN_SRC sh
+heroku run lein repl
+#+END_SRC
+* Src
+https://devcenter.heroku.com/articles/clojure
