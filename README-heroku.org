@@ -1,0 +1,44 @@
+* Create the app
+#+BEGIN_SRC sh
+cd ~/repositories/perso/fnx
+heroku app:create fnx-one
+#+END_SRC
+
+* Status of the app
+#+BEGIN_SRC sh
+heroku info --app fnx-one
+=== fnx-one
+Git URL:       git@heroku.com:fnx-one.git
+Owner:         eniotna.t@gmail.com
+Repo Size:     29M
+Slug Size:     24M
+Stack:         cedar
+Web URL:       http://fnx-one.herokuapp.com/
+#+END_SRC
+
+* Deploy to heroku
+#+BEGIN_SRC sh
+git co master
+git push heroku master
+#+END_SRC
+
+* Start the app
+#+BEGIN_SRC sh
+heroku ps:scale web=1
+#+END_SRC
+
+* Stop the app
+#+BEGIN_SRC sh
+heroku ps:scale web=0
+#+END_SRC
+* Logs
+#+BEGIN_SRC sh
+heroku logs
+#+END_SRC
+
+* Launch remote repl
+#+BEGIN_SRC sh
+heroku run lein repl
+#+END_SRC
+* Src
+https://devcenter.heroku.com/articles/clojure
