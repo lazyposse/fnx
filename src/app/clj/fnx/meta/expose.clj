@@ -34,9 +34,14 @@
 (fact "resolve-str"
   (resolve-str "fnx.meta.expose/resolve-str") => #'fnx.meta.expose/resolve-str)
 
-(defn- apply-fn "Apply the function fun to the map args"
-  [f args]
-  (apply f (vals args)))
+(defn apply-fn "Apply the function f to the map args (with the help of arglists order)"
+  [f arglists args]
+  (apply (resolve-str f) (vals args)))
+
+;; FIXME will need to deal with the arglists' order
+
+(fact "apply-fn"
+  (apply-fn "clojure.core/print" [['x]] {:x "test"}) => nil)
 
 (defn- load-file-ns "Load the file into a list"
   [f]

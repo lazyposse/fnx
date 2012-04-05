@@ -138,9 +138,30 @@
 (defmethod action-fnx :fn-clicked [{f :fn}]
   (remote :load-map-meta-fn {:fq-fn f} #(fn-display-callback f %)))
 
+(defn- fn-display-result-callback
+  "This is the success callback function which will be called when a
+  request is successful. Accepts the name of the function, the args with
+  which the fn will be called and a response data.
+  Sets the current state to `:fn-result-showing'"
+  [fname args response]
+    (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :fn-result-showing
+                       :current-fn fname
+                       :args args))))
 
-(defmethod action-fnx :run-clicked [{fname :fname args :args}]
-  (js/alert (str  "fname" (pr-str fname) "args" (pr-str args))))
+;; React to the run clicked event that will launch the execution of the function in the server
+(defmethod action-fnx :run-clicked [{f :fname args :args}]
+  ;; before launching the computing of function in remote
+  (swap! state-fnx  (fn [old]
+                     (assoc old
+                       :state :fn-running
+                       :current-fn f
+                       :args args)))
+
+  ;; launch the function computing
+  (remote :apply-fn {:meta-fn f
+                     :args args} #(fn-display-result-callback f args %)))
 
 (dispatch/react-to #{:init :ns-clicked :fn-clicked :run-clicked}
                    (fn [t d] (action-fnx (assoc d :type t))))
