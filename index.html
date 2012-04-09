@@ -3028,34 +3028,8 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>fnx -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">fnx</h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>Expose your Clojure functions on the web easily</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">noir</td><td class="dotted"><hr /></td><td class="dep-version">1.2.1</td></tr><tr><td class="dep-name">clj-stacktrace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.4</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table><tr><td class="dep-name">midje</td><td class="dotted"><hr /></td><td class="dep-version">1.3.1</td></tr><tr><td class="dep-name">com.intelie/lazytest</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0-SNAPSHOT</td></tr><tr><td class="dep-name">lein-marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.7.0-SNAPSHOT</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#fnx.core">fnx.core</a></li><li><a href="#fnx.meta.example">fnx.meta.example</a></li><li><a href="#fnx.meta.expose">fnx.meta.expose</a></li><li><a href="#fnx.server">fnx.server</a></li><li><a href="#fnx.views.common">fnx.views.common</a></li><li><a href="#fnx.views.welcome">fnx.views.welcome</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.core" name="fnx.core"><h1 class="project-name">fnx.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h1>What's this?</h1>
-
-<p>Automagicaly expose your Clojure functions to the web</p>
-
-<h2>Why?</h2>
-
-<p>On my day to day job, I often write snippet of Clojure code to solve
-small problems: convert a file in one format to another, fetch and parse some
-resource from the network, etc.</p>
-
-<p>I would like to share those snippets of functionalities to my
-fellow co-workers, problem is: They may even not know what Clojure
-is.</p>
-
-<p>So what I would like to do: Just write my functions to get the job
-done, but because I put my functions in a particular namespace,
-it's automatically exposed in a web interface, where the user can
-file the parameters with HTML textboxes, click <code>submit</code> and get the
-result back.</p>
-
-<p>That's what this project tries to accomplish.</p>
-
-<h2>What's is this fnx cool name?</h2>
-
-<p>fnx : FuNctions eXpose</p>
-</td><td class="codes"></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(ns fnx.core)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.example" name="fnx.meta.example"><h1 class="project-name">fnx.meta.example</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Example of namespace that exposes functions..</p>
+</script><title>one -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">one</h1><h2 class="project-version">1.0.0-SNAPSHOT</h2><br /><p>Expose your Clojure functions on the web easily</p>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0-RC1</td></tr><tr><td class="dep-name">compojure</td><td class="dotted"><hr /></td><td class="dep-version">0.6.4</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">org.mozilla/rhino</td><td class="dotted"><hr /></td><td class="dep-version">1.7R3</td></tr><tr><td class="dep-name">com.google.javascript/closure-compiler</td><td class="dotted"><hr /></td><td class="dep-version">r1592</td></tr><tr><td class="dep-name">org.clojure/google-closure-library</td><td class="dotted"><hr /></td><td class="dep-version">0.0-790</td></tr><tr><td class="dep-name">midje</td><td class="dotted"><hr /></td><td class="dep-version">1.3.1</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table><tr><td class="dep-name">jline</td><td class="dotted"><hr /></td><td class="dep-version">0.9.94</td></tr><tr><td class="dep-name">marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.7.0-SNAPSHOT</td></tr><tr><td class="dep-name">lein-marginalia</td><td class="dotted"><hr /></td><td class="dep-version">0.7.0-SNAPSHOT</td></tr><tr><td class="dep-name">com.intelie/lazytest</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0-SNAPSHOT</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#fnx.meta.example">fnx.meta.example</a></li><li><a href="#fnx.meta.example2">fnx.meta.example2</a></li><li><a href="#fnx.meta.expose">fnx.meta.expose</a></li><li><a href="#one.sample.api">one.sample.api</a></li><li><a href="#one.sample.config">one.sample.config</a></li><li><a href="#one.sample.dev-server">one.sample.dev-server</a></li><li><a href="#one.sample.prod-server">one.sample.prod-server</a></li><li><a href="#one.sample.repl">one.sample.repl</a></li><li><a href="#script.build">script.build</a></li><li><a href="#script.serve">script.serve</a></li><li><a href="#one.sample.snippets">one.sample.snippets</a></li><li><a href="#leiningen.bootstrap">leiningen.bootstrap</a></li><li><a href="#leiningen.git-deps">leiningen.git-deps</a></li><li><a href="#one.config">one.config</a></li><li><a href="#one.host-page">one.host-page</a></li><li><a href="#one.reload">one.reload</a></li><li><a href="#one.templates">one.templates</a></li><li><a href="#one.test">one.test</a></li><li><a href="#one.tools">one.tools</a></li><li><a href="#script.docs">script.docs</a></li><li><a href="#one.sample.animation">one.sample.animation</a></li><li><a href="#one.sample.controller">one.sample.controller</a></li><li><a href="#one.sample.core">one.sample.core</a></li><li><a href="#one.sample.history">one.sample.history</a></li><li><a href="#one.sample.logging">one.sample.logging</a></li><li><a href="#one.sample.model">one.sample.model</a></li><li><a href="#one.sample.view">one.sample.view</a></li><li><a href="#one.sample.view-helper">one.sample.view-helper</a></li><li><a href="#one.browser.animation">one.browser.animation</a></li><li><a href="#one.browser.history">one.browser.history</a></li><li><a href="#one.browser.remote">one.browser.remote</a></li><li><a href="#one.color">one.color</a></li><li><a href="#one.core">one.core</a></li><li><a href="#one.dispatch">one.dispatch</a></li><li><a href="#one.logging">one.logging</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.example" name="fnx.meta.example"><h1 class="project-name">fnx.meta.example</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Example of namespace that exposes functions..</p>
 
 <p>This file contains some dummy functions and vars <strong>just to test</strong> the
 functionnalities of <code>fnx.meta.expose</code>.</p>
@@ -3069,7 +3043,15 @@ functionnalities of <code>fnx.meta.expose</code>.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- hello-private 
   [] (str &quot;Hello noir, today we are &quot; (java.util.Date.)))</pre></td></tr><tr><td class="docs"><p>A public var that shouldn't be listed</p>
 </td><td class="codes"><pre class="brush: clojure">(def 
-  a-public-var-that-shouldnt-be-list 0)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.expose" name="fnx.meta.expose"><h1 class="project-name">fnx.meta.expose</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Expose the public functions of a namespace</p>
+  a-public-var-that-shouldnt-be-list 0)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.example2" name="fnx.meta.example2"><h1 class="project-name">fnx.meta.example2</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Another Example of namespace that exposes functions..</p>
+
+<p>This other file contains some other dummy functions
+and vars <strong>just to test</strong> the functionnalities of <code>fnx.meta.expose</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns fnx.meta.example2)</pre></td></tr><tr><td class="docs"><p>A public fn with zero arg, should be listed</p>
+</td><td class="codes"><pre class="brush: clojure">(defn hello 
+  [] (str &quot;Hello world from a function exposed!&quot;))</pre></td></tr><tr><td class="docs"><p>A public fn with one arg, should be listed</p>
+</td><td class="codes"><pre class="brush: clojure">(defn three-arg-fn 
+  [x y z] (str &quot;arg=&quot; x y z))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.meta.expose" name="fnx.meta.expose"><h1 class="project-name">fnx.meta.expose</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Expose the public functions of a namespace</p>
 
 <p>This is usefull to display the functions, ask the user for the
 input parameters, and then execute them, presenting the result to
@@ -3077,7 +3059,8 @@ the user.
 Intended to expose the functions in a Browser, but it could be
 anything else: command line, rich client, ...</p>
 </td><td class="codes"><pre class="brush: clojure">(ns fnx.meta.expose
-  (:use [clojure.string :only [join]]))</pre></td></tr><tr><td class="docs"><p>Given a ns symbol, returns all the public fns of this ns.</p>
+  (:use [clojure.string :only [split join escape]]
+        [midje.sweet]))</pre></td></tr><tr><td class="docs"><p>Given a ns symbol, returns all the public fns of this ns.</p>
 
 <ul>
 <li>First we load the ns with <code>require</code></li>
@@ -3085,89 +3068,2682 @@ anything else: command line, rich client, ...</p>
 <li>We want only functions, not the other vars: We can spot them because they have an <code>:arglists</code> in their meta.</li>
 <li>Get the public vars with <code>ns-publics</code></li>
 </ul>
-</td><td class="codes"><pre class="brush: clojure">(defn ns-public-fn
+</td><td class="codes"><pre class="brush: clojure">(defn- ns-public-fn
   [ns] (do (require ns)
            (filter #(:arglists (meta %))
-                   (vals (ns-publics (find-ns ns))))))</pre></td></tr><tr><td class="docs"><p>Wrapper around 'resolve' to deal with string representing #'namespace/function</p>
-</td><td class="codes"><pre class="brush: clojure">(defn resolve-str 
+                   (vals (ns-publics (find-ns ns))))))</pre></td></tr><tr><td class="docs"><p>Transform a function name without the #' in front of its name.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- fun-str 
   [s]
-  (resolve (symbol (join &quot;&quot; (drop 2 s)))))</pre></td></tr><tr><td class="docs"><p>List the fnx namespaces to expose.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn list-ns 
-  [prefix-ns]
-  (filter #(.contains (str (ns-name %)) prefix-ns) (all-ns)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.server" name="fnx.server"><h1 class="project-name">fnx.server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Main entry point to launch fnx.</p>
-</td><td class="codes"><pre class="brush: clojure">(ns fnx.server
-  (:require [noir.server :as server]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(server/load-views &quot;src/fnx/views/&quot;)</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn -main [&amp; m]
-  (let [mode (keyword (or (first m) :dev))
-        port (Integer. (get (System/getenv) &quot;PORT&quot; &quot;8080&quot;))]
-    (server/start port {:mode mode
-                        :ns 'fnx})))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.views.common" name="fnx.views.common"><h1 class="project-name">fnx.views.common</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Common functions to help in displaying ui.</p>
-</td><td class="codes"><pre class="brush: clojure">(ns fnx.views.common
-  (:use [noir.core :only [defpartial]]
-        [hiccup.page-helpers :only [include-css html5]]
-        [hiccup.form-helpers :only [label text-field]]))</pre></td></tr><tr><td class="docs"><p>The default site layout</p>
-</td><td class="codes"><pre class="brush: clojure">(defpartial layout [t &amp; content]
-  (html5
-    [:head
-     [:title t]
-    (include-css &quot;/css/reset.css&quot;)]
-    [:body
-      [:div#wrapper
-       content]]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#fnx.views.welcome" name="fnx.views.welcome"><h1 class="project-name">fnx.views.welcome</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Main routes from the fnx.</p>
-</td><td class="codes"><pre class="brush: clojure">(ns fnx.views.welcome
-  (:use [noir.core :only [defpage render]]
-        [hiccup.core :only [html]]
-        [hiccup.form-helpers :only [text-field label form-to submit-button hidden-field]]
-        [fnx.meta.expose :only [ns-public-fn list-ns]]
-        [fnx.views.common]))</pre></td></tr><tr><td class="docs"><p>A page to execute function</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage [:post &quot;/xfn&quot;] {:keys [fun] :as data}
-  (let [g (fnx.meta.expose/resolve-str fun)
-        k (dissoc data :fun)]
-    (layout
-     &quot;run&quot;
-     [:h1 (str &quot;run &quot; g &quot; vals &quot; k)]
-     [:p#wrapper (apply g (vals k))])))</pre></td></tr><tr><td class="docs"><p>Wrapper to expose a function.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn input-fields-fn 
-  [fun]
-  (let [m (meta fun)]
-    (form-to [:post &quot;/xfn&quot;]
-             (label &quot;fun&quot; fun)
-             (hidden-field &quot;fun&quot; fun)
-             (label &quot;Doc :&quot; (str &quot;&lt;i&gt;&quot; (:doc m) &quot;&lt;/i&gt;&quot;))
-             (map #(text-field % &quot;&quot;) (flatten (:arglists m)))
-             (submit-button &quot;run&quot;))))</pre></td></tr><tr><td class="docs"><p>Wrapper to expose a namespace.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn input-fields-ns 
+  (join &quot;&quot; (drop 2 s)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;fun-str&quot;
+  (fun-str &quot;#'test&quot;) =&gt; &quot;test&quot;)</pre></td></tr><tr><td class="docs"><p>Wrapper around 'resolve' to deal with string representing #'namespace/function</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- resolve-str 
+  [s]
+  (resolve (symbol s)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;resolve-str&quot;
+  (resolve-str &quot;fnx.meta.expose/resolve-str&quot;) =&gt; #'fnx.meta.expose/resolve-str)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(unfinished )</pre></td></tr><tr><td class="docs"><p>Given a map of parameters and a list of ordered parameters, return the valued parameters from the map in order.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- parameters 
+  [arglists args]
+  (let [arities (group-by count arglists)
+        n (count (vals args))
+        arity (first (arities n))]
+    (map args arity)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;parameters&quot;
+  (parameters [['a] ['a 'b] ['a 'b 'c]]
+              {'c :30 'b :20 'a :10}) =&gt; [:10 :20 :30])</pre></td></tr><tr><td class="docs"><p>Apply the function f :
+  - to the map of unsorted parameters args with the order of the arglists.
+  - to the vector of sorted parameters.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn apply-fn
+  ([f v-arglists m-args]
+     (apply-fn f (parameters v-arglists m-args)))
+  ([f v-args]
+     (apply (resolve-str f) v-args)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;apply-fn&quot;
+  (apply-fn :fq-fn :arglists :args) =&gt; :some-res
+  (provided
+    (parameters :arglists :args) =&gt; :parameter-in-order
+    (apply-fn :fq-fn :parameter-in-order) =&gt; :some-res))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;apply-fn&quot;
+  (apply-fn &quot;clojure.core/-&quot;
+            [['x] ['x 'y]]
+            {'y 10 'x 5}) =&gt; -5)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;apply-fn&quot;
+  (apply-fn &quot;clojure.core/-&quot; [5 10]) =&gt; -5)</pre></td></tr><tr><td class="docs"><p>Load the file into a list</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- load-file-ns 
+  [f]
+  (split (slurp f) #&quot;\n&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact
+  (load-file-ns &quot;namespaces-test-to-load&quot;) =&gt; [&quot;fnx.meta.example&quot; &quot;fnx.meta.example2&quot;])</pre></td></tr><tr><td class="docs"><p>Get the namespaces from the file namespaces-to-load</p>
+</td><td class="codes"><pre class="brush: clojure">(defn load-fq-fn! 
+  ([] (load-fq-fn! &quot;namespaces-to-load&quot;))
+  ([f]
+     (map (comp fun-str str) (mapcat #(ns-public-fn (symbol %)) (load-file-ns f)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact
+  (load-fq-fn! :file) =&gt; (contains
+                           [&quot;fnx.meta.example/one-arg-fn&quot;
+                            &quot;fnx.meta.example/hello-noir&quot;
+                            &quot;fnx.meta.example/two-arg-fn&quot;
+                            &quot;fnx.meta.example2/hello&quot;
+                            &quot;fnx.meta.example2/three-arg-fn&quot;] :in-any-order)
+  (provided
+    (load-file-ns :file) =&gt; [&quot;fnx.meta.example&quot; &quot;fnx.meta.example2&quot;]))</pre></td></tr><tr><td class="docs"><p>Given a namespace, return the namespace's 'parent-ns'</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- parent-ns 
+  [n]
+  (when n
+      (let [r (split n #&quot;\.&quot;)]
+        (if (&lt;= 2 (count r)) (join &quot;.&quot; (butlast r)) nil))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;parent-ns&quot;
+  (parent-ns nil) =&gt; nil
+  (parent-ns &quot;foo.aws.extra&quot;) =&gt; &quot;foo.aws&quot;
+  (parent-ns &quot;foo.aws&quot;) =&gt; &quot;foo&quot;
+  (parent-ns &quot;foo&quot;) =&gt; nil)</pre></td></tr><tr><td class="docs"><p>Given a fully qualified function name, return a namespace</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- nsp 
+  [f]
+  (first (split f #&quot;/&quot;)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;nsp&quot;
+  (nsp &quot;fnx.meta/expose&quot;) =&gt; &quot;fnx.meta&quot;)</pre></td></tr><tr><td class="docs"><p>Given a namespace, return the next namespace's depth</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- children-ns 
+  [n vc]
+  (if-not n
+    (distinct (map #(first (split % #&quot;\.&quot;)) vc))
+    (remove #{n} ((group-by #(.contains % n) vc) true))))</pre></td></tr><tr><td class="docs"><p>Given a namespace, returns its level.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- level 
   [ns]
-  (let [m (meta ns)]
-    (form-to [:post &quot;/expose&quot;]
-             (submit-button &quot;+&quot;)
-             (hidden-field &quot;ns&quot; ns)
-             (label &quot;ns&quot; ns)
-             (label &quot;Doc :&quot; (str &quot;&lt;i&gt;&quot; (:doc m) &quot;&lt;/i&gt;&quot;)))))</pre></td></tr><tr><td class="docs"><p>A page to expose some functions from a namespace.
-fnx.meta.example is the default one is no other is supplied.</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage [:post &quot;/expose&quot;] {:keys [ns]}
-  (let [n (symbol ns)
-        dn (:doc (meta (find-ns n)))
-        title n]
-    (layout
-     title
-     [:h1 title]
-     [:p#wrapper
-      (str &quot;&lt;i&gt;&quot; dn &quot;&lt;/i&gt;&quot;) 
-      (let [f (ns-public-fn n)]
-        (if f
-          (map input-fields-fn f)
-          (str &quot;Huh? No function exposed in &quot; n)))])))</pre></td></tr><tr><td class="docs"><p>A page to expose the namespace of the applications
-http://localhost/fnx will display all the namespaces of fnx</p>
-</td><td class="codes"><pre class="brush: clojure">(defpage &quot;/:ns&quot; {ns :ns}
-  (let [namespaces (list-ns ns)
-        title (str &quot;Exposed namespaces - '&quot; ns &quot;'&quot;)]
-    (layout
-     title
-     [:h1 title]
-     [:p#wrapper
-      (if namespaces
-        (map input-fields-ns namespaces)
-        (str &quot;No namespace with &quot; ns))])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+  (count (split ns #&quot;\.&quot;)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;level&quot;
+  (level &quot;foo&quot;)  =&gt; 1
+  (level &quot;foo.aws&quot;)  =&gt; 2
+  (level &quot;foo.aws.ec2&quot;) =&gt; 3)</pre></td></tr><tr><td class="docs"><p>Given a namespace, returns the nth level</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- nth-level 
+  [n ns]
+  (if (zero? n)
+    nil
+    (join #&quot;.&quot; (take n (split ns #&quot;\.&quot;)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;nth-level&quot;
+  (nth-level 0 &quot;foo.aws&quot;) =&gt; nil
+  (nth-level 1 &quot;foo.aws&quot;) =&gt; &quot;foo&quot;
+  (nth-level 2 &quot;foo.aws.ec2&quot;) =&gt; &quot;foo.aws&quot;)</pre></td></tr><tr><td class="docs"><p>Given a namespace, return the next namespace's depth</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- children-ns 
+  [n sc]
+  (if n
+    (let [l (level n)]
+      (remove #{n} ((group-by #(.contains % n) (distinct (map #(nth-level (inc l) %) sc))) true)))
+    (distinct (map #(nth-level 1 %) sc))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;IT - children-ns&quot;
+  (children-ns nil #{&quot;foo&quot; &quot;foo.aws&quot; &quot;bar.other&quot; &quot;foo.ec2&quot;}) =&gt; (contains  [&quot;foo&quot; &quot;bar&quot;] :in-any-order)
+  (children-ns &quot;foo&quot; #{&quot;foo&quot; &quot;foo.aws&quot; &quot;bar.other&quot; &quot;foo.ec2&quot;}) =&gt; (contains [&quot;foo.aws&quot; &quot;foo.ec2&quot;] :in-any-order)
+  (children-ns &quot;bar.aws&quot; #{&quot;bar&quot; &quot;bar.aws.ec2.s3&quot; &quot;bar.aws.ec&quot; &quot;bar.aws.ec2.s4&quot;}) =&gt; (contains [&quot;bar.aws.ec2&quot; &quot;bar.aws.ec&quot;] :in-any-order)
+  (children-ns &quot;foo&quot; #{}) =&gt; [])</pre></td></tr><tr><td class="docs"><p>Given a list of functions, returns the map of keypair ns-fn</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- map-namespaces 
+  [vfn]
+  (group-by nsp vfn))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;map-namespaces&quot;
+  (map-namespaces [:fq-fn1 :fq-fn3 :fq-fn2 :fq-fn4]) =&gt; {:foo [:fq-fn1 :fq-fn2]
+                                                         :bar [:fq-fn3]
+                                                         :foobar [:fq-fn4]}
+  (provided
+    (nsp :fq-fn1) =&gt; :foo
+    (nsp :fq-fn2) =&gt; :foo
+    (nsp :fq-fn3) =&gt; :bar
+    (nsp :fq-fn4) =&gt; :foobar))</pre></td></tr><tr><td class="docs"><p>Given a list of namespaces, returns the list of all namespace levels</p>
+</td><td class="codes"><pre class="brush: clojure">(defn all-ns-levels 
+  [lns]
+  (let [max-level (apply max (map level lns))]
+    (set (filter (comp not nil?)
+                 (mapcat #(for [x (range (inc max-level))]
+                            (nth-level x %))
+                         lns)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;all-ns-levels&quot;
+  (all-ns-levels #{&quot;foo.meta.expose&quot; &quot;foo.bar.ec2&quot;}) =&gt; (exactly #{&quot;foo.meta.expose&quot;
+                                                                   &quot;foo&quot;
+                                                                   &quot;foo.bar&quot;
+                                                                   &quot;foo.meta&quot;
+                                                                   &quot;foo.bar.ec2&quot;}) :in-any-order)</pre></td></tr><tr><td class="docs"><p>Load some namespaces from a list of fully qualified functions into the following example map:
+  {nil              [nil       ["foo" "bar"]                  []]
+   "foo"          [nil       ["foo.aws"]                      []]
+   "bar"          [nil       ["bar.file"]                     []]
+   "foo.aws"      ["foo"     ["foo.aws.ec2" "foo.aws.s3"] ["foo.aws/describe-region"]]
+   "foo.aws.ec2"  ["foo.aws" []                               ["foo.aws.ec2/list-ami"]]
+   "foo.aws.s3"   ["foo.aws" []                               ["foo.aws.s3/delete-buckets"]]
+   "bar.file"     ["bar"     []                               ["bar.file/ls"]]}</p>
+</td><td class="codes"><pre class="brush: clojure">(defn load-map-ns
+  [vfn]
+  (let [m (map-namespaces vfn)
+        k (all-ns-levels (keys m))]
+    (reduce (fn [o n] (assoc o n [(parent-ns n) (children-ns n k) (m n)])) {} (concat [nil] k))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;load-map-ns&quot;
+  (load-map-ns [:fq-fn1 :fq-fn2 :fq-fn3]) =&gt; {nil [nil [:foo :bar] []]
+                                               :foo [nil [] [:fq-fn1 :fq-fn2]]
+                                               :bar [nil [] [:fq-fn3]]}
+  (provided
+    (map-namespaces [:fq-fn1 :fq-fn2 :fq-fn3]) =&gt; {nil []
+                                                   :foo [:fq-fn1 :fq-fn2]
+                                                   :bar [:fq-fn3]}
+    (all-ns-levels [nil :foo :bar]) =&gt; [:foo :bar]
+    (parent-ns nil) =&gt; nil
+    (parent-ns :foo) =&gt; nil
+    (parent-ns :bar) =&gt; nil
+    (children-ns nil [:foo :bar]) =&gt; [:foo :bar]
+    (children-ns :foo [:foo :bar]) =&gt; []
+    (children-ns :bar [:foo :bar]) =&gt; []))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;IT - load-map-ns&quot;
+  (load-map-ns [&quot;foo/expose&quot;
+                &quot;bar/ls&quot;
+                &quot;bar.test.level3/cucoo&quot;
+                &quot;foo.aws/list-ami&quot;
+                &quot;foo.aws/list-regions&quot;
+                &quot;foo.meta/run&quot; &quot;foo.aws.ec2/test&quot;]) =&gt;
+  {&quot;foo.aws.ec2&quot;     [&quot;foo.aws&quot;    '()                     [&quot;foo.aws.ec2/test&quot;]]
+   &quot;foo.aws&quot;         [&quot;foo&quot;        '(&quot;foo.aws.ec2&quot;)        [&quot;foo.aws/list-ami&quot; &quot;foo.aws/list-regions&quot;]]
+   &quot;bar&quot;             [nil          '(&quot;bar.test&quot;)           [&quot;bar/ls&quot;]]
+   &quot;bar.test.level3&quot; [&quot;bar.test&quot;   '()                     [&quot;bar.test.level3/cucoo&quot;]]
+   &quot;foo.meta&quot;        [&quot;foo&quot;        '()                     [&quot;foo.meta/run&quot;]]
+   &quot;bar.test&quot;        [&quot;bar&quot;        '(&quot;bar.test.level3&quot;)    nil]
+   &quot;foo&quot;             [nil          '(&quot;foo.meta&quot; &quot;foo.aws&quot;) [&quot;foo/expose&quot;]]
+   nil               [nil          '(&quot;foo&quot; &quot;bar&quot;)          nil]})</pre></td></tr><tr><td class="docs"><p>A function to extract the metadata from a string that represents a fully qualified function.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn fn-meta 
+  [f]
+  (let [m (meta (resolve-str f))]
+    {:doc (:doc m)
+     :fname f
+     :arglists (:arglists m)}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;fn-meta&quot;
+  (fn-meta &quot;fnx.meta.example/one-arg-fn&quot;) =&gt; '{:doc &quot;A public fn with one arg, should be listed&quot;
+                                               :fname &quot;fnx.meta.example/one-arg-fn&quot;
+                                               :arglists [[x]]})</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.api" name="one.sample.api"><h1 class="project-name">one.sample.api</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>The server side of the sample application. Provides a simple API for
+  updating an in-memory database.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.api
+  (:use [compojure.core :only (defroutes POST)]
+        [fnx.meta.expose :only [load-map-ns load-fq-fn! fn-meta apply-fn]]
+        [midje.sweet]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defonce ^:private next-id (atom 0))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defonce ^:dynamic *database* (atom #{}))</pre></td></tr><tr><td class="docs"><p>Multimethod to handle incoming API calls. Implementations are
+  selected based on the :fn key in the data sent by the client.
+  Implementation are called with whatever data struture the client
+  sends (which will already have been read into a Clojure value) and
+  can return any Clojure value. The value the implementation returns
+  will be serialized to a string before being sent back to the client.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti remote
+  :fn)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod remote :default [data]
+  {:status :error :message &quot;Unknown endpoint.&quot;})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod remote :add-name [data]
+  (let [n (-&gt; data :args :name)
+        response {:exists (contains? @*database* n)}]
+    (swap! *database* conj n)
+    response))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod remote :load-map-ns [data]
+  (let [response {:res (load-map-ns (load-fq-fn!))}]
+    response))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;:load-map-ns&quot;
+  (remote {:fn :load-map-ns
+           :args {:fq-fn :fully-qualified-fn-name}}) =&gt; {:res :output-result}
+  (provided
+    (load-fq-fn!) =&gt; :some-fully-qualified-fns
+    (load-map-ns :some-fully-qualified-fns) =&gt; :output-result))</pre></td></tr><tr><td class="docs"><p>Remote access to retrieve the map of metadata for the function fnxs.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmethod remote :load-map-meta-fn [data]
+  (let [fname (-&gt; data :args :fq-fn)
+        response {:meta-fn (fn-meta fname)}]
+    response))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;:load-map-meta-fn&quot;
+  (remote {:fn :load-map-meta-fn
+           :args {:fq-fn :fully-qualified-fn-name}}) =&gt; {:meta-fn :output-result}
+  (provided
+    (fn-meta :fully-qualified-fn-name) =&gt; :output-result))</pre></td></tr><tr><td class="docs"><p>Remote access to apply a function to its arguments</p>
+</td><td class="codes"><pre class="brush: clojure">(defmethod remote :apply-fn [data]
+  (let [meta-fn (-&gt; data :args :meta-fn)
+        args (-&gt; data :args :args)
+        fname (:fname meta-fn)
+        arglists (:arglists meta-fn)]
+    {:res (apply-fn fname arglists args)}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;apply-fn&quot;
+  (remote {:fn :apply-fn
+           :args {:meta-fn {:fname :real-fq-fn
+                            :arglists :some-arglists}
+                  :args :some-real-map-with-args}}) =&gt; {:res :output-result}
+  (provided
+    (apply-fn :real-fq-fn
+              :some-arglists
+              :some-real-map-with-args) =&gt; :output-result))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;IT - no order needed&quot;
+  (remote {:fn :apply-fn
+           :args {:meta-fn {:fname &quot;clojure.core/+&quot;
+                            :arglists [['x 'y]]}
+                  :args {'x 1
+                         'y 2} }}) =&gt; {:res 3})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(fact &quot;IT - order needed&quot;
+  (remote {:fn :apply-fn
+           :args {:meta-fn {:fname &quot;clojure.core/-&quot;
+                            :arglists [['x 'y]]}
+                  :args {'y 1
+                         'x 2} }}) =&gt; {:res 1})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defroutes remote-routes
+  (POST &quot;/remote&quot; {{data &quot;data&quot;} :params}
+        (pr-str
+         (remote
+          (binding [*read-eval* false]
+            (read-string data))))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.config" name="one.sample.config"><h1 class="project-name">one.sample.config</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Contains configuration for the sample application.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.config
+  (:require [net.cgrand.enlive-html :as html]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- production-transform [h]
+  (html/transform h
+                  [:ul#navigation]
+                  (html/substitute (html/html-snippet ))))</pre></td></tr><tr><td class="docs"><p>Configuration for the sample application.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  config {:src-root &quot;src&quot;
+          :app-root &quot;src/app/cljs&quot;
+          :top-level-package &quot;one&quot;
+          :js &quot;public/javascripts&quot;
+          :dev-js-file-name &quot;main.js&quot;
+          :prod-js-file-name &quot;mainp.js&quot;
+          :dev-js [&quot;goog.require('one.sample.core');&quot;
+                   &quot;goog.require('one.sample.model');&quot;
+                   &quot;goog.require('one.sample.controller');&quot;
+                   &quot;goog.require('one.sample.history');&quot;
+                   &quot;goog.require('one.sample.logging');&quot;
+                   &quot;one.sample.core.start();one.sample.core.repl();&quot;]
+          :prod-js [&quot;one.sample.core.start();&quot;]
+          :reload-clj [&quot;/one/host_page&quot;
+                       &quot;/one/reload&quot;
+                       &quot;/one/templates&quot;
+                       &quot;/one/sample/api&quot;
+                       &quot;/one/sample/config&quot;
+                       &quot;/one/sample/dev_server&quot;
+                       &quot;/fnx/meta/expose&quot;
+                       &quot;/fnx/meta/example&quot;
+                       &quot;/fnx/meta/example2&quot;]
+          :prod-transform production-transform})</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.dev-server" name="one.sample.dev-server"><h1 class="project-name">one.sample.dev-server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Serve a friendly ClojureScript environment with code reloading and
+   the ClojureScript application in both development and advanced
+   compiled mode.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.dev-server
+  (:use [ring.adapter.jetty :only (run-jetty)]
+        [ring.middleware.file :only (wrap-file)]
+        [ring.middleware.file-info :only (wrap-file-info)]
+        [ring.middleware.params :only (wrap-params)]
+        [ring.middleware.stacktrace :only (wrap-stacktrace)]
+        [ring.util.response :only (file-response)]
+        [compojure.core :only (defroutes GET POST ANY)]
+        [cljs.repl :only (repl)]
+        [cljs.repl.browser :only (repl-env)]
+        [one.templates :only (load-html apply-templates render)]
+        [one.host-page :only (application-host)]
+        [one.sample.api :only (remote-routes)]
+        [one.sample.config])
+  (:require [net.cgrand.enlive-html :as html]
+            [one.reload :as reload])
+  (:import java.io.File))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- environment [uri]
+  (if (= uri &quot;/development&quot;) :development :production))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- make-host-page [request]
+  {:status 200
+   :headers {&quot;Content-Type&quot; &quot;text/html; charset=utf-8&quot;}
+   :body (application-host config (environment (:uri request)))})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defroutes app-routes
+  remote-routes
+  (GET &quot;/development&quot; request (make-host-page request))
+  (GET &quot;/production&quot; request (make-host-page request) )
+  (GET &quot;/design*&quot; {{file :*} :route-params}
+       (when (.endsWith file &quot;.html&quot;)
+         (load-html (.substring file 1))))
+  (ANY &quot;*&quot; request (file-response &quot;404.html&quot; {:root &quot;public&quot;})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- js-encoding [handler]
+  (fn [request]
+    (let [{:keys [headers body] :as response} (handler request)]
+      (if (and (= (get headers &quot;Content-Type&quot;) &quot;text/javascript&quot;)
+               (= (type body) File))
+        (assoc-in response [:headers &quot;Content-Type&quot;]
+                  &quot;text/javascript; charset=utf-8&quot;)
+        response))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- rewrite-design-uris [handler]
+  (fn [{:keys [uri] :as request}]
+    (if (some true? (map #(.startsWith uri (str &quot;/design/&quot; %))
+                         [&quot;css&quot; &quot;javascripts&quot; &quot;images&quot; &quot;js&quot; &quot;favicon.ico&quot;]))
+      (handler (assoc request :uri (.substring uri 7)))
+      (handler request))))</pre></td></tr><tr><td class="docs"><p>Parse a string into a seq of Enlive nodes.</p>
+
+<p>We need to use this instead of Enlive's html-snippet, because
+html-snippet throws away the doctype</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- html-parse
+  [s]
+  (html/html-resource (java.io.StringReader. s)))</pre></td></tr><tr><td class="docs"><p>Accepts the selected menu (a keyword) and the response and returns
+  an updated response body with the correct menu activated.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- active-menu-transform
+  [menu response]
+  (assoc response
+    :body (render (html/transform (html-parse (:body response))
+                                  [:ul#navigation (keyword (str &quot;li.&quot; (name menu)))]
+                                  (html/add-class &quot;active&quot;)))))</pre></td></tr><tr><td class="docs"><p>Middleware which will highlight the current active menu item.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- set-active-menu
+  [handler]
+  (fn [request]
+    (let [response (handler request)
+          uri (:uri request)]
+      (cond (= uri &quot;/&quot;) (active-menu-transform :home response)
+            (and (.startsWith uri &quot;/design&quot;) (.endsWith uri &quot;.html&quot;)) (active-menu-transform :design response)
+            (= uri &quot;/development&quot;) (active-menu-transform :development response)
+            (= uri &quot;/production&quot;) (active-menu-transform :production response)
+            :else response))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private app (-&gt; app-routes
+                       (reload/watch-cljs config)
+                       (wrap-file &quot;public&quot;)
+                       rewrite-design-uris
+                       wrap-file-info
+                       apply-templates
+                       js-encoding
+                       wrap-params
+                       set-active-menu
+                       wrap-stacktrace
+                       (reload/reload-clj (:reload-clj config))))</pre></td></tr><tr><td class="docs"><p>Start the development server on port 8080.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn run-server
+  []
+  (run-jetty (var app) {:join? false :port 8080}))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.prod-server" name="one.sample.prod-server"><h1 class="project-name">one.sample.prod-server</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Production server serves the backend API. This is only required if
+  there is a backend API.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.prod-server
+  (:use [ring.adapter.jetty :only (run-jetty)]
+        [ring.middleware.file :only (wrap-file)]
+        [ring.middleware.file-info :only (wrap-file-info)]
+        [ring.middleware.params :only (wrap-params)]
+        [ring.util.response :only (file-response)]
+        [compojure.core :only (defroutes ANY)]
+        [one.sample.api :only (remote-routes)]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private root &quot;out/public&quot;)</pre></td></tr><tr><td class="docs"><p>HACK: Something about the defroutes below requires that the
+out/public directory exist, or we get a compile error.</p>
+</td><td class="codes"><pre class="brush: clojure">(.mkdirs (java.io.File. &quot;out/public&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defroutes app-routes
+  remote-routes
+  (-&gt; (ANY &quot;*&quot; request (file-response &quot;404.html&quot; {:root root}))
+      (wrap-file root)
+      wrap-file-info))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private app (-&gt; app-routes
+                       wrap-params))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn run-server []
+  (let [port (Integer/parseInt (get (System/getenv) &quot;PORT&quot; &quot;8080&quot;))]
+    (run-jetty (var app) {:join? false :port port})))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.repl" name="one.sample.repl"><h1 class="project-name">one.sample.repl</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>The starting namespace for the project. This is the namespace that
+  users will land in when they start a Clojure REPL. It exists to
+  provide convenience functions like 'go' and 'dev-server'.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.repl
+  (:use [clojure.repl])
+  (:require [one.tools :as tools]
+            [one.sample.dev-server :as dev]
+            [clojure.java.browse :as browse]))</pre></td></tr><tr><td class="docs"><p>Start a browser-connected REPL and launch a browser to talk to it.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn go
+  []
+  (dev/run-server)
+  (future (Thread/sleep 3000)
+          (browse/browse-url &quot;http://localhost:8080/development&quot;))
+  (tools/cljs-repl))</pre></td></tr><tr><td class="docs"><p>Start the development server and open the host application in the
+  default browser.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn dev-server
+  []
+  (dev/run-server)
+  (future (Thread/sleep 3000)
+          (browse/browse-url &quot;http://localhost:8080&quot;)))</pre></td></tr><tr><td class="docs"><p>Start a ClojureScript REPL.</p>
+
+<p>This is a convenience function so that people can start a CLJS REPL
+without having to type in (tools/cljs-repl)</p>
+</td><td class="codes"><pre class="brush: clojure">(defn cljs-repl
+  []
+  (tools/cljs-repl))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(println)
+(println &quot;Type (go) to launch the development server and setup a browser-connected REPL.&quot;)
+(println &quot;Type (dev-server) to launch only the development server.&quot;)
+(println)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#script.build" name="script.build"><h1 class="project-name">script.build</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Contains a -main function which builds the production artifacts for
+  the project.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns script.build
+  (:require [clojure.java.io :as io]
+            [one.tools :as tools]
+            [one.sample.config :as config]))</pre></td></tr><tr><td class="docs"><p>Compile ClojureScript sources and output them as well as all static
+  resources to the out/public directory.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn -main
+  []
+  (println &quot;Creating out/public...&quot;)
+  (.mkdir (io/file &quot;out&quot;))
+  (tools/copy-recursive-into &quot;public&quot; &quot;out&quot;)
+  (tools/delete &quot;out/public/index.html&quot;
+                &quot;out/public/design.html&quot;
+                &quot;out/public/javascripts&quot;)
+  (.mkdir (io/file &quot;out/public/javascripts&quot;))
+  (println &quot;Create advanced compiled JavaScript...&quot;)
+  (tools/build-project config/config))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#script.serve" name="script.serve"><h1 class="project-name">script.serve</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Provides a -main function which will start the production server.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns script.serve
+  (:require [one.sample.prod-server :as prod]))</pre></td></tr><tr><td class="docs"><p>Start the production server which serves the content from
+  out/public as well as the sample application's API.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn -main
+  []
+  (prod/run-server))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.snippets" name="one.sample.snippets"><h1 class="project-name">one.sample.snippets</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Macros for including HTML snippets in the ClojureScript application
+  at compile time.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.snippets
+  (:use [one.templates :only (render)])
+  (:require [net.cgrand.enlive-html :as html]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- snippet [file id]
+  (render (html/select (html/html-resource file) id)))</pre></td></tr><tr><td class="docs"><p>Expands to a map of HTML snippets which are extracted from the
+  design templates.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmacro snippets
+  []
+  {:form (snippet &quot;form.html&quot; [:div#form])
+   :greeting (snippet &quot;greeting.html&quot; [:div#greeting])
+   :fn-display (snippet &quot;fn-form.html&quot; [:div#fn-display])
+   :ns-nav (snippet &quot;ns-nav.html&quot; [:div#ns-nav])
+   :spinner (snippet &quot;spinner.html&quot; [:div#spinner])
+   :prev (snippet &quot;prev.html&quot; [:div#prev])})</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#leiningen.bootstrap" name="leiningen.bootstrap"><h1 class="project-name">leiningen.bootstrap</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Bootstrap the project by running lein deps and lein git-deps.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns leiningen.bootstrap
+  (:use [leiningen.git-deps :only [git-deps]]
+        [leiningen.core :only [default-repos]]
+        [leiningen.deps :only [deps]]
+        [leiningen.util.maven :only [container make-remote-artifact
+                                     make-remote-repo make-local-repo]])
+  (:import (org.apache.maven.artifact.resolver ArtifactResolver)))</pre></td></tr><tr><td class="docs"><p>There is a bug in Leiningen 1.6.2 which requires that you have
+Clojure 1.2.1 in the local maven repository when you are working on a
+Clojure 1.3 project. If the first project that someone works on
+with Leiningen is a Clojure 1.3 based project then they will
+encounter this problem.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>A lot of people have run into this with ClojureScript One so we
+have added a workaround.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Leiningen includes an <code>install</code> task which, for some unknown reason,
+takes a long time to run. Below, we have extracted just the part
+of that task that we need to get a dependency from a maven repository.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Download a dependency from a maven repository.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- standalone-download
+  [name group version]
+  (.resolveAlways (.lookup container ArtifactResolver/ROLE)
+                  (make-remote-artifact name group version)
+                  (map make-remote-repo default-repos)
+                  (make-local-repo)))</pre></td></tr><tr><td class="docs"><p>Bootstrap the project by running lein deps and lein git-deps.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn bootstrap
+  [project]
+  ;; Workarond for Leiningen 1.6.2 bug. Ensure that we have Clojure 1.2.1 in
+  ;; the local maven repository.
+  (standalone-download &quot;clojure&quot; &quot;org.clojure&quot; &quot;1.2.1&quot;)
+  (git-deps project)
+  (deps project))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#leiningen.git-deps" name="leiningen.git-deps"><h1 class="project-name">leiningen.git-deps</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>How this works: It clones projects into .lein-git-deps/<whatever>.
+  If the directory already exists, it does a git pull and git checkout.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns leiningen.git-deps
+  (:require [clojure.java.shell :as sh]
+            [clojure.java.io :as io]
+            [clojure.string :as string]))</pre></td></tr><tr><td class="docs"><p>The directory into which dependencies will be cloned.</p>
+
+<p>Why, you might ask, are we using str here instead of simply def'ing
+the var to a string directly? The answer is that we are working
+around a bug in marginalia where it can't tell the difference
+between the string that's the value for a def and a docstring. It
+will hopefully be fixed RSN, because this makes us feel dirty.</p>
+</td><td class="codes"><pre class="brush: clojure">(def ^{:private true
+       :doc }
+  git-deps-dir (str &quot;.lein-git-deps&quot;))</pre></td></tr><tr><td class="docs"><p>Return true if the specified directory exists.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- directory-exists?
+  [dir]
+  (.isDirectory (io/file dir)))</pre></td></tr><tr><td class="docs"><p>Given a git URL, return the directory it would clone into by default.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- default-clone-dir
+  [uri]
+  (string/join &quot;.&quot; (-&gt; uri
+                       (string/split #&quot;/&quot;)
+                       (last)
+                       (string/split #&quot;\.&quot;)
+                       butlast)))</pre></td></tr><tr><td class="docs"><p>Run a command, throwing an exception if it fails, returning the
+  result as with clojure.java.shell/sh.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- exec
+  [&amp; args]
+  (let [{:keys [exit out err] :as result} (apply sh/sh args)]
+    (if (zero? exit)
+      result
+      (throw
+       (Exception.
+        (format &quot;Command %s failed with exit code %s\n%s\n%s&quot;
+                (apply str (interpose &quot; &quot; args))
+                exit
+                out
+                err))))))</pre></td></tr><tr><td class="docs"><p>Clone the git repository at url into dir-name while working in
+  directory working-dir.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- git-clone
+  [url dir-name working-dir]
+  (apply exec (remove nil? [&quot;git&quot; &quot;clone&quot; url (str dir-name) :dir working-dir])))</pre></td></tr><tr><td class="docs"><p>Check out the specified commit in dir.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- git-checkout
+  [commit dir]
+  (println &quot;Running git checkout &quot; commit &quot; in &quot; (str dir))
+  (exec &quot;git&quot; &quot;checkout&quot; commit :dir dir))</pre></td></tr><tr><td class="docs"><p>Return true if the git repository in dir has HEAD detached.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- detached-head?
+  [dir]
+  (let [{out :out} (exec &quot;git&quot; &quot;branch&quot; &quot;--color=never&quot; :dir dir)
+        lines (string/split-lines out)
+        current-branch (first (filter #(.startsWith % &quot;*&quot;) lines))]
+    (when-not current-branch
+      (throw (Exception. &quot;Unable to determine current branch&quot;)))
+    (= current-branch &quot;* (no branch)&quot;)))</pre></td></tr><tr><td class="docs"><p>Run 'git-pull' in directory dir, but only if we're on a branch. If
+  HEAD is detached, we only do a fetch, not a full pull.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- git-pull
+  [dir]
+  (println &quot;Running git pull on &quot; (str dir))
+  (if (detached-head? dir)
+    (do
+      (println &quot;Not on a branch, so fetching instead of pulling.&quot;)
+      (exec &quot;git&quot; &quot;fetch&quot; :dir dir))
+    (exec &quot;git&quot; &quot;pull&quot; :dir dir)))</pre></td></tr><tr><td class="docs"><p>A leiningen task that will pull dependencies in via git.</p>
+
+<p>  Dependencies should be listed in project.clj under the
+  :git-dependencies key in one of these three forms:</p>
+
+<pre><code>:git-dependencies [;; First form: just a URL.
+                   ["https://github.com/foo/bar.git"]
+
+                   ;; Second form: A URL and a ref, which can be anything
+                   ;; you can specify for 'git checkout', like a commit id
+                   ;; or a branch name.
+                   ["https://github.com/foo/baz.git"
+                    "329708b"]
+
+                   ;; Third form: A URL, a commit, and a map
+                   ["https://github.com/foo/quux.git"
+                    "some-branch"
+                    {:dir "alternate-directory"}]]
+</code></pre>
+</td><td class="codes"><pre class="brush: clojure">(defn git-deps
+  [project]
+  (when-not (directory-exists? git-deps-dir)
+    (.mkdir (io/file git-deps-dir)))
+  (doseq [dep (:git-dependencies project)]
+    (println &quot;Setting up dependency for &quot; dep)
+    (let [[dep-url commit {clone-dir-name :dir}] dep
+          commit (or commit &quot;master&quot;)
+          clone-dir-name (or clone-dir-name (default-clone-dir dep-url))
+          clone-dir (io/file git-deps-dir clone-dir-name)]
+      (if (directory-exists? clone-dir)
+        (git-pull clone-dir)
+        (git-clone dep-url clone-dir-name git-deps-dir))
+      (git-checkout commit clone-dir))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.config" name="one.config"><h1 class="project-name">one.config</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Convenience functions for working with configuration data.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.config)</pre></td></tr><tr><td class="docs"><p>Given a configuration map, return output directory options.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn cljs-build-opts
+  [config]
+  {:output-to (str (:js config) &quot;/&quot; (:dev-js-file-name config))
+   :output-dir (str (:js config) &quot;/out&quot;)})</pre></td></tr><tr><td class="docs"><p>Given a configuration map, return the path to the production
+  Javascript file.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn production-js
+  [config]
+  (str (:js config) &quot;/&quot; (:prod-js-file-name config)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.host-page" name="one.host-page"><h1 class="project-name">one.host-page</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Functions to create an HTML page that hosts a ClojureScript
+  application.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.host-page
+  (:use [one.templates :only (construct-html render)])
+  (:require [net.cgrand.enlive-html :as html]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private script-snippet
+  (html/html-snippet &quot;&lt;script type='text/javascript'&gt;&lt;/script&gt;&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- script
+  [f]
+  (html/transform script-snippet [:script] f))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- application-view
+  [&amp; scripts]
+  (html/transform (construct-html (html/html-resource &quot;application.html&quot;))
+                  [:body]
+                  (apply html/append scripts)))</pre></td></tr><tr><td class="docs"><p>Given a configuration map and an environment, return HTML (as a
+  string) that can host a ClojureScript application. The environment
+  must be either <code>:development</code> or <code>:production</code> - any other value results
+  in an exception. The generated HTML is based on the contents of
+  application.html, which is loaded as an Enlive resource.</p>
+
+<p>  In production mode, the HTML (as a sequence of Enlive nodes) is
+  transformed via the <code>:prod-transform</code> function from the config map.</p>
+
+<p>  This function is normally called in two situations:</p>
+
+<ol>
+<li><p>From a Ring application to dynamically generate the application
+ HTML.</p></li>
+<li><p>From the build script to create static deployment artifacts.</p></li>
+</ol>
+</td><td class="codes"><pre class="brush: clojure">(defn application-host
+  [config environment]
+  (render
+   (case environment
+     :development
+     (apply application-view (script (html/set-attr :src &quot;javascripts/out/goog/base.js&quot;))
+            (script (html/set-attr :src &quot;javascripts/main.js&quot;))
+            (map #(script (html/content %)) (:dev-js config)))
+     :production
+     (let [tfn (get config :prod-transform identity)]
+       (tfn (apply application-view
+                   (script (html/set-attr :src (str &quot;javascripts/&quot;
+                                                    (:prod-js-file-name config))))
+                   (map #(script (html/content %)) (:prod-js config))))))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.reload" name="one.reload"><h1 class="project-name">one.reload</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Contains functions which implement Clojure and ClojureScript code
+  reloading.</p>
+
+<p>  When any watched Clojure file changes, all watched Clojure files
+  will be recompiled. If any ClojureScript file changes or if any
+  template file changes, all ClojureScript files will be recompiled.</p>
+
+<p>  Recompilation only happens on page reloads.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.reload
+  (:use [cljs.closure :only (build)]
+        [one.config])
+  (:require [clojure.java.io :as io]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defonce ^:private
+  last-compile (atom {}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- any-modified
+  [k files]
+  (let [newest (apply max
+                      (map #(.lastModified %) files))]
+    (when (&gt; newest (get @last-compile k 0))
+      newest)))</pre></td></tr><tr><td class="docs"><p>Return a seq of File objects that are descendants of dir that end
+  with extension ext.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- descendants-ending-with
+  [dir ext]
+  (filter #(.endsWith (.getName %) ext) (file-seq (io/file dir))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- any-modified-cljs
+  [dir k]
+  (let [files (filter #(.isFile %) (into (descendants-ending-with dir &quot;.cljs&quot;)
+                                         (file-seq (io/file &quot;templates&quot;))))]
+    (any-modified k files)))</pre></td></tr><tr><td class="docs"><p>Ring middleware which watches dir for changes to ClojureScript
+  source files and template HTML files. When changes are detected,
+  recompiles only the ClojureScript and template files (not the
+  Clojure files) using a build configuration derived from config.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn watch-cljs 
+  [handler config]
+  (fn [request]
+    (let [k (:uri request)
+          ts (any-modified-cljs (:src-root config) k)]
+      (when ts
+        (swap! last-compile assoc k ts)
+        (let [build-opts (cljs-build-opts config)]
+          (doseq [file (file-seq (io/file (str (:output-dir build-opts) &quot;/&quot;
+                                               (:top-level-package config))))]
+            (.setLastModified file 0))
+          (build (:app-root config) (if (= (:uri request) &quot;/production&quot;)
+                                      (assoc build-opts :optimizations :advanced
+                                             :output-to (production-js config))
+                                      build-opts)))))
+    (handler request)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- any-modified-clj
+  [files]
+  (any-modified &quot;clj&quot;
+                (map #(-&gt; (str % &quot;.clj&quot;)
+                          (.substring 1)
+                          io/resource
+                          (.getFile)
+                          io/file)
+                     files)))</pre></td></tr><tr><td class="docs"><p>Ring middleware which watches a list of Clojure files for changes
+  and recompiles all of them when any of the files change.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn reload-clj
+  [handler files]
+  (fn [request]
+    (when-let [ts (any-modified-clj files)]
+      (swap! last-compile assoc &quot;clj&quot; ts)
+      (let [ns (ns-name *ns*)]
+        (apply load files)))
+    (handler request)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.templates" name="one.templates"><h1 class="project-name">one.templates</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Contains functions for combining HTML fragments into complete HTML documents.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.templates
+  (:use net.cgrand.enlive-html)
+  (:import java.io.File))</pre></td></tr><tr><td class="docs"><p>Given a seq of Enlive nodes, return the corresponding HTML string.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn render
+  [t]
+  (apply str (emit* t)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(declare construct-html)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- html-body [name]
+  (:content (first (select (html-resource name) [:body]))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- include-html [h]
+  (let [includes (select h [:_include])]
+    (loop [h h
+           includes (seq includes)]
+      (if includes
+        (let [file (-&gt; (first includes) :attrs :file)
+              include (construct-html (html-body file))]
+          (recur (transform h [[:_include (attr= :file file)]] (substitute include))
+                 (next includes)))
+        h))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- maps [c] (filter map? c))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- replace-html [h c]
+  (let [id (-&gt; c :attrs :id)
+        tag (:tag c)
+        selector (keyword (str (name tag) &quot;#&quot; id))]
+    (transform h [selector] (substitute c))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- wrap-html [h]
+  (let [within (seq (select h [:_within]))]
+    (if within
+      (let [file (-&gt; (first within) :attrs :file)
+            outer (construct-html (html-resource file))
+            content (maps (:content (first within)))]
+        (loop [outer outer
+               content (seq content)]
+          (if content
+            (recur (replace-html outer (first content)) (next content))
+            outer)))
+      h)))</pre></td></tr><tr><td class="docs"><p>Process a seq of Enlive nodes looking for <code>_include</code> and <code>_within</code> tags.
+  Occurrences of <code>_include</code> are replaced by the resource to which they
+  refer. The contents of <code>_within</code> tags are inserted into the resource
+  to which they refer. <code>_within</code> is always the top-level tag in a file.
+  <code>_include</code> can appear anywhere. Files with <code>_include</code> can reference
+  files which themselves contain <code>_include</code> or <code>_within</code> tags, to an
+  arbitrary level of nesting.</p>
+
+<p>  For more information, see '<a href="https://github.com/brentonashworth/one/wiki/Design-and-templating">Design and Templating</a>' in the project
+  wiki.</p>
+
+<p>  Returns a seq of Enlive nodes.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn construct-html
+  [nodes]
+  (wrap-html (include-html nodes)))</pre></td></tr><tr><td class="docs"><p>Accept a file (a path to a resource on the classpath) and return a
+  HTML string processed per construct-html.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn load-html
+  [file]
+  (render (construct-html (html-resource file))))</pre></td></tr><tr><td class="docs"><p>Ring middleware which intercepts files served from the public
+  directory and applies templating.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn apply-templates
+  [handler]
+  (fn [request]
+    (let [{:keys [headers body] :as response} (handler request)]
+      (if (and (= (type body) File)
+               (.endsWith (.getName body) &quot;.html&quot;))
+        (let [new-body (render (construct-html (html-snippet (slurp body))))]
+          {:status 200
+           :headers {&quot;Content-Type&quot; &quot;text/html; charset=utf-8&quot;}
+           :body new-body})
+        response))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.test" name="one.test"><h1 class="project-name">one.test</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Support for evaluating ClojureScript code from Clojure tests.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.test
+  (:refer-clojure :exclude [load-file])
+  (:use [cljs.compiler :only (namespaces)]
+        [cljs.repl :only (evaluate-form load-file load-namespace)]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:dynamic *eval-env*)</pre></td></tr><tr><td class="docs"><p>Evaluate a ClojureScript form within the given evaluation
+  environment. The form will also be evaluated in the passed namespace
+  which defaults to <code>'cljs.user</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn evaluate-cljs
+  ([eval-env form]
+     (evaluate-cljs eval-env 'cljs.user form))
+  ([eval-env ns form]
+     (let [env {:context :statement :locals {}}]
+       (cond
+        (and (seq? form) ('#{load-file clojure.core/load-file} (first form)))
+        (load-file eval-env (second form))
+        (and (seq? form) ('#{load-namespace} (first form)))
+        (load-namespace eval-env (second form))
+        :else
+        (let [ret (evaluate-form eval-env
+                                 (assoc env :ns (@namespaces ns))
+                                 &quot;&lt;testing&gt;&quot;
+                                 form
+                                 (fn [x] `(cljs.core.pr-str ~x)))]
+          (try (read-string ret)
+               (catch Exception e
+                 (if (string? ret)
+                   ret
+                   nil))))))))</pre></td></tr><tr><td class="docs"><p>Using evaluation environment <code>eval-env</code> evaluate form in namespace
+  <code>ns</code> in the browser until <code>pred</code> applied to the result returns <code>true</code> or
+  the timeout expires. If <code>pred</code> returns logical true, returns the
+  result of <code>pred</code>. Throws <code>Exception</code> if the timeout (in milliseconds)
+  has expired.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn cljs-wait-for*
+  [eval-env pred ns form remaining]
+  (if (pos? remaining)
+    (if-let [result (pred (evaluate-cljs eval-env ns form))]
+      result
+      (do (Thread/sleep 10)
+          (recur eval-env pred ns form (- remaining 10))))
+    (throw (Exception.
+            (str &quot;Form &quot;
+                 form
+                 &quot; did not satisfy predicate before the timeout expired.&quot;)))))</pre></td></tr><tr><td class="docs"><p>Expands to a call to <code>cljs-wait-for*</code> using <code>*eval-env*</code> as the
+  evaluation environment and a timeout of roughly one minute.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmacro cljs-wait-for
+  [pred ns form]
+  `(cljs-wait-for* *eval-env* ~pred (quote ~ns) (quote ~form) 60000))</pre></td></tr><tr><td class="docs"><p>Ensure that that browser has completely loaded namespace ns. We
+   need this because in some situations, we wind up trying to run code
+   that depends on a namespace that isn't available yet, due to
+   asynchrony in the browser. Returns true if the namespace loads
+   within the specified timeout (roughly 60 seconds by default), and
+   throws <code>Exception</code> otherwise.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn ensure-ns-loaded
+  ([eval-env ns] (ensure-ns-loaded eval-env ns 60000))
+  ([eval-env ns remaining]
+     (if (pos? remaining)
+       (if (evaluate-cljs eval-env (list 'boolean ns))
+         true
+         (do (Thread/sleep 10)
+             (recur eval-env ns (- remaining 10))))
+       (throw (Exception. (str &quot;Namespace &quot; ns &quot; did not load before the timeout expired.&quot;))))))</pre></td></tr><tr><td class="docs"><p>Evaluate forms in namespace <code>ns</code> in the evaluation environment
+  <code>*eval-env*</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmacro cljs-eval
+  [ns &amp; forms]
+  `(do
+     (ensure-ns-loaded *eval-env* (quote ~ns))
+     ~@(map (fn [x] `(evaluate-cljs *eval-env* (quote ~ns) (quote ~x))) forms)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.tools" name="one.tools"><h1 class="project-name">one.tools</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Support for building deployment artifacts for a project.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns one.tools
+  (:use [cljs.closure :only (build)]
+        [one.host-page :only (application-host)]
+        [one.config :only (cljs-build-opts production-js)]
+        [cljs.repl :only (repl)]
+        [cljs.repl.browser :only (repl-env)])
+  (:require [clojure.java.io :as io]))</pre></td></tr><tr><td class="docs"><p>Emit both a JavaScript file containing the compiled ClojureScript
+  application and the host HTML page.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn build-project
+  [config]
+  (build (:app-root config) (assoc (cljs-build-opts config)
+                              :optimizations :advanced
+                              :output-to (str &quot;out/&quot; (production-js config))))
+  (spit &quot;out/public/index.html&quot; (application-host config :production)))</pre></td></tr><tr><td class="docs"><p>Start a ClojureScript REPL which can connect to the development
+  version of the application. The REPL will not work until the
+  development page connects to it, so you will need to either open or
+  refresh the development page after calling this function.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn cljs-repl
+  []
+  (repl (repl-env)))</pre></td></tr><tr><td class="docs"><p>Recursively copy the files in src to dest.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn copy-recursive-into
+  [src dest]
+  (doseq [file (remove #(.isDirectory %) (file-seq (io/file src)))]
+    (let [dest-file (io/file dest file)]
+      (.mkdirs (.getParentFile dest-file))
+      (io/copy file dest-file))))</pre></td></tr><tr><td class="docs"><p>Delete one or more files or directories. Directories are recursively
+  deleted.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn delete
+  [&amp; paths]
+  (doseq [path paths
+          file (reverse (file-seq (io/file path)))]
+    (.delete file)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#script.docs" name="script.docs"><h1 class="project-name">script.docs</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Provides a <code>-main</code> function which will generate the documentation for
+  the website, the documentation that you are viewing at this very
+  moment.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns script.docs
+  (:require [net.cgrand.enlive-html :as html]
+            [clojure.java.io :as io]))</pre></td></tr><tr><td class="docs"><p>Accepts a relative path for an HTML file and returns the body
+  content from that file.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- uberdoc-content
+  [file]
+  (-&gt; (io/file file)
+      html/html-resource
+      (html/select [:body])
+      first
+      :content))</pre></td></tr><tr><td class="docs"><p>Accepts the relative path for the documentation template file
+  and the margenalia content and returns the documentation page for
+  the website.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- docs
+  [template marg]
+  (-&gt; (io/file template)
+      html/html-resource
+      (html/transform [:div#marginalia-documentation]
+                      (html/substitute marg))))</pre></td></tr><tr><td class="docs"><p>Create the documentation.html page for the website. Outputs this
+  file as <code>docs/documentation.html</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn -main
+  []
+  (let [marg (uberdoc-content &quot;docs/uberdoc.html&quot;)
+        docs (docs &quot;script/documentation.html&quot; marg)]
+    (spit &quot;docs/documentation.html&quot;
+          (apply str (html/emit* docs)))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.animation" name="one.sample.animation"><h1 class="project-name">one.sample.animation</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Defines animations which are used in the sample
+  application.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.sample.animation
+  (:use [one.core :only (start)]
+        [one.browser.animation :only (bind parallel serial play play-animation)]
+        [domina :only (by-id set-html! set-styles! destroy-children! append! single-node)]
+        [domina.xpath :only (xpath)])
+  (:require [goog.dom.forms :as gforms]
+            [goog.style :as style]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def form &quot;//div[@id='form']&quot;)
+(def cloud &quot;//div[@id='greeting']&quot;)
+(def label &quot;//label[@id='name-input-label']/span&quot;)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private
+  form-in {:effect :fade :start 0 :end 1 :time 800})</pre></td></tr><tr><td class="docs"><p>Accepts the form and greeting view HTML and adds them to the
+  page. Animates the form sliding in from above. This function must be
+  run before any other view functions. It may be called from any state
+  to reset the UI.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn initialize-views
+  [form-html greeting-html]
+  (let [content (xpath &quot;//div[@id='content']&quot;)]
+    (destroy-children! content)
+    (set-html! content form-html)
+    (append! content greeting-html)
+    ;; Required for IE8 to work correctly
+    (style/setOpacity (single-node (xpath label)) 1)
+    (set-styles! (xpath cloud) {:opacity &quot;0&quot; :display &quot;none&quot; :margin-top &quot;-500px&quot;})
+    (set-styles! (by-id &quot;greet-button&quot;) {:opacity &quot;0.2&quot; :disabled true})
+    (play form form-in {:after #(.focus (by-id &quot;name-input&quot;) ())})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Try it
+  (initialize-views (:form one.sample.view/snippets)
+                    (:greeting one.sample.view/snippets)))</pre></td></tr><tr><td class="docs"><p>------------- fnx ------------- </p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Accepts the form and greeting view HTML and adds them to the
+  page. Animates the form sliding in from above. This function must be
+  run before any other view functions. It may be called from any state
+  to reset the UI.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn initialize-views-fnx
+  [ns-nav fn-display spinner prev]
+  (let [content-fnx (xpath &quot;//div[@id='content-fnx']&quot;)]
+    (destroy-children! content-fnx)
+    (append! content-fnx prev)
+    (append! content-fnx ns-nav)
+    (append! content-fnx fn-display)
+    (append! content-fnx spinner)
+    (set-styles! (by-id &quot;prev&quot;) {:display &quot;none&quot;})
+    (set-styles! (by-id &quot;ns-nav&quot;) {:display &quot;none&quot;})
+    (set-styles! (by-id &quot;fn-display&quot;) {:display &quot;none&quot;})
+    (set-styles! (by-id &quot;spinner&quot;) {:display &quot;block&quot;
+                                    :border &quot;1px solid black&quot;})))</pre></td></tr><tr><td class="docs"><p>------------- fnx ------------- </p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Move the passed input field label above the input field. Run when
+  the field gets focus and is empty.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn label-move-up
+  [label]
+  (play label [{:effect :color :end &quot;#53607b&quot; :time 200}
+               {:effect :slide :up 40 :time 200}]))</pre></td></tr><tr><td class="docs"><p>Make the passed input field label invisible. Run when the input
+  field loses focus and contains a valid input value.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn label-fade-out
+  [label]
+  (play label {:effect :fade :end 0 :time 200}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def move-down [{:effect :fade :end 1 :time 200}
+                {:effect :color :end &quot;#BBC4D7&quot; :time 200}
+                {:effect :slide :down 40 :time 200}])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def fade-in {:effect :fade :end 1 :time 400})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def fade-out {:effect :fade :end 0 :time 400})</pre></td></tr><tr><td class="docs"><p>Make the passed input field label visible and move it down into the
+  input field. Run when an input field loses focus and is empty.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn label-move-down
+  [label]
+  (play label move-down))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Examples of label effects.
+  
+  (label-move-up label)
+  (label-fade-out label)
+  (label-move-down label)
+  )</pre></td></tr><tr><td class="docs"><p>Move the form out of view and the greeting into view. Run when the
+  submit button is clicked and the form has valid input.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn show-greeting
+  []
+  (let [e {:effect :fade :end 0 :time 500}]
+    (play-animation #(parallel (bind form e)
+                               (bind label e) ; Since the label won't fade in IE
+                               (bind cloud
+                                     {:effect :color :time 500} ; Dummy animation for delay purposes
+                                     {:effect :fade-in-and-show :time 600}))
+                    {:before #(gforms/setDisabled (by-id &quot;name-input&quot;) true)
+                     ;; We need this next one because IE8 won't hide the button
+                     :after #(set-styles! (by-id &quot;greet-button&quot;) {:display &quot;none&quot;})})))</pre></td></tr><tr><td class="docs"><p>Move the greeting cloud out of view and show the form. Run when the
+  back button is clicked from the greeting view.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn show-form
+  []
+  (play-animation (serial (parallel (bind cloud {:effect :fade-out-and-hide :time 500})
+                                    (bind form
+                                          {:effect :color :time 300} ; Dummy animation for delay purposes
+                                          form-in)
+                                    (bind label fade-in move-down)))
+                  {;; Because IE8 won't hide the button, we need to
+                   ;; toggle it between displaying inline and none
+                   :before #(set-styles! (by-id &quot;greet-button&quot;) {:display &quot;inline&quot;})
+                   :after #(do
+                             (gforms/setDisabled (by-id &quot;name-input&quot;) false)
+                             (.focus (by-id &quot;name-input&quot;) ()))}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Switch between greeting and form views
+
+  (label-move-up label)
+  (show-greeting)
+  (show-form)
+  )</pre></td></tr><tr><td class="docs"><p>Accepts an element id for a button and disables it. Fades the
+  button to 0.2 opacity.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn disable-button
+  [id]
+  (let [button (by-id id)]
+    (gforms/setDisabled button true)
+    (play button {:effect :fade :end 0.2 :time 400})))</pre></td></tr><tr><td class="docs"><p>Accepts an element id for a button and enables it. Fades the button
+  to an opactiy of 1.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn enable-button
+  [id]
+  (let [button (by-id id)]
+    (gforms/setDisabled button false)
+    (play button fade-in)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Examples of all effects
+
+  (initialize-views (:form one.sample.view/snippets)
+                    (:greeting one.sample.view/snippets))
+  (label-move-up label)
+  (label-fade-out label)
+  (show-greeting)
+  (show-form)
+
+  (disable-button &quot;greet-button&quot;)
+  (enable-button &quot;greet-button&quot;)
+  )</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.controller" name="one.sample.controller"><h1 class="project-name">one.sample.controller</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Respond to user actions by updating local and remote
+  application state.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.sample.controller
+  (:use [one.browser.remote :only (request)]
+        [one.sample.model :only (state state-fnx)])
+  (:require [cljs.reader :as reader]
+            [clojure.browser.event :as event]
+            [one.dispatch :as dispatch]
+            [goog.uri.utils :as uri]))</pre></td></tr><tr><td class="docs"><p>Accepts a map containing information about an action to perform.</p>
+
+<p>  Actions may cause state changes on the client or the server. This
+  function dispatches on the value of the <code>:type</code> key and currently
+  supports <code>:init</code>, <code>:form</code>, and <code>:greeting</code> actions.</p>
+
+<p>  The <code>:init</code> action will initialize the appliation's state.</p>
+
+<p>  The <code>:form</code> action will only update the status atom, setting its state
+  to <code>:from</code>.</p>
+
+<p>  The <code>:greeting</code> action will send the entered name to the server and
+  update the state to <code>:greeting</code> while adding <code>:name</code> and <code>:exists</code>
+  values to the application's state.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti action
+  :type)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod action :init [_])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod action :form [_]
+  (when-not (#{:form :init} (:state @state))
+    (swap! state assoc :state :form)))</pre></td></tr><tr><td class="docs"><p>Get the name of the host which served this script.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn host
+  []
+  (uri/getHost (.toString window.location ())))</pre></td></tr><tr><td class="docs"><p>Accepts a function id (an identifier for this request), data (the
+  data to send to the server) and a callback function which will be
+  called if the transmission is successful. Perform an Ajax <code>POST</code>
+  request to the backend API which sends the passed data to the
+  server.</p>
+
+<p>  A tranmission error will add an error message to the application's
+  state.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn remote
+  [f data on-success]
+  (request f (str (host) &quot;/remote&quot;)
+           :method &quot;POST&quot;
+           :on-success #(on-success (reader/read-string (:body %)))
+           :on-error #(swap! state assoc :error &quot;Error communicating with server.&quot;)
+           :content (str &quot;data=&quot; (pr-str {:fn f :args data}))))</pre></td></tr><tr><td class="docs"><p>This is the success callback function which will be called when a
+  request is successful. Accepts a name and a map of response data.
+  Sets the current state to <code>:greeting</code> and adds the <code>:name</code> and
+  <code>:exists</code> values to the application's state.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn add-name-callback
+  [name response]
+  (swap! state (fn [old]
+                 (assoc (assoc old :state :greeting :name name)
+                   :exists (boolean (:exists response))))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod action :greeting [{name :name}]
+  (remote :add-name {:name name} #(add-name-callback name %)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to #{:init :form :greeting}
+                   (fn [t d] (action (assoc d :type t))))</pre></td></tr><tr><td class="docs"><p>--------------- <fnx> ---------------</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Accepts a map containing information about an action to perform.</p>
+
+<p>  Actions may cause state changes on the client or the server. This
+  function dispatches on the value of the <code>:type</code> key and currently
+  supports <code>:init</code>, <code>:ns-nav</code></p>
+
+<p>  The <code>:init</code> action will fetch the ns hierarchy from the server and store it in the atom state.</p>
+
+<p>  The <code>:ns-nav</code> action will navigate to a particular namespace.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti action-fnx
+  :type)</pre></td></tr><tr><td class="docs"><p>This is the success callback function which will be called when a
+  request is successful. Accepts a map of response data.
+  Sets the current state to <code>:ns-navigating</code> and adds the <code>:all-ns</code> and
+  <code>:ns-nav</code> to the application's state.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn add-ns-callback
+  [response]
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :ns-navigating
+                       :all-ns (response :res)
+                       :ns-nav nil))))</pre></td></tr><tr><td class="docs"><p>Mock map of namespaces-fns, this is an example of what comes from the server.</p>
+</td><td class="codes"><pre class="brush: clojure">(def all-ns 
+  {nil            [nil       [&quot;foo&quot; &quot;bar&quot;]                []]
+   &quot;foo&quot;          [nil       [&quot;foo.aws&quot;]                  []]
+   &quot;bar&quot;          [nil       [&quot;bar.file&quot;]                 []]
+   &quot;foo.aws&quot;      [&quot;foo&quot;     [&quot;foo.aws.ec2&quot; &quot;foo.aws.s3&quot;] [&quot;describe-region&quot;]]
+   &quot;foo.aws.ec2&quot;  [&quot;foo.aws&quot; []                           [&quot;list-ami&quot;]]
+   &quot;foo.aws.s3&quot;   [&quot;foo.aws&quot; []                           [&quot;delete-buckets&quot;]]
+   &quot;bar.file&quot;     [&quot;bar&quot;     []                           [&quot;ls&quot;]]})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod action-fnx :init [_]
+  ;; event init to reset the state of the application and incidentally refresh the ui
+  (reset! state-fnx {:state :init})
+  ;; call the server to populate the namespaces
+  (remote :load-map-ns {} #(add-ns-callback %)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod action-fnx :ns-clicked [{ns :ns}]
+  ;; update the model with the new namespace
+  (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :ns-navigating
+                       :ns-nav ns))))</pre></td></tr><tr><td class="docs"><p>This is mock map, example of what comes from the server.</p>
+</td><td class="codes"><pre class="brush: clojure">(def fn-meta-to-display
+  {:fname &quot;fully.qualified.ns/some-function-to-display&quot;
+   :arglists [[&quot;a&quot;] [&quot;b&quot; &quot;c&quot;] [&quot;e&quot; &quot;f&quot; &quot;g&quot;]]
+   :doc &quot;This a sample example of a function to transform into a list of inputs.&quot;})</pre></td></tr><tr><td class="docs"><p>This is the success callback function which will be called when a
+  request is successful. Accepts the name of the function and a map of response data.
+  Sets the current state to <code>:fn-form-displaying</code> and adds the current map of metadata from the function
+  fname</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- fn-display-callback
+  [fname response]
+    (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :fn-form-displaying
+                       :current-fn (:meta-fn response)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod action-fnx :fn-clicked [{f :fn}]
+  (remote :load-map-meta-fn {:fq-fn f} #(fn-display-callback f %)))</pre></td></tr><tr><td class="docs"><p>This is the success callback function which will be called when a
+  request is successful. Accepts the name of the function, the args with
+  which the fn will be called and a response data.
+  Sets the current state to `:fn-result-showing'</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- fn-display-result-callback
+  [fname args response]
+    (swap! state-fnx (fn [old]
+                     (assoc old
+                       :state :fn-result-showing
+                       :current-fn fname
+                       :args args
+                       :fn-result (:res response)))))</pre></td></tr><tr><td class="docs"><p>React to the run clicked event that will launch the execution of the function in the server</p>
+</td><td class="codes"><pre class="brush: clojure">(defmethod action-fnx :run-clicked [{f :fname args :args}]
+  ;; before launching the computing of function in remote
+  (swap! state-fnx  (fn [old]
+                     (assoc old
+                       :state :fn-running
+                       :current-fn f
+                       :args args)))
+
+  ;; launch the function computing
+  (remote :apply-fn {:meta-fn f
+                     :args args} #(fn-display-result-callback f args %)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to #{:init :ns-clicked :fn-clicked :run-clicked}
+                   (fn [t d] (action-fnx (assoc d :type t))))</pre></td></tr><tr><td class="docs"><p>--------------- </fnx> ---------------</p>
+</td><td class="codes"></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.core" name="one.sample.core"><h1 class="project-name">one.sample.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Contains the entry point for the ClojureScript sample application.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.sample.core
+  (:require [goog.uri.utils :as uri]
+            [clojure.browser.repl :as repl]
+            [one.dispatch :as dispatch]
+            [one.sample.view :as view]))</pre></td></tr><tr><td class="docs"><p><strong>TODO:</strong> Add marginalia comment to explain what <code>:export</code> is for.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Return a string which is the scheme and domain portion of the URL
+  for the server from which this code was served.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- server
+  []
+  (let [location (.toString window.location ())]
+    (str (uri/getScheme location) &quot;://&quot; (uri/getDomain location))))</pre></td></tr><tr><td class="docs"><p>Connects to a ClojureScript REPL running on localhost port 9000.</p>
+
+<p>  This allows a browser-connected REPL to send JavaScript to the
+  browser for evaluation. This function should be called from a script
+  in the development host HTML page.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn ^:export repl
+  []
+  (repl/connect (str (server) &quot;:9000/repl&quot;)))</pre></td></tr><tr><td class="docs"><p>Start the application by firing a <code>:init</code> event which will cause the
+  form view to be displayed.</p>
+
+<p>  This function must be called from the host HTML page to start the
+  application.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn ^:export start
+  []
+  (dispatch/fire :init))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.history" name="one.sample.history"><h1 class="project-name">one.sample.history</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>When this library is loaded, a listener function is added
+  which will be run when a :form or :greeting event is fired. This
+  allows the use of the back button to navigate between views. This is
+  accomplished by using library.browser.history to keep track of views
+  that have previously been visited, and traversing them when
+  navigation events are detected.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.sample.history
+  (:use [clojure.string :only [join]])
+  (:require [one.dispatch :as dispatch]
+            [one.browser.history :as history]))</pre></td></tr><tr><td class="docs"><p>Utilities functions to manipulate strings</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Given a string with keyword, remove the : character</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- rm-colon 
+  [s]
+  (join &quot;&quot; (replace {&quot;:&quot; &quot;&quot;} s)))</pre></td></tr><tr><td class="docs"><p>Split a string according to a sep (returns a seq).</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- split 
+  [s sep]
+  (seq (.split s sep)))</pre></td></tr><tr><td class="docs"><p>Utilities functions to manipulate extract token and map from the uri</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Given a string representing the rest of the uri, returns a map.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- attr-2-map 
+  [s]
+  (when s
+    (let [v (split s &quot;&amp;&quot;)]
+      (reduce (fn [m e]
+                (let [[key val] (split e &quot;=&quot;)]
+                  (assoc m (keyword key) val))) {} v))))</pre></td></tr><tr><td class="docs"><p>Given a token, returns a vector containing a token a map:
+  - token represents the event to fire
+  - the map represents the attributes key-value (key=value&amp;) contained in the url (after the ?)</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- token-2-map
+  [token]
+  (let [[t v] (split (rm-colon token) &quot;?&quot;)]
+    [t (attr-2-map v)]))</pre></td></tr><tr><td class="docs"><p>Handle navigation events by firing the appropriate view token.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn nav-handler
+  [{:keys [token navigation?]}]
+  (let [[t m] (token-2-map token)]
+    (when navigation?
+      (dispatch/fire t m))))</pre></td></tr><tr><td class="docs"><p>The global history object for this application.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  history (history/history nav-handler))</pre></td></tr><tr><td class="docs"><p>Utilities function to update the nav bar according to the events triggered!</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Given a first degree (only one level) map, returns a uri</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- attr-2-uri 
+  [e]
+  (join &quot;&amp;&quot; (map (fn [k] (join &quot;=&quot; [k (e k)])) (keys e))))</pre></td></tr><tr><td class="docs"><p>Given a token and a map, returns a uri.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- map-2-uri 
+  [t e]
+  (if e (str t &quot;?&quot; (attr-2-uri e)) t))</pre></td></tr><tr><td class="docs"><p>Given a token event and a map, complete the uri nav bar.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- which-token 
+  [t e]
+  (cond (#{:init} t) :form
+        (#{:ns-clicked} t) (map-2-uri t e)
+        :else t))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to
+ #{:init :form :greeting :ns-clicked}
+ (fn [t e]
+   (history/set-token history (which-token t e))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.logging" name="one.sample.logging"><h1 class="project-name">one.sample.logging</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>When this library is loaded, create a logger named
+'events' and send all application-specific events to it.</p>
+
+<p>To view log messages in the browser console, add a call
+to <code>(log/console-output)</code> to this namespace or evaluate this from the
+REPL.</p>
+
+<p>For more information see library.logging.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.sample.logging
+  (:require [one.dispatch :as dispatch]
+            [one.logging :as log]))</pre></td></tr><tr><td class="docs"><p>The logger that receives all application-specific events.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  logger (log/get-logger &quot;events&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to (constantly true)
+                   (fn [t d] (log/info logger (str (pr-str t) &quot; - &quot; (pr-str d)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment
+  ;; log to to the &quot;fancy&quot; window
+  (log/start-display (log/fancy-output &quot;main&quot;)))</pre></td></tr><tr><td class="docs"><p>log to the console</p>
+</td><td class="codes"><pre class="brush: clojure">(log/start-display (log/console-output))</pre></td></tr><tr><td class="docs"><p>change the logging level</p>
+</td><td class="codes"><pre class="brush: clojure">(log/set-level logger :fine)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.model" name="one.sample.model"><h1 class="project-name">one.sample.model</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Contains client-side state, validators for input fields
+ and functions which react to changes made to the input fields.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+ one.sample.model
+  (:require [one.dispatch :as dispatch]))</pre></td></tr><tr><td class="docs"><p>An atom containing a map which is the application's current state.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  state (atom {}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(add-watch state :state-change-key
+           (fn [k r o n]
+             (dispatch/fire :state-change n)))</pre></td></tr><tr><td class="docs"><p>------------- fnx ------------- </p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>An atom containing a map which is the application's current state.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  state-fnx (atom {}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(add-watch state-fnx :state-change-key
+           (fn [k r o n]
+             (dispatch/fire :state-change-fnx n)))</pre></td></tr><tr><td class="docs"><p>------------- fnx ------------- </p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>An atom containing the state of the greeting form and
+  each of its fields.</p>
+</td><td class="codes"><pre class="brush: clojure">(def ^{:private true
+       :doc }
+  greeting-form (atom {}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(add-watch greeting-form :form-change-key
+           (fn [k r o n]
+             (dispatch/fire :form-change {:old o :new n})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmulti ^:private new-status
+  (fn [&amp; args] (vec args)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def error-status
+  {:status :error
+   :error &quot;Are you sure about that? Names must have at least two characters.&quot;})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def editing-error-status
+  {:status :editing-error
+   :error &quot;Names must have at least two characters.&quot;})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:empty :focus :empty] [p e f]
+  {:status :editing})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing :finished :empty] [p e f]
+  {:status :empty})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing :change :empty] [p e f]
+  {:status :editing})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing :change :error] [p e f]
+  {:status :editing})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing :change :valid] [p e f]
+  {:status :editing-valid})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing :finished :error] [p e f]
+  error-status)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-valid :change :error] [p e f]
+  {:status :editing})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-valid :change :valid] [p e f]
+  {:status :editing-valid})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-valid :finished :valid] [p e f]
+  {:status :valid})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:error :focus :error] [p e f]
+  editing-error-status)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-error :change :error] [p e f]
+  editing-error-status)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-error :finished :error] [p e f]
+  error-status)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-error :change :valid] [p e f]
+  {:status :editing-valid})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-error :change :empty] [p e f]
+  {:status :editing-error})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:editing-error :finished :empty] [p e f]
+  {:status :empty})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:valid :focus :valid] [p e f]
+  {:status :editing-valid})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status [:valid :finished :empty] [p e f]
+  {:status :empty})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod new-status :default [p e f]
+  {:status p})</pre></td></tr><tr><td class="docs"><p>Accepts a form id and a value and returns a map
+  with <code>:value</code>, <code>:status</code>, and <code>:error</code> keys. Status will be set to
+  either <code>:valid</code> or <code>:error</code>. If there was an error, then there will be
+  an error message associated with the <code>:error</code> key.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti ^:private validate
+  (fn [id _] id))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod validate &quot;name-input&quot; [_ v]
+  (cond (= (count v) 0) :empty
+        (= (count v) 1) :error
+        :else :valid))</pre></td></tr><tr><td class="docs"><p>Calculates the status of the whole form based on the status of each
+  field. Retuns <code>:finished</code> or <code>:editing</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- form-status
+  [m]
+  (if (every? #(or (= % :valid) (= % :editing-valid)) (map :status (vals (:fields m))))
+    :finished
+    :editing))</pre></td></tr><tr><td class="docs"><p>Accepts a field-id and value. Validates the field and updates the
+  greeting form atom.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- set-field-value
+  [field-id type value]
+  (swap! greeting-form
+         (fn [old]
+           (let [field (get (:fields old) field-id {})
+                 field-status (assoc (new-status (-&gt; old :fields field-id :status)
+                                                 type
+                                                 (validate field-id value))
+                                :value value)
+                 new (assoc-in old [:fields field-id] field-status)]
+             (assoc new :status (form-status new))))))</pre></td></tr><tr><td class="docs"><p>Update the form state for a given field to indicate that the form
+  is still being edited.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- set-editing
+  [id]
+  (swap! greeting-form
+         (fn [old]
+           (let [field-map (-&gt; old :fields id)
+                 status (or (:status field-map) :empty)
+                 field-status (new-status status
+                                          :focus
+                                          status)]
+             (-&gt; old
+                 (assoc-in [:fields id] (assoc field-status :value (:value field-map)))
+                 (assoc :status (form-status old)))))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to (fn [e] (= (first e) :field-finished))
+                   (fn [[_ id] value]
+                     (set-field-value id :finished value)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to (fn [e] (= (first e) :field-changed))
+                   (fn [[_ id] value]
+                     (set-field-value id :change value)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to (fn [e] (= (first e) :editing-field))
+                   (fn [[_ id] _]
+                     (set-editing id)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to #{:form-submit}
+  (fn [t d]
+    (let [form-data @greeting-form]
+      (when (= (:status form-data) :finished)
+        (dispatch/fire :greeting {:name (-&gt; form-data :fields &quot;name-input&quot; :value)})))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.view" name="one.sample.view"><h1 class="project-name">one.sample.view</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Render the views for the application.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.sample.view
+  (:use [domina :only (set-html! append! set-styles! styles by-id set-style!
+                                 by-class value set-value! set-text! nodes single-node destroy-children!)]
+        [domina.xpath :only (xpath)]
+        [one.browser.animation :only (play)]
+        [one.sample.view-helper :only [ls-curr-ns parent-ns]])
+  (:require-macros [one.sample.snippets :as snippets])
+  (:require [goog.events.KeyCodes :as key-codes]
+            [goog.events.KeyHandler :as key-handler]
+            [clojure.browser.event :as event]
+            [one.dispatch :as dispatch]
+            [one.sample.animation :as fx]))</pre></td></tr><tr><td class="docs"><p>A map which contains chunks of HTML which may be used
+  when rendering views.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  snippets (snippets/snippets))</pre></td></tr><tr><td class="docs"><p>Render the submit button based on the current state of the
+  form. The button is disabled while the user is editing the form and
+  becomes enabled when the form is complete.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti render-button
+  identity)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-button :default [_])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-button [:finished :editing] [_]
+  (fx/disable-button &quot;greet-button&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-button [:editing :finished] [_]
+  (fx/enable-button &quot;greet-button&quot;))</pre></td></tr><tr><td class="docs"><p>Render a form field based on the current state transition. Form
+  fields are validated as soon as they lose focus. There are six
+  transitions and each one has its own animation.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti render-form-field
+  :transition)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field :default [_])</pre></td></tr><tr><td class="docs"><p>Accepts an element id for an input field and return the xpath
+  string to the label for that field.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- label-xpath
+  [id]
+  (str &quot;//label[@id='&quot; id &quot;-label']/span&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:empty :editing] [{:keys [id]}]
+  (fx/label-move-up (label-xpath id)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:editing :empty] [{:keys [id]}]
+  (fx/label-move-down (label-xpath id)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:editing-valid :valid] [{:keys [id]}]
+  (fx/label-fade-out (label-xpath id)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:valid :editing-valid] [{:keys [id]}]
+  (play (label-xpath id) fx/fade-in))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:editing :error] [{:keys [id error]}]
+  (let [error-element (by-id (str id &quot;-error&quot;))]
+    (set-style! error-element &quot;opacity&quot; &quot;0&quot;)
+    (set-html! error-element error)
+    (play error-element fx/fade-in)))</pre></td></tr><tr><td class="docs"><p>Accepts an id and an error message and fades the old error message
+  out and the new one in.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- swap-error-messages
+  [id error]
+  (let [error-element (by-id (str id &quot;-error&quot;))]
+    (play error-element fx/fade-out
+             {:name &quot;fade out error&quot;})
+    (play error-element fx/fade-in {:before #(set-html! error-element error)})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:error :editing-error] [{:keys [id error]}]
+  (swap-error-messages id error))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:editing-error :error] [{:keys [id error]}]
+  (swap-error-messages id error))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:editing-error :editing-valid] [{:keys [id]}]
+  (let [error-element (by-id (str id &quot;-error&quot;))]
+    (play error-element (assoc fx/fade-out :time 200))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-form-field [:editing-error :empty] [{:keys [id]}]
+  (let [error-element (by-id (str id &quot;-error&quot;))]
+    (play error-element (assoc fx/fade-out :time 200))
+    (fx/label-move-down (label-xpath id))))</pre></td></tr><tr><td class="docs"><p>Accepts a field-id and creates listeners for blur and focus events which will then fire
+  <code>:field-changed</code> and <code>:editing-field</code> events.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- add-input-event-listeners
+  [field-id]
+  (let [field (by-id field-id)
+        keyboard (goog.events.KeyHandler. (by-id &quot;form&quot;))]
+    (event/listen field
+                  &quot;blur&quot;
+                  #(dispatch/fire [:field-finished field-id] (value field)))
+    (event/listen field
+                  &quot;focus&quot;
+                  #(dispatch/fire [:editing-field field-id]))
+    (event/listen field
+                  &quot;keyup&quot;
+                  #(dispatch/fire [:field-changed field-id] (value field)))
+    (event/listen keyboard
+                  &quot;key&quot;
+                  (fn [e] (when (= (.-keyCode e) key-codes/ENTER)
+                           (do (.blur (by-id &quot;name-input&quot;) ())
+                               (dispatch/fire :form-submit)))))))</pre></td></tr><tr><td class="docs"><p>Accepts a map which represents the current state of the application
+  and renders a view based on the value of the <code>:state</code> key.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti render
+  :state)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render :init [_]
+  (comment
+    (fx/initialize-views (:form snippets) (:greeting snippets))
+    (add-input-event-listeners &quot;name-input&quot;)
+    (event/listen (by-id &quot;greet-button&quot;)
+                  &quot;click&quot;
+                  #(dispatch/fire :greeting
+                                  {:name (value (by-id &quot;name-input&quot;))}))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render :form [{:keys [state error name]}]
+  (fx/show-form)
+  (set-value! (by-id &quot;name-input&quot;) &quot;&quot;)
+  (dispatch/fire [:field-finished &quot;name-input&quot;] &quot;&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render :greeting [{:keys [state name exists]}]
+  (set-text! (single-node (by-class &quot;name&quot;)) name)
+  (set-text! (single-node (by-class &quot;again&quot;)) (if exists &quot;again&quot; &quot;&quot;))
+  (fx/show-greeting))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to #{:state-change} (fn [_ m] (render m)))</pre></td></tr><tr><td class="docs"><p>------------- fnx ------------- </p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Accepts a map which represents the current state of the application
+  and renders a view based on the value of the <code>:state</code> key.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti render-fnx
+  :state)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-fnx :init [_]
+  (fx/initialize-views-fnx
+   (:ns-nav snippets)
+   (:fn-display snippets)
+   (:spinner snippets)
+   (:prev snippets)))</pre></td></tr><tr><td class="docs"><p>Hide the element with id id</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- hide 
+  [id]
+  (set-styles! (by-id id) {:display &quot;none&quot;}))</pre></td></tr><tr><td class="docs"><p>Show the element with id id</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- show 
+  [id]
+  (set-styles! (by-id id) {:display &quot;block&quot;}))</pre></td></tr><tr><td class="docs"><p>Display or not the prev block depending on the current namespace.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- previous-ns-block 
+  [all-ns ns-nav]
+  ;; Deal with ..
+  (let [prev (by-id &quot;prev&quot;)]
+    (if ns-nav
+      (do
+        (set-styles! prev {:display &quot;block&quot;})
+        (event/listen prev &quot;click&quot;
+                      #(dispatch/fire :ns-clicked {:ns (parent-ns all-ns ns-nav)})))
+      (set-styles! prev {:display &quot;none&quot;}))))</pre></td></tr><tr><td class="docs"><p>Display namespaces</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- display-lns 
+  [lns]
+  (let [nsn (by-id &quot;ns-nav&quot;)]
+    (when lns
+      ;; show the namespace block
+      (set-styles! nsn {:display &quot;block&quot; :color &quot;red&quot;})
+      ;; destroy the content on this block
+      (destroy-children! nsn)
+      ;; display the list of namespaces
+      (dorun (map #(append! nsn (str &quot;&lt;div id='ns-&quot; % &quot;'&gt;&quot;  % &quot;&lt;/div&gt;&quot;)) lns))
+      ;; event when click on one of the ns
+      (dorun (map (fn [n] (event/listen
+                           (by-id (str &quot;ns-&quot; n))
+                           &quot;click&quot;
+                           #(dispatch/fire :ns-clicked {:ns n}))) lns)))))</pre></td></tr><tr><td class="docs"><p>Display functions list</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- display-fns 
+  [fns]
+  (let [fnd (by-id &quot;fn-display&quot;)]
+    (when fns
+      ;; show the function block
+      (set-styles! fnd {:display &quot;block&quot; :color &quot;blue&quot;})
+      ;; destroy the content on this block
+      (destroy-children! fnd)
+      ;; display the list of functions
+      (dorun (map #(append! fnd (str &quot;&lt;div id='fn-&quot; % &quot;'&gt;&quot;  % &quot;&lt;/div&gt;&quot;)) fns))
+      ;; event when click on one of the fn
+      (dorun (map (fn [f] (event/listen
+                           (by-id (str &quot;fn-&quot; f))
+                           &quot;click&quot;
+                           #(dispatch/fire :fn-clicked {:fn f}))) fns)))))</pre></td></tr><tr><td class="docs"><p>Reset the content of a div with id id</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- reset-ids 
+  [&amp; ids]
+  (dorun (map #(destroy-children! (by-id %)) ids)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-fnx :ns-navigating [{:keys [all-ns ns-nav]}]
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)]
+    ;; reset or hide things part
+    (hide &quot;spinner&quot;)
+    (reset-ids &quot;ns-nav&quot; &quot;fn-display&quot;)
+
+    ;; display part
+    (previous-ns-block all-ns ns-nav)
+    (display-lns (first lns-fns))
+    (display-fns (second lns-fns))))</pre></td></tr><tr><td class="docs"><p>Compute the name of a function coupled with its arity</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- fn-ar 
+  [fname arity]
+  (str fname &quot;-&quot; arity))</pre></td></tr><tr><td class="docs"><p>Display the args of a function into a list of inputs</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- display-args 
+  [fnd {:keys [fname] :as f} args]
+  (let [arity (count args)
+        fnar (fn-ar fname arity)
+        button-id (str &quot;run-button-&quot; fnar)]
+    ;; display the inputs
+    (append! fnd (str &quot;&lt;h3&gt;Input the arguments - Arity - &quot; arity &quot;&lt;/h3&gt;&quot;))
+    ;; find a way to use the templating...
+    (dorun (map #(append! fnd (let [n (str fnar &quot;-&quot; (str %))]
+                                (str
+                                 &quot;&lt;div class='input'&gt;&quot;
+                                 &quot;&lt;label id='label-&quot; n &quot;'&gt;&quot;
+                                 &quot;&lt;span&gt;&quot; (str %) &quot;&lt;/span&gt;&quot;
+                                 &quot;&lt;input id='id-fn-&quot; n &quot;' size='30' type= 'text'/&gt;&quot;
+                                 &quot;&lt;/label&gt;&quot;
+                                 &quot; &lt;div id='id-input-error-&quot; n &quot;' class='small error'&gt;&amp;nbsp;&lt;/div&gt;&quot;
+                                 &quot;&lt;/div&gt;&quot;)))
+                args))
+    ;; display the button run
+    (append! fnd (str &quot;&lt;div class='input'&gt;&lt;input type='button' id='&quot; button-id
+                      &quot;' value='run!' /&gt;&lt;/div&gt;&quot;))
+    ;; add a listener to it
+    (event/listen (by-id button-id)
+                  &quot;click&quot;
+                  #(dispatch/fire :run-clicked
+                                  {:fname f
+                                   :args (reduce (fn [m i]
+                                                   (assoc m i (value (by-id
+                                                                      (str &quot;id-fn-&quot; fnar &quot;-&quot; (str i))))))
+                                                 {} args)}))))</pre></td></tr><tr><td class="docs"><p>Display the function</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- display-fn 
+  [{:keys [fname arglists doc] :as f}]
+  (let [fnd (by-id &quot;fn-display&quot;)]
+    (when f
+      ;; show the function block
+      (set-styles! fnd {:display &quot;block&quot; :color &quot;blue&quot;})
+      ;; destroy the content on this block
+      (destroy-children! fnd)
+      (append! fnd (by-id &quot;spinner&quot;))
+      (hide &quot;spinner&quot;)
+      (append! fnd (str &quot;&lt;h2 id='fn-&quot; fname &quot;'&gt;&quot; fname &quot;&lt;/h2&gt;&quot;))
+      (append! fnd (str &quot;&lt;div&gt;&quot; (when doc doc) &quot;&lt;/div&gt;&quot;))
+      ;; beware at the multiple arities
+      (dorun (map #(display-args fnd f %) arglists)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-fnx :fn-form-displaying [{:keys [all-ns ns-nav current-fn]}]
+  (let [lns-fns (ls-curr-ns all-ns ns-nav)]
+    (reset-ids &quot;ns-nav&quot; &quot;fn-display&quot;)
+
+    ;; display part
+    (previous-ns-block all-ns ns-nav)
+    (display-fn current-fn)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-fnx :fn-running [{:keys [current-fn args]}]
+  (show &quot;spinner&quot;)
+  (set-styles! (by-id &quot;fn-display&quot;) {:opacity &quot;0.5&quot;}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod render-fnx :fn-result-showing [{:keys [current-fn args fn-result]}]
+  (let [fnd (by-id &quot;fn-display&quot;)
+        fname (current-fn :fname)]
+
+    (hide &quot;spinner&quot;)
+    (set-styles! (by-id &quot;fn-display&quot;) {:opacity &quot;1&quot;})
+
+    (when fname
+
+      ;; display the list of functions
+      (append! fnd (str &quot;&lt;div id='fn-result'&gt;&quot; fname &quot; - &quot; (pr-str args) &quot; - &quot; (pr-str fn-result) &quot;&lt;/div&gt;&quot;)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to #{:state-change-fnx} (fn [_ m] (render-fnx m)))</pre></td></tr><tr><td class="docs"><p>------------- fnx -------------</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Given a map of old and new form states, generate a map with <code>:id</code>,
+  <code>:transition</code> and <code>:error</code> keys which can be passed to
+  <code>render-form-field</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- form-fields-status
+  [m]
+  (map #(hash-map :id %
+                  :transition [(or (-&gt; m :old :fields % :status) :empty)
+                               (-&gt; m :new :fields % :status)]
+                  :error (-&gt; m :new :fields % :error))
+       (keys (-&gt; m :new :fields))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(dispatch/react-to #{:form-change}
+                   (fn [_ m]
+                     (doseq [s (form-fields-status m)]
+                       (render-form-field s))
+                     (render-button [(-&gt; m :old :status)
+                                     (-&gt; m :new :status)] )))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.sample.view-helper" name="one.sample.view-helper"><h1 class="project-name">one.sample.view-helper</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(ns one.sample.view-helper)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn ls-curr-ns
+  [all-ns curr-ns] (let [[_ nses fns] (all-ns curr-ns)]
+                     [nses fns]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn parent-ns
+  [all-ns curr-ns] (first (all-ns curr-ns)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.browser.animation" name="one.browser.animation"><h1 class="project-name">one.browser.animation</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Provides support for basic animations. Allows effects to be
+  represented as Clojure data.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.browser.animation
+  (:use [one.color :only (color bg-color rgb IColorSource)]
+        [one.core :only (start dispose get-style)])
+  (:require [goog.style :as style]
+            [goog.string :as gstring]
+            [goog.fx.AnimationQueue :as queue]
+            [goog.fx.easing :as easing]
+            [goog.fx.dom :as anim]
+            [goog.async.Delay :as delay]
+            [clojure.browser.event :as event]
+            [clojure.browser.dom :as dom]
+            [domina :as d]
+            [domina.xpath :as dx]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:dynamic *default-time* 1000)</pre></td></tr><tr><td class="docs"><p>Accepts a keyword, string or element and returns an
+  element. Strings are assumed to be xpath format.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- get-element
+  [e]
+  (cond (keyword? e) (d/by-id (name e))
+        (string? e) (first (d/nodes (dx/xpath e)))
+        :else e))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol IPosition
+  (position [this] &quot;Return the position of the passed object as a 2D array, `[X Y]`.&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-protocol IPosition
+
+  cljs.core.Vector
+  (position [this] this)
+
+  js/Array
+  (position [this] (js-&gt;clj this))
+
+  js/Element
+  (position [this]
+    (let [p (js-&gt;clj (style/getPosition this) :keywordize-keys true)]
+      [(:x p) (:y p)])))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol IScroll
+  (scroll [this] &quot;Return the scroll position of an element as `[X Y]`.&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-protocol IScroll
+
+  js/Number
+  (scroll [this] [0 this])
+
+  cljs.core.Vector
+  (scroll [this] this)
+
+  js/Element
+  (scroll [this]
+    [(.-scrollLeft this) (.-scrollTop this)]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol ISize
+  (size [this] &quot;Return the size of an element as `[W H]`.&quot;)
+  (width [this] &quot;Return the width of an element.&quot;)
+  (height [this] &quot;Return the height of an element.&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-protocol ISize
+
+  js/Number
+  (size [this] [this this])
+  (width [this] this)
+  (height [this] this)
+
+  cljs.core.Vector
+  (size [this] this)
+  (width [this] (first this))
+  (height [this] (second this))
+
+  js/Element
+  (size [this]
+    (let [s (js-&gt;clj (style/getSize this)
+                     :keywordize-keys true)]
+      [(:width s) (:height s)]))
+  (width [this]
+    (width (size this)))
+  (height [this]
+    (height (size this))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol IOpacity
+  (opacity [this] &quot;Return the elements current opacity.&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-protocol IOpacity
+
+  js/String
+  (opacity [this]
+    (js/parseFloat this))
+
+  js/Number
+  (opacity [this] this)
+
+  js/Element
+  (opacity [this]
+    (let [op (style/getComputedStyle this &quot;opacity&quot;)]
+      (if (= op &quot;&quot;)
+        (opacity (style/getOpacity this))
+        op))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-type goog.fx.AnimationQueue
+  
+  one.core/Startable
+  (start [this] (.play this ()))
+  
+  one.core/Disposable
+  (dispose [this] (.dispose this ())))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-type goog.fx.dom.PredefinedEffect
+  
+  one.core/Startable
+  (start [this] (.play this ()))
+  
+  one.core/Disposable
+  (dispose [this] (.dispose this ()))
+  
+  event/EventType
+  (event-types [this]
+    (into {}
+          (map
+           (fn [[k v]]
+             [(keyword (. k (toLowerCase)))
+              v])
+           (merge (js-&gt;clj goog.fx.Animation.EventType))))))</pre></td></tr><tr><td class="docs"><p>Get the acceleration function associated with a given
+  keyword. Implementing this as a multimethod allows developers to add new
+  functions and still represent effects as data.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti acceleration
+  identity :default :ease-out)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod acceleration :ease-out [name]
+  easing/easeOut)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod acceleration :ease-in [name]
+  easing/easeIn)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod acceleration :in-and-out [name]
+  easing/inAndOut)</pre></td></tr><tr><td class="docs"><p>Given a map which represents an effect. Return the acceleration
+  function or <code>nil</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- accel
+  [m]
+  (when-let [a (:accel m)]
+    (if (fn? a)
+      a
+      (acceleration a))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defrecord Effect [effect start end time accel]
+  one.color.IColorSource
+  (color [this] (:end this))
+  (bg-color [this] (:end this))
+  IOpacity
+  (opacity [this] (:end this))
+  IPosition
+  (position [this] (:end this))
+  ISize
+  (size [this] (:end this))
+  (width [this] (width (:end this)))
+  (height [this] (height (:end this)))
+  IScroll
+  (scroll [this] (:end this)))</pre></td></tr><tr><td class="docs"><p>Dispatch function for effect multimethods. Accepts an element and a
+  map describing an effect and returns the effect name as a keyword.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- effect-dispatch
+  [_ {effect :effect}] effect)</pre></td></tr><tr><td class="docs"><p>Accepts an element and an effect map and returns a standardized
+  effect map which must contain the four keys: <code>:start</code>, <code>:end</code>,
+  <code>:time</code> and <code>:accel</code>.</p>
+
+<p>  The element argument can either be an HTML element or an effect map
+  which describes the previous effect.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti standardize
+  effect-dispatch)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :color [element m]
+  (Effect. :color
+           (color (or (:start m) element))
+           (color (or (:end m) element))
+           (or (:time m) *default-time*)
+           (accel m)))</pre></td></tr><tr><td class="docs"><p>Accepts an element and a map and returns an effect. The returned
+  effect may be run or composed with other effects.</p>
+
+<p>  Available effects include: <code>:color</code>, <code>:fade</code>, <code>:fade-in</code>, <code>:fade-out</code>,
+  <code>:fade-in-and-show</code>, <code>:fade-out-and-hide</code>, <code>:slide</code>, <code>:swipe</code>, <code>:bg-color</code>,
+  <code>:resize</code>, <code>:resize-width</code> and <code>:resize-height</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defmulti effect
+  effect-dispatch)</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :color [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.ColorTransform. element
+                                 (apply array (rgb start))
+                                 (apply array (rgb end))
+                                 time
+                                 accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Color effect examples
+  (def label (get-element &quot;//label[@id='name-input-label']/span&quot;))
+  (def label-color (color label))
+  (def red [255 0 0])
+  (def green [0 255 0])
+  (start (effect label {:effect :color :end red}))
+  (start (effect label {:effect :color :end green}))
+  (start (effect label {:effect :color :end label-color}))
+  (start (bind label
+               {:effect :color :end red}
+               {:effect :color :end green}
+               {:effect :color :end label-color})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :fade [element m]
+  (Effect. :fade
+           (opacity (or (:start m) element))
+           (opacity (:end m))
+           (or (:time m) *default-time*)
+           (accel m)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :fade [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.Fade. element start end time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :fade-in [element m]
+  (Effect. :fade-in 0 1 (or (:time m) *default-time*) (accel m)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :fade-in [element m]
+  (let [{:keys [time accel]} (standardize element m)]
+    (goog.fx.dom.FadeIn. element time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :fade-out [element m]
+  (Effect. :fade-out 1 0 (or (:time m) *default-time*) (accel m)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :fade-out [element m]
+  (let [{:keys [time accel]} (standardize element m)]
+    (goog.fx.dom.FadeOut. element time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :fade-in-and-show [element m]
+  (Effect. :fade-in-and-show 0 1 (or (:time m) *default-time*) (accel m)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :fade-in-and-show [element m]
+  (let [{:keys [time accel]} (standardize element m)]
+    (goog.fx.dom.FadeInAndShow. element time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :fade-out-and-hide [element m]
+  (Effect. :fade-out-and-hide 1 0 (or (:time m) *default-time*) (accel m)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :fade-out-and-hide [element m]
+  (let [{:keys [time accel]} (standardize element m)]
+    (goog.fx.dom.FadeOutAndHide. element time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Fade effect examples
+  (def label (get-element &quot;//label[@id='name-input-label']/span&quot;))
+  (def title (get-element &quot;//div[@id='form']/h1&quot;))
+  (def title-opacity (opacity title))
+  (def label-opacity (opacity label))
+  (start (effect label {:effect :fade :end 0.2}))
+  (start (effect title {:effect :fade :end label}))
+  (start (effect label {:effect :fade :end label-opacity}))
+  (start (effect title {:effect :fade :end title-opacity}))
+  (start (effect label {:effect :fade-out}))
+  (start (effect label {:effect :fade-in}))
+  (start (effect label {:effect :fade-out-and-hide}))
+  (start (effect label {:effect :fade-in-and-show}))
+  (start (bind label
+               {:effect :fade :end 0 :time 2000}
+               {:effect :fade :end 1 :time 2000}))
+  ;; mix fade effects - cannot mix both fade-in-and-show and
+  ;; fade-out-and-hide in the same animation.
+  (start (apply bind label
+                (map #(assoc % :time 2000)
+                     [{:effect :fade-out}
+                      {:effect :fade :end 1}
+                      {:effect :fade :end 0}
+                      {:effect :fade-in}
+                      {:effect :fade :end 0}
+                      {:effect :fade :end 1}]))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :bg-color [element m]
+  (let [start (or (:start m) element)
+        end (or (:end m) element)]
+    (Effect. :bg-color
+             (bg-color start)
+             (bg-color end)
+             (or (:time m) *default-time*)
+             (accel m))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :bg-color [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.BgColorTransform. element
+                                   (apply array (rgb start))
+                                   (apply array (rgb end))
+                                   time
+                                   accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Background color effect examples
+  (def input (get-element :name-input))
+  (def red [255 0 0])
+  (def green [0 255 0])
+  (def input-bg-color (bg-color input))
+  (def input-color (color input))
+  (start (effect input {:effect :bg-color :end red}))
+  (start (effect input {:effect :bg-color :end green}))
+  (start (effect input {:effect :bg-color :end input-bg-color}))
+  (start (bind input
+               {:effect :bg-color :end red}
+               {:effect :bg-color :end green}
+               {:effect :bg-color :end input-bg-color})))</pre></td></tr><tr><td class="docs"><p>Calculate the end of a slide based on the start value and the
+  passed <code>:left</code>, <code>:right</code>, <code>:up</code> and <code>:down</code> values.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- calculate-slide-end
+  [[x y] m]
+  (vector (+ (- x (:left m 0)) (:right m 0))
+          (+ (- y (:up m 0)) (:down m 0))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :slide [element m]
+  (let [start (position (or (:start m) element))
+        end (or (:end m) (calculate-slide-end start m))]
+    (Effect. :slide
+             start
+             end
+             (or (:time m) *default-time*)
+             (accel m))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :slide [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.Slide. element
+                        (apply array start)
+                        (apply array end)
+                        time
+                        accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Slide effect examples
+  (def label (get-element &quot;//label[@id='name-input-label']/span&quot;))
+  (start (effect label {:effect :slide :up 40 :time 100}))
+  (start (effect label {:effect :slide :down 40 :time 100}))
+  ;; Easing examples
+  (start (effect label {:effect :slide :up 200 :accel :ease-out}))
+  (start (effect label {:effect :slide :down 200 :accel :ease-in}))
+  ;; slide up and then down
+  (start (bind label
+               {:effect :slide :up 200 :time 2000 :accel :ease-out}
+               {:effect :slide :down 200 :time 2000 :accel :ease-in})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :resize-height [element m]
+  (let [start (when-let [h (:start m)] [(width element) (height h)])
+        end (when-let [h (:end m)] [(width element) (height h)])]
+    (Effect. :resize-height
+            (size (or start element))
+            (size (or end element))
+            (or (:time m) *default-time*)
+            (accel m))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :resize-height [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.ResizeHeight. element (height start) (height end) time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :resize-width [element m]
+  (let [start (when-let [w (:start m)] [(width w) (height element)])
+        end (when-let [w (:end m)] [(width w) (height element)])]
+    (Effect. :resize-width
+            (size (or start element))
+            (size (or end element))
+            (or (:time m) *default-time*)
+            (accel m))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :resize-width [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.ResizeWidth. element (width start) (width end) time accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :resize [element m]
+  (Effect. :resize
+           (size (or (:start m) element))
+           (size (or (:end m) element))
+           (or (:time m) *default-time*)
+           (accel m)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :resize [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.Resize. element
+                         (apply array start)
+                         (apply array end)
+                         time
+                         accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Resize examples
+  (def button (get-element :greet-button))
+  (def button-size (size button))
+  (def button-height (height button))
+  (def button-width (width button))
+  (start (effect button {:effect :resize :end [200 200]}))
+  (start (effect button {:effect :resize :end button-size}))
+  (start (effect button {:effect :resize-height :end 200}))
+  (start (effect button {:effect :resize-height :end button-height}))
+  (start (effect button {:effect :resize-width :end 200}))
+  (start (effect button {:effect :resize-width :end button-width}))
+  (start (bind button
+               {:effect :resize :end [200 200]}
+               {:effect :resize-height :end 300}
+               {:effect :resize-width :end 300}
+               {:effect :resize-height :end 200}
+               {:effect :resize-width :end 200}
+               {:effect :resize :end button-size})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :scroll [element m]
+  (let [start (or (:start m) element)
+        end (:end m)]
+    (Effect. :scroll
+             (scroll start)
+             (scroll end)
+             (or (:time m) *default-time*)
+             (accel m))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :scroll [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.Scroll. element
+                         (apply array start)
+                         (apply array end)
+                         time
+                         accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Scroll examples
+  (def doc (get-element &quot;//body&quot;))
+  ;; Make the window small before trying this.
+  (start (effect doc {:effect :scroll :end [500 500]}))
+  (start (effect doc {:effect :scroll :end [0 0]}))
+  (start (effect doc {:effect :scroll :end 300}))
+  (start (effect doc {:effect :scroll :end 0}))
+  (start (bind doc
+               {:effect :scroll :end [500 500]}
+               {:effect :scroll :end [0 0]}
+               {:effect :scroll :end 300}
+               {:effect :scroll :end 0})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod standardize :swipe [element m]
+  (let [start (or (:start m) [0 0])
+        end (or (:end m) element)]
+    (Effect. :swipe
+             (size start)
+             (size end)
+             (or (:time m) *default-time*)
+             (accel m))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defmethod effect :swipe [element m]
+  (let [{:keys [start end time accel]} (standardize element m)]
+    (goog.fx.dom.Swipe. element
+                        (apply array start)
+                        (apply array end)
+                        time
+                        accel)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Swipe examples
+  (def button (get-element :greet-button))
+  (def button-size (size button))
+  (style/setStyle button &quot;position&quot; &quot;absolute&quot;)
+  (start (effect button {:effect :swipe :start [100 0] :time 300}))
+  (start (effect button {:effect :swipe :start [0 45] :time 300}))
+  (start (effect button {:effect :swipe :time 300}))
+  (style/setStyle button &quot;position&quot; ))</pre></td></tr><tr><td class="docs"><p>Cause the passed animations to run in parallel.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn parallel
+  [&amp; effects]
+  (let [parallel (goog.fx.AnimationParallelQueue.)]
+    (doseq [effect effects] (.add parallel effect))
+    parallel))</pre></td></tr><tr><td class="docs"><p>Cause the passed animations to be run in order.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn serial
+  [&amp; effects]
+  (let [serial (goog.fx.AnimationSerialQueue.)]
+    (doseq [effect effects]
+      (.add serial effect))
+    serial))</pre></td></tr><tr><td class="docs"><p>Mapping of specific effects to a more general category of
+  effect. For example, there are multiple size and opacity
+  effects. Within a single animation, each type of effect should
+  influence subsequent effects of the same type.</p>
+</td><td class="codes"><pre class="brush: clojure">(def ^{:doc 
+       :private true}
+  effect-types
+  {:color             :color
+   :fade              :opacity
+   :fade-in           :opacity
+   :fade-out          :opacity
+   :fade-in-and-show  :opacity
+   :fade-out-and-hide :opacity
+   :bg-color          :bg-color
+   :slide             :position
+   :resize            :size
+   :resize-height     :size
+   :resize-width      :size
+   :scroll            :scroll
+   :swipe             :size})</pre></td></tr><tr><td class="docs"><p>Standardize an effect within the scope of previous effects. Return
+  a vector containing the new environment and the standardized
+  effect. An effect may be a single map or a vector of maps</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- standardize-in-env
+  [element env effect]
+  (if (vector? effect)
+    (let [coll (map #(standardize-in-env element env %) effect)]
+      [(apply merge (map first coll)) (vec (map second coll))])
+    (let [effect-type ((:effect effect) effect-types)
+          effect (standardize (get env effect-type element) effect)
+          env (assoc env effect-type effect)]
+      [env effect])))</pre></td></tr><tr><td class="docs"><p>Accepts an element and a list of effects and vectors of effects and
+  returns the same structure with all effect map standardized. Missing
+  values will be calculated based on previous effects.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- standardize-all-effects
+  [element &amp; effects]
+  (loop [env {}
+         effects effects
+         std-effects []]
+    (if (seq effects)
+      (let [effect (first effects)
+            [env effect] (standardize-in-env element env effect)]
+        (recur env
+               (rest effects)
+               (conj std-effects effect)))
+      std-effects)))</pre></td></tr><tr><td class="docs"><p>Bind effects to an element returning an animation. Accepts an HTML
+  element and any number of effects. Effects can be Maps or a Vector
+  of Maps. Each effect is run in order. Each effect within a Vector is
+  run in parallel.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn bind
+  [element &amp; effects]
+  (let [element (get-element element)
+        effects (apply standardize-all-effects element effects)
+        serial (goog.fx.AnimationSerialQueue.)]
+    (doseq [sequential-effect effects]
+      (if (vector? sequential-effect)
+        (let [parallel (goog.fx.AnimationParallelQueue.)]
+          (doseq [parallel-effect sequential-effect]
+            (.add parallel (effect element parallel-effect)))
+          (.add serial parallel))
+        (.add serial (effect element sequential-effect))))
+    serial))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Bind examples
+  (def label-color (color (get-element &quot;//label[@id='name-input-label']/span&quot;)))
+  (def label (get-element &quot;//label[@id='name-input-label']/span&quot;))
+  (def input (get-element :name-input))
+  (def red [255 0 0])
+  (def green [0 255 0])
+  (def blue [0 0 255])
+  (def input-bg-color (bg-color input))
+  (def input-color (color input))
+  (def button (get-element :greet-button))
+  (def button-size (size button))
+  (def move-label (bind label
+                        [{:effect :slide :up 200 :time 2000}
+                         {:effect :color :end red :time 2000}]
+                        [{:effect :slide :down 200 :time 2000}
+                         {:effect :color :end label-color :time 2000}]))
+  (start move-label)
+  (def background (bind input
+                        {:effect :bg-color :end red}
+                        {:effect :bg-color :end green}
+                        {:effect :bg-color :end blue}
+                        {:effect :bg-color :end input-bg-color}))
+  (start background)
+  ;; Serial and parallel animations on different elements
+  (def big-button (bind button
+                        {:effect :resize :end [200 200] :time 2000}
+                        {:effect :resize :end button-size :time 2000}))
+  (start big-button)
+  (start (serial move-label background big-button))
+  (start (parallel move-label background big-button)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Events
+  ;; You may listen for &quot;begin&quot; and &quot;finish&quot; events
+  (def label-up (bind &quot;//label[@id='name-input-label']/span&quot;
+                      {:effect :color :end &quot;#53607b&quot; :time 200}
+                      {:effect :slide :up 40 :time 200}))
+  (event/listen-once label-up
+                     &quot;finish&quot;
+                     #(js/alert &quot;Animation finished.&quot;))
+  (start label-up))</pre></td></tr><tr><td class="docs"><p>Source of unique animation ids.</p>
+</td><td class="codes"><pre class="brush: clojure">(def ^{:doc 
+       :private true}
+  animation-id (atom 0))</pre></td></tr><tr><td class="docs"><p>Data structure which supports running animations
+  sequentially which have been started by the play and play-animation
+  functions.</p>
+</td><td class="codes"><pre class="brush: clojure">(def ^{:doc 
+       :private true}
+  animation-queue (atom {:runner nil :running nil :next []}))</pre></td></tr><tr><td class="docs"><p>Add an animation to the <code>animation-queue</code>. If no runner is
+  currently running animations then assign that job to the calling
+  function by setting <code>:runner</code> to the passed <code>id</code> and putting the
+  first animation to run under <code>:running</code>.</p>
+
+<p>  If a runner is already running then add this animation to the
+  vector under <code>:next</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- add-to-queue
+  [queue id animations]
+  (let [new-next (conj (:next queue) animations)]
+    (if (:runner queue)
+      (assoc queue :next new-next)
+      (assoc queue
+        :runner id
+        :running (first new-next)
+        :next (vec (rest new-next))))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment
+
+  (add-to-queue {:runner nil :running nil :next []} 2 {:e 1 :a 2})
+  (add-to-queue {:runner nil :running nil :next [{:e 1 :a 2}]} 2 {:e 3 :a 4})
+  (add-to-queue {:runner 3 :running nil :next [{:e 1 :a 2}]} 2 {:e 3 :a 4})
+  )</pre></td></tr><tr><td class="docs"><p>Record that the runner with <code>id</code> has finished running the
+  animation. If there are more animations to run, move the next
+  animation under the running key and remove it from <code>:next</code>. The same
+  runner will continue running animations.</p>
+
+<p>  If there are no more animations to run, release the runner from duty
+  by setting <code>:runner</code> to nil.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- record-finished-animation
+  [queue id]
+  (if (empty? (:next queue))
+    (assoc queue :runner nil :running nil)
+    (assoc queue :running (first (:next queue)) :next (vec (rest (:next queue))))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment
+
+  (record-finished-animation {:runner 2, :running [{:e 1, :a 2}], :next []} 2)
+  (record-finished-animation {:runner 3, :running nil, :next [{:e 1, :a 2} {:e 3, :a 4}]} 3)
+  )</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(declare play-animations)</pre></td></tr><tr><td class="docs"><p>This function is called when the runner with <code>id</code> has finished
+  running an animation. After updating the queue, if this runner is
+  still the designated runner, then start running the next
+  animation. If the animation which has completed has an associated
+  <code>:after</code> function, run it.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- animation-finished
+  [id {after :after}]
+  (let [new-queue (swap! animation-queue record-finished-animation id)]
+    (when after (after))
+    (when (= (:runner new-queue) id)
+      (play-animations id new-queue))))</pre></td></tr><tr><td class="docs"><p>Create the animation to run.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- make-animation
+  [{:keys [element animation]}]
+  (cond element (bind element animation)
+        (fn? animation) (animation)
+        :else animation))</pre></td></tr><tr><td class="docs"><p>Called by a function which has been assigned the task of running
+  animations until there are no more to run. <code>id</code> is the runner
+  id. <code>queue</code> is the value of animation-queue after it was last
+  updated. Runs any <code>:before</code> function then runs the
+  animation. Arranges for <code>animation-finished</code> to be called when the
+  animation is complete.</p>
+
+<p>  Implementation note: The delay is a hack to get around the fact that
+  the <code>finish</code> event fires just before the animation has completed. The
+  100 ms delay gives the finished animation just enough time to
+  complete before the next animation is started.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- play-animations
+  [id queue]
+  (let [animation-map (:running queue)
+        animation (make-animation animation-map)]
+    (event/listen-once animation
+                       &quot;finish&quot;
+                       (fn [] (.start (goog.async.Delay. #(animation-finished id animation-map)) 100)))
+    (when-let [before (:before animation-map)]
+      (before))
+    (start animation)))</pre></td></tr><tr><td class="docs"><p>Accepts an element and an animation and ensures that this animation
+  will be run after all other animations that have been started by
+  this function or by <code>play-animation</code>. An optional map may also be
+  passed which may contain the keys <code>:before</code> and <code>:after</code>. Use the <code>:before</code>
+  key to provide a function which will be called just before
+  the animation starts. Use the <code>:after</code> key to provide a function
+  which will be called after the aniamtion is finished.</p>
+
+<p>  The <code>serial</code> function allows you to create animations which run in
+  sequence. The <code>start</code> function will run these animations. If <code>start</code>
+  is called to run an animation before a previous call to <code>start</code> has
+  completed, the animations can conflict. This function should be used
+  instead of <code>start</code> when you need to ensure that animations do not
+  overlap.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn play
+  ([element animation]
+     (play element animation {}))
+  ([element animation {:keys [name after before]}]
+     (let [id (swap! animation-id inc)
+           animation {:name name :id id :element element :animation animation :before before :after after}
+           queue (swap! animation-queue add-to-queue id animation)]
+       (when (= (:runner queue) id)
+         (play-animations id queue)))))</pre></td></tr><tr><td class="docs"><p>Accepts an animation and an optional map and ensures that this
+  animation will be run after all other animations that have been
+  started by this function or by <code>play</code>. See documentation for <code>play</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn play-animation
+  ([animation]
+     (play-animation animation {}))
+  ([animation opts]
+     (play nil animation opts)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.browser.history" name="one.browser.history"><h1 class="project-name">one.browser.history</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Supports working with <a href="http://closure-library.googlecode.com/svn/docs/namespace_goog_history.html">Google Closure's history management object</a>.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.browser.history
+  (:require [clojure.browser.event :as event]
+            [goog.History :as history]
+            [goog.history.Html5History :as history5]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-type goog.History
+  
+  event/EventType
+  (event-types [this]
+    (into {}
+          (map
+           (fn [[k v]]
+             [(keyword (. k (toLowerCase)))
+              v])
+           (js-&gt;clj goog.history.EventType)))))</pre></td></tr><tr><td class="docs"><p>Create a new history object in user visible mode. This allows users
+  to, for example, hit the browser's back button without leaving the
+  current page. The current history state is shown in the browser
+  address bar as a document location fragment (the portion of the URL
+  after the '#'). These addresses can be bookmarked, copied and pasted
+  into another browser, and modified directly by the user like any
+  other URL.</p>
+
+<p>  Any changes to the location hash will call the passed callback
+  function.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn history
+  [callback]
+  (let [h (if (history5/isSupported)
+            (goog.history.Html5History.)
+            (goog.History.))]
+    (do (event/listen h &quot;navigate&quot;
+                      (fn [e]
+                        (callback {:token (keyword (.-token e))
+                                   :type (.-type e)
+                                   :navigation? (.-isNavigation e)})))
+        (.setEnabled h true)
+        h)))</pre></td></tr><tr><td class="docs"><p>Sets the <code>history</code> state. The URL fragment will be set to the
+  provided token.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn set-token
+  [history token]
+  (.setToken history (name token)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.browser.remote" name="one.browser.remote"><h1 class="project-name">one.browser.remote</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Make network requests.</p>
+
+<p>  Adapted from Bobby Calderwood's Trail framework:
+  <a href="https://github.com/bobby/trail">https://github.com/bobby/trail</a></p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.browser.remote
+  (:require [cljs.reader :as reader]
+            [clojure.browser.net :as net]
+            [clojure.browser.event :as event]
+            [goog.net.XhrManager :as manager]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private responders (atom {}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- add-responders [id success error]
+  (when (or success error)
+    (swap! responders assoc id {:success success :error error})))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-type goog.net.XhrManager
+
+  event/EventType
+  (event-types [this]
+    (into {}
+          (map
+           (fn [[k v]]
+             [(keyword (. k (toLowerCase)))
+              v])
+           (js-&gt;clj goog.net.EventType)))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def ^:private
+  *xhr-manager*
+  (goog.net.XhrManager. nil
+                        nil
+                        nil
+                        0
+                        5000))</pre></td></tr><tr><td class="docs"><p>Asynchronously make a network request for the resource at url. If
+  provided via the <code>:on-success</code> and <code>:on-error</code> keyword arguments, the
+  appropriate one of <code>on-success</code> or <code>on-error</code> will be called on
+  completion. They will be passed a map containing the keys <code>:id</code>,
+  <code>:body</code>, <code>:status</code>, and <code>:event</code>. The entry for <code>:event</code> contains an
+  instance of the <code>goog.net.XhrManager.Event</code>.</p>
+
+<p>  Other allowable keyword arguments are <code>:method</code>, <code>:content</code>, <code>:headers</code>,
+  <code>:priority</code>, and <code>:retries</code>. <code>:method</code> defaults to "GET" and <code>:retries</code>
+  defaults to <code>0</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn request
+  [id url &amp; {:keys [method content headers priority retries on-success
+                    on-error]
+             :or   {method   &quot;GET&quot;
+                    retries  0}}]
+  (try
+    (add-responders id on-success on-error)
+    (.send *xhr-manager*
+           id
+           url
+           method
+           content
+           headers
+           priority
+           ;; This next one is a callback, and we could use it to get
+           ;; rid of the atom and figure out success/failure ourselves
+           nil
+           retries)
+    (catch js/Error e
+      nil)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- response-success [e]
+  (when-let [{success :success} (get @responders (:id e))]
+    (success e)
+    (swap! responders dissoc (:id e))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- response-error [e]
+  (when-let [{error :error} (get @responders (:id e))]
+    (error e)
+    (swap! responders dissoc (:id e))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- response-received
+  [f e]
+  (f {:id     (.-id e)
+      :body   (. e/xhrIo (getResponseText))
+      :status (. e/xhrIo (getStatus))
+      :event  e}))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(event/listen *xhr-manager* &quot;success&quot; (partial response-received response-success))
+(event/listen *xhr-manager* &quot;error&quot;   (partial response-received response-error))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.color" name="one.color"><h1 class="project-name">one.color</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Provide support for working with colors. Wraps Google
+  Closure's color support.  The <code>goog.color</code> namespace provides support for
+  additional color formats.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.color
+  (:require [one.core :as core]
+            [goog.string :as gstring]
+            [goog.style :as style]
+            [goog.color :as gcolor]
+            [goog.color.alpha :as alpha]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol IColor
+  (rgb [this] &quot;Returns a vector `[r g b]`.&quot;)
+  (rgba [this] &quot;Returns a vector `[r g b a]`.&quot;)
+  (hex [this] &quot;Returns a hex string for this color.&quot;)
+  (hex-rgba [this] &quot;Returns a hex rgba string for this color.&quot;)
+  (alpha [this] &quot;Returns the alpha for this color, a number in the range `[0 1]`.&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defrecord Color [r g b a]
+  IColor
+  (rgb [_] [r g b])
+  (rgba [_] [r g b a])
+  (hex [_]
+    (gcolor/rgbArrayToHex (array r g b)))
+  (hex-rgba [_]
+    (alpha/rgbaArrayToHex (array r g b a)))
+  (alpha [_] a))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- make-color
+  ([r g b]
+     (make-color r g b 1))
+  ([r g b a]
+     (Color. r g b a)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment ;; Color examples
+  (def red (make-color 200 0 0))
+  (rgb red)
+  (rgba red)
+  (hex red)
+  (hex-rgba red)
+  (alpha red))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol IColorSource
+  (color [this] &quot;Get the color from the passed object. Return a `Color` object.&quot;)
+  (bg-color [this] &quot;Get the background color from the passed
+  object. Returns a `Color` object.&quot;))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-protocol IColorSource
+
+  nil
+  (color [this] (make-color 0 0 0))
+  (bg-color [this] (make-color 0 0 0))
+
+  Color
+  (color [this] this)
+  (bg-color [this] this)
+
+  cljs.core.Vector
+  (color [this] (apply make-color this))
+  (bg-color [this] (apply make-color this))
+
+  js/Array
+  (color [this] (apply make-color (js-&gt;clj this)))
+  (bg-color [this] (apply make-color (js-&gt;clj this)))
+
+  js/String
+  (color [this]
+    (color (js-&gt;clj (cond (gstring/startsWith this &quot;#&quot;)
+                          (cond (= (count this) 7) (gcolor/hexToRgb this)
+                                (= (count this) 9) (alpha/hexToRgba this))
+                          
+                          (gstring/startsWith this &quot;rgba(&quot;)
+                          (alpha/parse this)
+
+                          (gstring/startsWith this &quot;rgb(&quot;) (gcolor/parseRgb this))
+                    :keywordize-keys true)))
+  (bg-color [this] (color this))
+  
+  cljs.core.ObjMap
+  (color [this] (color (:hex this)))
+  (bg-color [this] (color this))
+  
+  js/Element
+  (color [this]
+    (color (js-&gt;clj (gcolor/parse (core/get-style this &quot;color&quot;))
+                    :keywordize-keys true)))
+  (bg-color [this]
+    (color (js-&gt;clj (let [c (style/getBackgroundColor this)]
+                      (try
+                        (gcolor/parse c)
+                        (catch js/Error e (alpha/parse c))))
+                    :keywordize-keys true))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.core" name="one.core"><h1 class="project-name">one.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Core ClojureScript One library.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.core
+  (:require [goog.style :as style]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol Startable
+  (start [this]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol Disposable
+  (dispose [this]))</pre></td></tr><tr><td class="docs"><p>Use alternate strategies to get around the fact that
+  <code>goog.style.getComputedStyle</code> returns an empty string for IE8 and
+  below.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn get-style
+  [element style]
+  (some #(let [v (%)] (when (not= &quot;&quot; v) v))
+        [#(style/getComputedStyle element style)
+         #(style/getStyle element style)
+         #(aget (.-currentStyle element) style)
+         #(throw (js/Error. (str &quot;Could not retrieve value for style &quot; style)))]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.dispatch" name="one.dispatch"><h1 class="project-name">one.dispatch</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Event dispatching.</p>
+
+<p>  Provides a way for code to react to events. Terminology:</p>
+
+<ul>
+<li><p>event-id: Identifies a class of events. Can be any Clojure value.</p></li>
+<li><p>event-data: Parameterizes a particular event. Can be any Clojure
+value.</p></li>
+<li><p>reactor: A function that is invoked in response to an event
+occurring.</p></li>
+<li><p>reaction: A relationship between a set of events and a reactor.</p></li>
+<li><p>event-pred: A function which takes an event ID and returns true or
+false.</p>
+
+<p>Reactors are associated with events via <code>react-to</code>. When events are
+fired with an <code>event-id</code> and optional <code>event-data</code>, any reactors whose
+<code>event-pred</code> returns true for the <code>event-id</code> are invoked.</p></li>
+</ul>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.dispatch)</pre></td></tr><tr><td class="docs"><p>Stores the current reactions.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  reactions (atom {}))</pre></td></tr><tr><td class="docs"><p>Cause the specified reactor to be invoked whenever an event that
+  satisfies <code>event-pred</code> is fired. reactor is a function that accepts
+  two arguments: <code>event-id</code> and <code>event-data</code>.</p>
+
+<p>  Returns the reaction.</p>
+
+<p>  The reactor will continue to be invoked until one of two things
+  happens:</p>
+
+<ol>
+<li><p><code>delete-reaction</code> is called on this reaction.</p></li>
+<li><p>The reaction occurs <code>max-count</code> times. If <code>max-count</code> is not
+  specified, the reaction will continue to be invoked until deleted.</p>
+
+<p>If <code>max-count</code> is specified, <code>delete-reaction</code> will be called
+automatically when the reaction has occurred the specified number of
+times.</p></li>
+</ol>
+</td><td class="codes"><pre class="brush: clojure">(defn react-to
+  ([event-pred reactor]
+     (react-to nil event-pred reactor))
+  ([max-count event-pred reactor]
+     (let [reaction {:max-count max-count
+                     :event-pred event-pred
+                     :reactor reactor}]
+       (swap! reactions assoc reaction 0)
+       reaction)))</pre></td></tr><tr><td class="docs"><p>Delete a reaction. After calling this function, the specified
+  reaction will no longer be invoked.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn delete-reaction
+  [reaction]
+  (swap! reactions dissoc reaction))</pre></td></tr><tr><td class="docs"><p>Raise an event to any reactors whose event-pred returns true for
+  <code>event-id</code>. The <code>event-id</code> and <code>event-data</code>, if specified, are passed to
+  the reactor.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn fire
+  ([event-id]
+     (fire event-id nil))
+  ([event-id event-data]
+     (let [matching-reactions (filter (fn [[{event-pred :event-pred} run-count]]
+                                        (event-pred event-id))
+                                      @reactions)]
+       (doseq [[reaction run-count] matching-reactions]
+         (let [{:keys [max-count reactor]} reaction
+               run-count (inc run-count)]
+           (reactor event-id event-data)
+           (if (and max-count
+                    (&lt;= max-count run-count))
+             (delete-reaction reaction)
+             (swap! reactions assoc reaction run-count)))))))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(comment
+
+  (require '[cljs.repl :as repl])
+  (require '[cljs.repl.rhino :as rhino])
+  (repl/repl (rhino/repl-env))
+
+  (do
+    (let [recorded-reactions (atom [])
+          reaction (react-to #{:do-something} #(swap! recorded-reactions conj [%1 %2]))]
+      ;; Did we get a reaction back?
+      (assert reaction)
+      (fire :do-something)
+      ;; Did the reactor catch the event?
+      (assert (= [[:do-something nil]] @recorded-reactions))
+      (fire :do-something)
+      ;; Did the reactor catch the event a second time?
+      (assert (= [[:do-something nil] [:do-something nil]] @recorded-reactions))
+      (fire :something-else)
+      ;; Did we ignore events we're not reacting to?
+      (assert (= [[:do-something nil] [:do-something nil]] @recorded-reactions))
+      (reset! recorded-reactions [])
+      (fire :do-something 17)
+      ;; Does event data arrive intact?
+      (assert (= [[:do-something 17]] @recorded-reactions))
+      (reset! recorded-reactions [])
+      (delete-reaction reaction)
+      (fire :do-something 17)
+      ;; Does deleting a reaction cause us to stop reacting?
+      (assert (= [] @recorded-reactions)))
+    (let [recorded-reactions (atom #{})
+          reaction-once (react-to 1 #{:do-something}
+                                  #(swap! recorded-reactions conj [1 %1 %2]))
+          reaction-twice (react-to 2 #{:do-something}
+                                   #(swap! recorded-reactions conj [2 %1 %2]))]
+      (fire :do-something 1)
+      ;; Did both reactions react?
+      (assert (= #{[1 :do-something 1] [2 :do-something 1]} @recorded-reactions))
+      (fire :do-something 2)
+      ;; Did only the second reaction react?
+      (assert (= #{[1 :do-something 1] [2 :do-something 1] [2 :do-something 2]}
+                 @recorded-reactions))
+      (fire :do-something 3)
+      ;; Did nothing change?
+      (assert (= #{[1 :do-something 1] [2 :do-something 1] [2 :do-something 2]}
+                 @recorded-reactions)))
+    true
+    )
+  )</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#one.logging" name="one.logging"><h1 class="project-name">one.logging</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><p>Basic wrapper around <a href="http://closure-library.googlecode.com/svn/docs/class_goog_debug_Logger.html">Google Closure's logging API</a>.</p>
+
+<p>  This library can be improved to support more of the features
+  provided by Google Closure's logging.</p>
+</td><td class="codes"><pre class="brush: clojure">(ns 
+  one.logging
+  (:require [goog.debug.Console :as console]
+            [goog.debug.FancyWindow :as fancy]
+            [goog.debug.Logger :as logger]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defprotocol ILogViewer
+  (start-display [this] &quot;Start displaying log messages in this viewer.&quot;)
+  (stop-display [this] &quot;Stop displaying log messages in this viewer.&quot;))</pre></td></tr><tr><td class="docs"><p>Maps log level keywords to <code>goog.debug.Logger.Levels</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(def 
+  levels {:severe goog.debug.Logger.Level.SEVERE
+          :warning goog.debug.Logger.Level.WARNING
+          :info goog.debug.Logger.Level.INFO
+          :config goog.debug.Logger.Level.CONFIG
+          :fine goog.debug.Logger.Level.FINE
+          :finer goog.debug.Logger.Level.FINER
+          :finest goog.debug.Logger.Level.FINEST})</pre></td></tr><tr><td class="docs"><p>Given a name, return an existing logger if one exists or create a
+  new logger.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn get-logger
+  [name]
+  (goog.debug.Logger/getLogger name))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>severe</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn severe
+  [logger s] (.severe logger s))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>warning</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn warning
+  [logger s] (.warning logger s))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>info</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn info
+  [logger s] (.info logger s))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>config</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn config
+  [logger s] (.config logger s))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>fine</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn fine
+  [logger s] (.fine logger s))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>finer</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn finer
+  [logger s] (.finer logger s))</pre></td></tr><tr><td class="docs"><p>Given a logger and a message, write the message to the log with a
+  logging level of <code>finest</code>.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn finest
+  [logger s] (.finest logger s))</pre></td></tr><tr><td class="docs"><p>Set the logging level of <code>logger</code> to <code>level</code>.</p>
+
+<p>  The <code>level</code> argument must be a keyword.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn set-level
+  [logger level]
+  (.setLevel logger (get levels level goog.debug.Logger.Level.INFO)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(extend-protocol ILogViewer
+  
+  goog.debug.Console
+  (start-display [this]
+    (.setCapturing this true))
+  (stop-display [this]
+    (.setCapturing this false))
+  
+  goog.debug.FancyWindow
+  (start-display [this]
+    (doto this
+      (.setEnabled true)
+      (.init ())))
+  (stop-display [this]
+    (.setCapturing this false)))</pre></td></tr><tr><td class="docs"><p>Returns a log viewer which will direct log messages to the
+  browser's <code>console</code> window. Use the <code>start-display</code> and
+  <code>stop-display</code> functions to start and stop printing log messages to
+  the console.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn console-output
+  []
+  (goog.debug.Console.))</pre></td></tr><tr><td class="docs"><p>Returns a log viewer which will open a fancy logging window and
+  direct log messages to it. Use the <code>start-display</code> and
+  <code>stop-display</code> functions to start and stop printing log messages in
+  this window.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn fancy-output
+  [name]
+  (goog.debug.FancyWindow. name))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/fogus/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
        SyntaxHighlighter.all()</script></body></html>
