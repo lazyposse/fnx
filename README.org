@@ -1,0 +1,162 @@
+* Development
+This section discuss the internals of fnx, intended for developers.
+
+** History management
+*** What we want
+
+**** Browser back button should works as expected
+
+For example navigating in a ns, and then going back should bring the previous ns.
+
+**** Bookmarking a namespace
+
+For example: 
+- Navigate to the ns =foo/bar/= 
+- Bookmark it
+- Then when opening a new page with the bookmark should display the
+  content of =foo/bar/=.
+
+**** Bookmarking functions
+
+Same as below but with functions.
+
+**** Bookmarking functions with arguments
+
+For example: 
+- Navigate to a fn
+- Fill the parameter
+- Bookmark the page
+- Open a new page with the bookmark
+- Then the page should display the function form with the fields
+  populated with the same values than when bookmarking
+
+**** Bookmarking functions with partially filled arguments
+
+Same as below, but should also works with partially filled arguments.
+
+*Implementation details:* Could be implemented by listening to the
+=blur= event of text fields and updating the URL accordingly.
+
+**** Bookmarking functions calls
+
+For example: 
+- Navigate to the fn =foo/bar/hello-world=, which is a function that
+  takes a single parameter =name=.
+- Fill the =name= field with =john=.
+- Hit the =run= button: The result of the function is displayed:
+  =Hello, john=.
+- Bookmark the page
+- Then when opening a new page with the bookmark should display
+  "Hello, john=, as well at the form of the function with the field
+  =name= populated with the value =john=.
+
+*** Solution
+
+All the functionalities described below could be implemented by using
+the history management capability of ClojureScript One.
+
+That is using the web browser address bar to save the state that we
+want to restore later.
+
+**** Informations to serialize
+
+
+The app could be in the following "states" (activities): 
+- navigating ns: =ns-navigating=
+- display fn form: =fn-form-displaying=
+- run fn: =fn-running=
+
+| state              | necessary additionnal informations |
+|--------------------+------------------------------------|
+| ns-navigating      | current-ns                         |
+| fn-form-displaying | current-fn, fn-args                |
+| fn-running         | current-fn, fn-args                |
+| fn-result-showing  | fn-result                          |
+
+**** Summary of the state of the app
+
+| state                      | key        | values              | in URL? |
+|----------------------------+------------+---------------------+---------|
+|                            | state      | ns-navigating,      | yes     |
+|                            |            | fn-form-displaying, |         |
+|                            |            | fn-running,         |         |
+|                            |            | fn-result-showing   |         |
+|----------------------------+------------+---------------------+---------|
+|                            | current-ns | ns                  | yes     |
+|----------------------------+------------+---------------------+---------|
+|                            | current-fn | fn                  | yes     |
+|----------------------------+------------+---------------------+---------|
+|                            | fn-args    | fn args             |         |
+|                            |            | (could be           |         |
+|                            |            | incomplete)         | yes     |
+|----------------------------+------------+---------------------+---------|
+|                            | fn-result  | any data clj        |no       |
+|                            |            | datastructure       |         |
+|----------------------------+------------+---------------------+---------|
+| hierarchy of all ns and fn | all-ns     | a map of ns/fn      | no      |
+|----------------------------+------------+---------------------+---------|
+
+* Running development [66%]
+** DONE Learn one [100%]
+CLOSED: [2012-04-05 Thu 19:10]
+*** DONE Learn the inner working of one
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Checkout one
+CLOSED: [2012-03-31 sam. 20:48]
+** DONE Setup [100%]
+CLOSED: [2012-04-05 Thu 19:14]
+*** DONE Add the files to scan for redeploying the app src/app/one/sample/config.clj
+CLOSED: [2012-04-05 Thu 19:14]
+** DONE Server side [100%]
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Expose functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Execute functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Extract metadata functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Deal with function order in parameters
+CLOSED: [2012-04-05 Thu 19:08]
+** TODO Client side [76%]
+*** DONE Init view
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Init model
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Deal with spinner
+CLOSED: [2012-04-05 Thu 19:15]
+*** DONE Display the list of first level namespaces
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Navigate through namespaces
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Navigate to the upper level of the current namespace
+CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Display the namespaces and the functions
+CLOSED: [2012-03-31 sam. 20:50]
+*** DONE Retrieve the metadata of the function and display them via forms (arity)
+CLOSED: [2012-03-31 sam. 20:50]
+*** DONE Run the function basically
+CLOSED: [2012-03-31 sam. 20:52]
+*** DONE Beware the order of the arguments of the function
+*** TODO Edge cases (check the inputs)
+*** TODO Deal with varargs in the view &
+*** TODO Deal with history [33%]
+**** DONE ns-clicked
+CLOSED: [2012-04-05 Thu 19:15]
+**** TODO fn-clicked
+**** TODO input-clicked
+** TODO Design [0%]
+*** TODO Improve ui in general
+*** TODO Add animations !!!
+*** TODO Improve spinner (deal with opacity)
+** DONE Deploying [100%]
+CLOSED: [2012-04-05 jeu. 20:38]
+*** DONE Midje dev-dependencies to dependencies in the project.clj
+CLOSED: [2012-04-05 jeu. 20:38]
+*** DONE Actually deploy to heroku
+CLOSED: [2012-04-05 jeu. 20:38]
+*** DONE Doc about it
+CLOSED: [2012-04-05 jeu. 20:38]
+** Marginalia [%]
+*** TODO Deploy doc
+* notes [%]
+** TODO common prefix may be possible if 2 jar start with the same prefix ns
