@@ -96,7 +96,7 @@ The app could be in the following "states" (activities):
 | hierarchy of all ns and fn | all-ns     | a map of ns/fn      | no      |
 |----------------------------+------------+---------------------+---------|
 
-* Running development [66%]
+* Running development [71%]
 ** DONE Learn one [100%]
 CLOSED: [2012-04-05 Thu 19:10]
 *** DONE Learn the inner working of one
@@ -156,7 +156,9 @@ CLOSED: [2012-04-05 jeu. 20:38]
 CLOSED: [2012-04-05 jeu. 20:38]
 *** DONE Doc about it
 CLOSED: [2012-04-05 jeu. 20:38]
-** Marginalia [%]
-*** TODO Deploy doc
+** DONE Marginalia [100%]
+CLOSED: [2012-04-05 jeu. 21:52]
+*** DONE Deploy doc
+CLOSED: [2012-04-05 jeu. 21:52]
 * notes [%]
 ** TODO common prefix may be possible if 2 jar start with the same prefix ns

@@ -1,4 +1,4 @@
-(defproject one "1.0.0-SNAPSHOT"
+(defproject fnx "1.0.0-SNAPSHOT"
   :description "Expose your Clojure functions on the web easily"
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [ring "1.0.0-RC1"]
@@ -9,8 +9,8 @@
                  [org.clojure/google-closure-library "0.0-790"]
                  [midje "1.3.1"]]
   :dev-dependencies [[jline "0.9.94"]
-                     [marginalia "0.7.0-SNAPSHOT"]
-                     [lein-marginalia "0.7.0-SNAPSHOT"]
+                     [marginalia "0.7.0"]
+                     [lein-marginalia "0.7.0"]
                      [com.intelie/lazytest "1.0.0-SNAPSHOT" :exclusions [swank-clojure]]]
   :git-dependencies [["https://github.com/clojure/clojurescript.git"
                       "886d8dc81812962d30a741d6d05ce9d90975160f"]
