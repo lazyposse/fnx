@@ -26,5 +26,8 @@
                        "/one/templates"
                        "/one/sample/api"
                        "/one/sample/config"
-                       "/one/sample/dev_server"]
+                       "/one/sample/dev_server"
+                       "/fnx/meta/expose"
+                       "/fnx/meta/example"
+                       "/fnx/meta/example2"]
           :prod-transform production-transform})

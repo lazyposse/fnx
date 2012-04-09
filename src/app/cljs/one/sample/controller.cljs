@@ -147,7 +147,8 @@
                      (assoc old
                        :state :fn-result-showing
                        :current-fn fname
-                       :args args))))
+                       :args args
+                       :fn-result (:res response)))))
 
 ;; React to the run clicked event that will launch the execution of the function in the server
 (defmethod action-fnx :run-clicked [{f :fname args :args}]

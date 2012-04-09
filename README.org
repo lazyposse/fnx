@@ -1,5 +1,3 @@
-;; -*- org -*-
-
 * Development
 This section discuss the internals of fnx, intended for developers.
 
@@ -98,17 +96,34 @@ The app could be in the following "states" (activities):
 | hierarchy of all ns and fn | all-ns     | a map of ns/fn      | no      |
 |----------------------------+------------+---------------------+---------|
 
-
-* Running development [33%]
-** TODO Client side [83%]
+* Running development [50%]
+** DONE Learn one [100%]
+CLOSED: [2012-04-05 Thu 19:10]
 *** DONE Learn the inner working of one
 CLOSED: [2012-03-31 sam. 20:48]
 *** DONE Checkout one
 CLOSED: [2012-03-31 sam. 20:48]
+** DONE Setup [100%]
+CLOSED: [2012-04-05 Thu 19:14]
+*** DONE Add the files to scan for redeploying the app src/app/one/sample/config.clj
+CLOSED: [2012-04-05 Thu 19:14]
+** DONE Server side [100%]
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Expose functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Execute functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Extract metadata functions
+CLOSED: [2012-03-31 sam. 20:48]
+*** DONE Deal with function order in parameters
+CLOSED: [2012-04-05 Thu 19:08]
+** TODO Client side [76%]
 *** DONE Init view
 CLOSED: [2012-03-31 sam. 20:49]
 *** DONE Init model
 CLOSED: [2012-03-31 sam. 20:49]
+*** DONE Deal with spinner
+CLOSED: [2012-04-05 Thu 19:15]
 *** DONE Display the list of first level namespaces
 CLOSED: [2012-03-31 sam. 20:49]
 *** DONE Navigate through namespaces
@@ -121,22 +136,23 @@ CLOSED: [2012-03-31 sam. 20:50]
 CLOSED: [2012-03-31 sam. 20:50]
 *** DONE Run the function basically
 CLOSED: [2012-03-31 sam. 20:52]
-*** TODO Beware the order of the argument of the function
-*** TODO Edge cases
+*** DONE Beware the order of the arguments of the function
+*** TODO Edge cases (check the inputs)
+*** TODO Deal with varargs in the view &
+*** TODO Deal with history [33%]
+**** DONE ns-clicked
+CLOSED: [2012-04-05 Thu 19:15]
+**** TODO fn-clicked
+**** TODO input-clicked
 ** TODO Design [0%]
-*** TODO Improve css
-*** TODO Improve ui
-*** TODO Add animations
-*** TODO Improve spinner
-** DONE Server side [100%]
-CLOSED: [2012-03-31 sam. 20:48]
-*** DONE Expose functions
-CLOSED: [2012-03-31 sam. 20:48]
-*** DONE Execute functions
-CLOSED: [2012-03-31 sam. 20:48]
-*** DONE Extract metadata functions
-CLOSED: [2012-03-31 sam. 20:48]
-
+*** TODO Improve ui in general
+*** TODO Add animations !!!
+*** TODO Improve spinner (deal with opacity)
+** TODO Deploying [0%]
+*** TODO Midje dev-dependencies to dependencies in the project.clj
+*** TODO Actually deploy to heroku
+*** TODO Doc about it
+** Marginalia [%]
+*** TODO Deploy doc
 * notes [%]
-
 ** TODO common prefix may be possible if 2 jar start with the same prefix ns
