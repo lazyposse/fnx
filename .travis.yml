@@ -1,1 +1,3 @@
 language: clojure
+before_script: lein bootstrap && chmod +x ./script/build
+script: ./script/build
