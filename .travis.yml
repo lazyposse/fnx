@@ -3,4 +3,4 @@ before_script:
   - lein bootstrap 
   - chmod +x ./script/build
 script:
-  lein midje && ./script/build
+  ./script/build
