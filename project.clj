@@ -11,6 +11,7 @@
   :dev-dependencies [[jline "0.9.94"]
                      [marginalia "0.7.0"]
                      [lein-marginalia "0.7.0"]
+                     [lein-midje "1.0.9"]
                      [com.intelie/lazytest "1.0.0-SNAPSHOT" :exclusions [swank-clojure]]]
   :git-dependencies [["https://github.com/clojure/clojurescript.git"
                       "886d8dc81812962d30a741d6d05ce9d90975160f"]
